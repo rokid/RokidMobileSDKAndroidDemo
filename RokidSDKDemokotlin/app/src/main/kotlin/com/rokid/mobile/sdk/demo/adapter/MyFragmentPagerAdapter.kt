@@ -19,5 +19,4 @@ class MyFragmentPagerAdapter(fm: FragmentManager,var fragmentList:List<Node>) : 
         class Node(var title: String,var fragment: Fragment)
     }
 
-
 }

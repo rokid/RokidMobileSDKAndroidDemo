@@ -1,5 +1,6 @@
 package com.rokid.mobile.sdk.demo.fragment
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -20,30 +21,36 @@ import org.greenrobot.eventbus.Subscribe
  */
 abstract class BaseFragment : Fragment() {
 
+    private var rootView: View? =null
     lateinit var rv: RecyclerView
-
     lateinit var mAdapter: BaseRVAdapter<BaseItem<Any>>
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        EventBus.getDefault().register(this)
-        var rootView = inflater!!.inflate(R.layout.fragment_common, container!!, false)
-        rv = rootView.findViewById(R.id.fragment_common_rv)
-        initRv()
-        initdata()
+        if (!EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().register(this)
+        }
+
+        if (null == rootView) {
+            rootView = inflater!!.inflate(R.layout.fragment_common, container!!, false)
+            rv = rootView!!.findViewById(R.id.fragment_common_rv)
+            initRv()
+            initData()
+        }
+
         return rootView
     }
 
 
     private fun initRv() {
         rv.apply {
-            layoutManager = LinearLayoutManager(activity)
+            layoutManager = LinearLayoutManager(activity as Context?)
             mAdapter = BaseRVAdapter()
             adapter = mAdapter
         }
     }
 
-    private fun initdata() {
+    private fun initData() {
         mAdapter.setItemViewList(getItemList())
     }
 
@@ -55,9 +62,9 @@ abstract class BaseFragment : Fragment() {
         EventBus.getDefault().unregister(this)
     }
 
-
     @Subscribe
     fun onSysInfo(eventDeviceSysUpdate: EventDeviceSysUpdate) {
         Logger.e("onSysInfo eventDeviceSysUpdate" + eventDeviceSysUpdate.toString())
     }
+
 }

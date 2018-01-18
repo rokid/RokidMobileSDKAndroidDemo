@@ -9,7 +9,6 @@ import com.rokid.mobile.sdk.callback.InitCompletedCallback
  */
 class MyApplication : Application() {
 
-
     companion object {
         private lateinit var instance: Application
 
@@ -17,7 +16,6 @@ class MyApplication : Application() {
             return instance
         }
     }
-
 
     override fun onCreate() {
         super.onCreate()
