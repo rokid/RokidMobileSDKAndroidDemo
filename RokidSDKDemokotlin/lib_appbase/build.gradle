@@ -28,7 +28,6 @@ android {
 
 }
 
-
 dependencies {
     //compile fileTree(dir: 'libs', include: ['*.jar'])
     compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
@@ -37,13 +36,11 @@ dependencies {
     // Easy Permissions
     compile 'pub.devrel:easypermissions:0.4.2'
     //sdk
-    compile(name: 'com.rokid.mobile.sdk-1.0.4', ext: "aar")
+    compile(name: 'com.rokid.mobile.sdk-1.0.5', ext: "aar")
 
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
     compile 'org.greenrobot:eventbus:3.0.0'
     compile 'org.greenrobot:greendao:3.2.0'
     compile 'org.greenrobot:greendao-generator:3.2.0'
-
-
 }
