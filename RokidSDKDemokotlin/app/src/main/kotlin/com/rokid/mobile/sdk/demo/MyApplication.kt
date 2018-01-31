@@ -28,6 +28,8 @@ class MyApplication : Application() {
             }
 
         })
+
+        RokidMobileSDK.debug()
     }
 
 
