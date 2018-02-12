@@ -12,7 +12,7 @@ class MyApplication : Application() {
     companion object {
         private lateinit var instance: Application
 
-        fun getContext(): Application{
+        fun getContext(): Application {
             return instance
         }
     }
@@ -20,14 +20,18 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
-        RokidMobileSDK.init(this, "appId", "appSecret", "", object : InitCompletedCallback {
-            override fun onInitFailed(p0: String?, p1: String?) {
-            }
+        RokidMobileSDK.init(this,
+                "rokid-demo",
+                "rokid-demo-secret",
+                "",
+                object : InitCompletedCallback {
+                    override fun onInitFailed(p0: String?, p1: String?) {
+                    }
 
-            override fun onInitSuccess() {
-            }
+                    override fun onInitSuccess() {
+                    }
 
-        })
+                })
 
         RokidMobileSDK.debug()
     }
