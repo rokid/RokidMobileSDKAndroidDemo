@@ -36,7 +36,7 @@ dependencies {
     // Easy Permissions
     compile 'pub.devrel:easypermissions:0.4.2'
     //sdk
-    compile(name: 'com.rokid.mobile.sdk-1.0.6-002', ext: "aar")
+    compile(name: 'com.rokid.mobile.sdk-1.0.6-003', ext: "aar")
 
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
