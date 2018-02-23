@@ -11,7 +11,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.rokid.lib_appbase.recyclerview.adapter.BaseRVAdapter
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean
 import com.rokid.mobile.lib.entity.bean.bluetooth.DeviceBinderData
@@ -22,6 +21,7 @@ import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.adapter.item.BleItem
+import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter
 import com.rokid.mobilesdkdemo.util.WifiEngine
 import kotlinx.android.synthetic.main.fragment_bind.view.*
 

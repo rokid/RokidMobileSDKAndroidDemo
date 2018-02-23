@@ -3,12 +3,12 @@ package com.rokid.mobile.sdk.demo.adapter.item
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
-import com.rokid.lib_appbase.recyclerview.item.BaseItem
-import com.rokid.lib_appbase.recyclerview.item.BaseViewHolder
 import com.rokid.mobile.lib.xbase.device.callback.IUnbindDeviceCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.adapter.data.ActionData
+import com.rokid.mobile.ui.recyclerview.item.BaseItem
+import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder
 
 /**
  * Created by wangshuwen on 2017/12/3.
@@ -34,7 +34,6 @@ class UnbindItem(data: ActionData) : BaseItem<ActionData>(data) {
         deviceEt = holder!!.itemView.findViewById(R.id.item_unbind_et)
         txt = holder.itemView.findViewById(R.id.item_unbind_txt)
         txt.text = data.action
-
 
         txt.setOnClickListener {
             RokidMobileSDK.device.unbindDevice(deviceEt.text.trim().toString(), object : IUnbindDeviceCallback {

@@ -8,11 +8,11 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.rokid.lib_appbase.recyclerview.adapter.BaseRVAdapter
-import com.rokid.lib_appbase.recyclerview.item.BaseItem
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.event.device.EventDeviceSysUpdate
 import com.rokid.mobile.sdk.demo.R
+import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter
+import com.rokid.mobile.ui.recyclerview.item.BaseItem
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 

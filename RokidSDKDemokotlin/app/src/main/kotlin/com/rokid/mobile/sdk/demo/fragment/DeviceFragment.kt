@@ -1,10 +1,10 @@
 package com.rokid.mobile.sdk.demo.fragment
 
-import com.rokid.lib_appbase.recyclerview.item.BaseItem
 import com.rokid.mobile.sdk.demo.adapter.TypeConstants
 import com.rokid.mobile.sdk.demo.adapter.data.ActionData
 import com.rokid.mobile.sdk.demo.adapter.item.ActionItem
 import com.rokid.mobile.sdk.demo.adapter.item.UnbindItem
+import com.rokid.mobile.ui.recyclerview.item.BaseItem
 import java.util.*
 
 /**

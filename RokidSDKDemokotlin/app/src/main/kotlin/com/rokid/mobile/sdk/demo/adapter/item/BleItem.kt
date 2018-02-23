@@ -1,10 +1,10 @@
 package com.rokid.mobile.sdk.demo.adapter.item
 
 import android.view.View
-import com.rokid.lib_appbase.recyclerview.item.BaseItem
-import com.rokid.lib_appbase.recyclerview.item.BaseViewHolder
 import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean
 import com.rokid.mobile.sdk.demo.R
+import com.rokid.mobile.ui.recyclerview.item.BaseItem
+import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder
 import kotlinx.android.synthetic.main.item_ble.view.*
 
 /**

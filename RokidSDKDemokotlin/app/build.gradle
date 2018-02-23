@@ -3,20 +3,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
-
+    compileSdkVersion 26
     defaultConfig {
-        applicationId "com.rokid.mobile.sdk.demo"
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
-
+        applicationId "com.rokid.mobile.sdk.demo.kotlin"
+        minSdkVersion 19
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0.0"
 
         ndk {
-            //选择要添加的对应cpu类型的.so库。
+            // 选择要添加的对应cpu类型的.so库。
             abiFilters 'armeabi', 'arm64-v8a', 'x86', 'mips'
         }
     }
@@ -33,18 +29,24 @@ android {
     }
 }
 
-
-androidExtensions {
-    experimental = true
-}
-
-
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile "com.android.support:recyclerview-v7:$rootProject.ext.supportLibraryVersion"
-    compile "com.android.support:design:$rootProject.ext.supportLibraryVersion"
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile 'com.umeng.analytics:analytics:6.1.2'
-    compile project(':lib_appbase')
+    // sdk
+    implementation(name: 'com.rokid.mobile.sdk-1.0.6-003', ext: "aar")
+
+    // 第三方库
+    implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
+    implementation 'com.umeng.analytics:analytics:6.1.2'
+
+    implementation 'pub.devrel:easypermissions:0.4.2'
+
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
 }
