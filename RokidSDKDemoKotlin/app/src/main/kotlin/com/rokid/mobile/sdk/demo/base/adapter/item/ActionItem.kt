@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.adapter.item
+package com.rokid.mobile.sdk.demo.base.adapter.item
 
 import android.view.View
 import android.widget.Toast
@@ -6,8 +6,8 @@ import com.rokid.mobile.lib.entity.bean.device.RKDevice
 import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
-import com.rokid.mobile.sdk.demo.adapter.TypeConstants
-import com.rokid.mobile.sdk.demo.adapter.data.ActionData
+import com.rokid.mobile.sdk.demo.base.adapter.TypeConstants
+import com.rokid.mobile.sdk.demo.base.adapter.data.ActionData
 import com.rokid.mobile.ui.recyclerview.item.BaseItem
 import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder
 import kotlinx.android.synthetic.main.item_action.view.*

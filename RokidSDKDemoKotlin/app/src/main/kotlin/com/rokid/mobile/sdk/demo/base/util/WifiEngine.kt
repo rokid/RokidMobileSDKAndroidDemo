@@ -1,11 +1,11 @@
-package com.rokid.mobilesdkdemo.util
+package com.rokid.mobile.sdk.demo.base.util
 
 import android.content.Context.WIFI_SERVICE
 import android.net.wifi.WifiManager
 import android.text.TextUtils
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.wifi.WifiBean
-import com.rokid.mobile.sdk.demo.MyApplication
+import com.rokid.mobile.sdk.demo.SDKDemoApplication
 import java.util.*
 
 /**
@@ -45,7 +45,7 @@ object WifiEngine {
         }
 
     init {
-        wifiManager = MyApplication.getContext().applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+        wifiManager = SDKDemoApplication.getContext().applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
     }
 
 

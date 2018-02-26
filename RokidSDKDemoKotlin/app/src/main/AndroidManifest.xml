@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
-        android:name="com.rokid.mobile.sdk.demo.MyApplication"
+        android:name="com.rokid.mobile.sdk.demo.SDKDemoApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -24,7 +24,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name="com.rokid.mobile.sdk.demo.MainActivity"
+            android:name="com.rokid.mobile.sdk.demo.SDKDemoActivity"
             android:windowSoftInputMode="stateAlwaysHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -32,6 +32,10 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".skill.SkillAlarmActivity"/>
+
+        <activity android:name=".skill.SkillHomebaseActivity"/>
 
     </application>
 

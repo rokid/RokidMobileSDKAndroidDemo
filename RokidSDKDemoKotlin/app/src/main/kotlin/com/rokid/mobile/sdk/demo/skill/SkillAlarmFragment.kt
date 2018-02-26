@@ -1,23 +1,20 @@
-package com.rokid.mobile.sdk.demo.fragment
+package com.rokid.mobile.sdk.demo.skill
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import com.google.gson.Gson
 import com.rokid.mobile.lib.base.util.Logger
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean
 import com.rokid.mobile.lib.entity.event.skill.EventAlarmBean
 import com.rokid.mobile.lib.entity.event.skill.EventRemindBean
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
-import kotlinx.android.synthetic.main.fragment_event.view.*
-import kotlinx.android.synthetic.main.fragment_skill.view.*
+import kotlinx.android.synthetic.main.skill_fragment_alarm.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -27,7 +24,7 @@ import org.greenrobot.eventbus.ThreadMode
  * Author: Shper
  * Version: V0.1 2018/2/12
  */
-class SkillFragment : Fragment() {
+class SkillAlarmFragment : Fragment() {
 
     private var rootView: View? = null
     private lateinit var eventTxt: TextView
@@ -35,7 +32,7 @@ class SkillFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (null == rootView) {
-            rootView = inflater!!.inflate(R.layout.fragment_skill, container!!, false)
+            rootView = inflater!!.inflate(R.layout.skill_fragment_alarm, container!!, false)
             initView()
             initListener()
         }

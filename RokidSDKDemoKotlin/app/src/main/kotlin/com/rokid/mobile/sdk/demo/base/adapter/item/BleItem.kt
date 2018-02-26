@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.adapter.item
+package com.rokid.mobile.sdk.demo.base.adapter.item
 
 import android.view.View
 import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean

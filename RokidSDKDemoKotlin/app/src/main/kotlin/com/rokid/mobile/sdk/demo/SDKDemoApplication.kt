@@ -7,7 +7,7 @@ import com.rokid.mobile.sdk.callback.InitCompletedCallback
 /**
  * Created by wangshuwen on 2017/12/3.
  */
-class MyApplication : Application() {
+class SDKDemoApplication : Application() {
 
     companion object {
         private lateinit var instance: Application

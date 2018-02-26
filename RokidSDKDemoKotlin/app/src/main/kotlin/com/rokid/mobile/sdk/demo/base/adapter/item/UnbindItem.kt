@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.adapter.item
+package com.rokid.mobile.sdk.demo.base.adapter.item
 
 import android.widget.EditText
 import android.widget.TextView
@@ -6,7 +6,7 @@ import android.widget.Toast
 import com.rokid.mobile.lib.xbase.device.callback.IUnbindDeviceCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
-import com.rokid.mobile.sdk.demo.adapter.data.ActionData
+import com.rokid.mobile.sdk.demo.base.adapter.data.ActionData
 import com.rokid.mobile.ui.recyclerview.item.BaseItem
 import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder
 

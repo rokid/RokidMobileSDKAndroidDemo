@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.fragment
+package com.rokid.mobile.sdk.demo.binder
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -20,17 +20,17 @@ import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTSendCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
-import com.rokid.mobile.sdk.demo.adapter.item.BleItem
+import com.rokid.mobile.sdk.demo.base.adapter.item.BleItem
+import com.rokid.mobile.sdk.demo.base.util.WifiEngine
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter
-import com.rokid.mobilesdkdemo.util.WifiEngine
-import kotlinx.android.synthetic.main.fragment_bind.view.*
+import kotlinx.android.synthetic.main.binder_fragment_index.view.*
 
 /**
  *
  *配网模块
  * Created by wangshuwen on 2017/12/4.
  */
-class BindFragment : Fragment() {
+class BinderIndexFragment : Fragment() {
 
     private var rootView: View? = null
     /**
@@ -70,7 +70,7 @@ class BindFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (null == rootView) {
-            rootView = inflater!!.inflate(R.layout.fragment_bind, container!!, false)
+            rootView = inflater!!.inflate(R.layout.binder_fragment_index, container!!, false)
             initView()
             initListener()
         }
@@ -108,7 +108,7 @@ class BindFragment : Fragment() {
             val nameMark = bleNameEt.text.toString()
             if (nameMark.isEmpty()) {
                 Logger.e("BLE name mark is empty please edit")
-                Toast.makeText(this@BindFragment.activity, "请输入蓝牙前缀 ~~~", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@BinderIndexFragment.activity, "请输入蓝牙前缀 ~~~", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             //停止扫描
@@ -173,15 +173,15 @@ class BindFragment : Fragment() {
         RokidMobileSDK.binder.connectBT(bleName, object : IBTConnectCallBack {
 
             override fun onConnectSucceed(p0: BTDeviceBean?) {
-                this@BindFragment.activity.runOnUiThread {
-                    Toast.makeText(this@BindFragment.activity, "连接成功 请输入wifi信息", Toast.LENGTH_LONG).show()
+                this@BinderIndexFragment.activity.runOnUiThread {
+                    Toast.makeText(this@BinderIndexFragment.activity, "连接成功 请输入wifi信息", Toast.LENGTH_LONG).show()
                     currentBleItem?.hideProgress()
                 }
             }
 
             override fun onConnectFailed(p0: BTDeviceBean?, p1: BleException?) {
-                this@BindFragment.activity.runOnUiThread {
-                    Toast.makeText(this@BindFragment.activity,
+                this@BinderIndexFragment.activity.runOnUiThread {
+                    Toast.makeText(this@BinderIndexFragment.activity,
                             "连接失败 errorCode=" + (p0 ?: "") + "errorMsg= " + (p1 ?: ""),
                             Toast.LENGTH_LONG).show()
                     currentBleItem?.hideProgress()
@@ -200,7 +200,7 @@ class BindFragment : Fragment() {
         val pwd = wifiPasswordEdit.text.toString()
 
         if (TextUtils.isEmpty(ssid) && TextUtils.isEmpty(pwd)) {
-            Toast.makeText(this@BindFragment.activity, "wifi名字和密码为空 请重新输入", Toast.LENGTH_LONG).show()
+            Toast.makeText(this@BinderIndexFragment.activity, "wifi名字和密码为空 请重新输入", Toast.LENGTH_LONG).show()
             return
         }
         if (TextUtils.isEmpty(userId)) {
@@ -217,16 +217,16 @@ class BindFragment : Fragment() {
         RokidMobileSDK.binder.sendBTBinderData(bindData, object : IBTSendCallBack {
             override fun onSendSuccess(p0: BTDeviceBean?) {
                 Logger.e("Send Success -----------------")
-                this@BindFragment.activity.runOnUiThread {
-                    Toast.makeText(this@BindFragment.activity, "发送数据成功", Toast.LENGTH_LONG).show()
+                this@BinderIndexFragment.activity.runOnUiThread {
+                    Toast.makeText(this@BinderIndexFragment.activity, "发送数据成功", Toast.LENGTH_LONG).show()
 
                 }
             }
 
             override fun onSendFailed(p0: BTDeviceBean?, p1: BleException?) {
                 Logger.e("SendFailed -----------------")
-                this@BindFragment.activity.runOnUiThread {
-                    Toast.makeText(this@BindFragment.activity,
+                this@BinderIndexFragment.activity.runOnUiThread {
+                    Toast.makeText(this@BinderIndexFragment.activity,
                             "发送数据失败 errorCode=" + (p0 ?: "") + "errorMsg= " + (p1 ?: ""),
                             Toast.LENGTH_LONG).show()
                 }
