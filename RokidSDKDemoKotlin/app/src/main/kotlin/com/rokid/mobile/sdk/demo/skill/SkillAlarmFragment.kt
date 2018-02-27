@@ -1,15 +1,16 @@
 package com.rokid.mobile.sdk.demo.skill
 
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.google.gson.Gson
 import com.rokid.mobile.lib.base.util.Logger
+import com.rokid.mobile.lib.entity.bean.device.RKDevice
 import com.rokid.mobile.lib.entity.event.skill.EventAlarmBean
 import com.rokid.mobile.lib.entity.event.skill.EventRemindBean
+import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
+import kotlinx.android.synthetic.main.skill_fragment_alarm.*
 import kotlinx.android.synthetic.main.skill_fragment_alarm.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -23,7 +24,6 @@ import org.greenrobot.eventbus.ThreadMode
 class SkillAlarmFragment : BaseFragment() {
 
     private lateinit var eventTxt: TextView
-    private lateinit var deviceIdEdit: EditText
 
     override fun layoutId(): Int = R.layout.skill_fragment_alarm
 
@@ -33,18 +33,18 @@ class SkillAlarmFragment : BaseFragment() {
         }
 
         eventTxt = rootView!!.skill_txt
-        deviceIdEdit = rootView!!.skill_device_sn
+        setDeviceList()
     }
 
     override fun initListeners() {
         rootView!!.skill_alarm_list.setOnClickListener here@ {
-            val deviceId = deviceIdEdit.text.toString()
+            val deviceId = skill_alarm_device_id.selectedItem.toString()
             if (deviceId.isEmpty()) {
                 toast("请正确输入 SN")
                 return@here
             }
 
-            RokidMobileSDK.skill.alarm().getList(deviceIdEdit.text.toString())
+            RokidMobileSDK.skill.alarm().getList(skill_alarm_device_id.selectedItem.toString())
         }
 
     }
@@ -53,6 +53,30 @@ class SkillAlarmFragment : BaseFragment() {
     fun onAlarmEvent(eventAlarm: EventAlarmBean) {
         Logger.d("onSysInfo eventDeviceSysUpdate" + Gson().toJson(eventAlarm))
         eventTxt.append("\n" + Gson().toJson(eventAlarm))
+    }
+
+    private fun setDeviceList() {
+        RokidMobileSDK.device.getDeviceList(object : IGetDeviceListCallback {
+
+            override fun onGetDeviceListSucceed(deviceList: MutableList<RKDevice>?) {
+                if (null == deviceList || deviceList.size < 1) {
+                    toast("设备列表为空")
+                    return
+                }
+
+                val deviceIdList: MutableList<String> = mutableListOf()
+                deviceList.forEach {
+                    deviceIdList.add(it.rokiId)
+                }
+
+                skill_alarm_device_id.adapter = ArrayAdapter<String>(activity,
+                        R.layout.base_spinner_item, deviceIdList)
+            }
+
+            override fun onGetDeviceListFailed(errorCode: String?, errorMessage: String?) {
+            }
+
+        })
     }
 
 }
