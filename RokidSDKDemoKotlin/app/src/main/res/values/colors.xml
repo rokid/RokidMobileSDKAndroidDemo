@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="base_color">@android:color/holo_blue_light</color>
+
     <color name="base_statusBar_light_bg">#FFFFFFFF</color>
     <color name="base_activity_light_bg">#FFF9F9F9</color>
     <color name="base_titleBar_light_bg">#FFFFFFFF</color>
-    <color name="base_titleBar_light_content">#FF212137</color>
-    <color name="base_titleBar_light_right_enable">#FF212137</color>
+
+    <color name="base_content">#F0212137</color>
+    <color name="base_sub_content">#C3212137</color>
+
+    <color name="base_icon">#FFB4BFC6</color>
+
+    <color name="base_tab_normal">#45000000</color>
 </resources>

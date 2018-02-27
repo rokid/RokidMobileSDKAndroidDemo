@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.rokid.mobile.sdk.demo.base.IconTextView
+        android:id="@+id/demo_tab_icon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:textColor="@drawable/base_tab_item_selector"/>
+
+    <TextView
+        android:id="@+id/demo_tab_title"
+        android:layout_marginTop="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@drawable/base_tab_item_selector"/>
+
+</LinearLayout>

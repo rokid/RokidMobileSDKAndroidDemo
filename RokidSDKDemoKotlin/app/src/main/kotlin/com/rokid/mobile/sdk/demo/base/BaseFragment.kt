@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.rokid.mobile.lib.base.util.Logger
 
 /**
@@ -20,8 +21,10 @@ abstract class BaseFragment : Fragment() {
         Logger.d("onCreateView: ${this}")
 
         if (null == rootView) {
-            rootView = inflater!!.inflate(layoutId(), container!!, false)
+            rootView = inflater!!.inflate(layoutId(), null)
+
             initViews()
+
             initListeners()
         }
         return rootView
@@ -46,6 +49,10 @@ abstract class BaseFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         Logger.d("onDestroy: ${this}")
+    }
+
+    fun toast(text: String) {
+        Toast.makeText(activity, text, Toast.LENGTH_LONG).show()
     }
 
 }

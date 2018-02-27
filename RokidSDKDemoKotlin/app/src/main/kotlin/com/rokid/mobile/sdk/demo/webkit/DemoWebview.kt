@@ -1,7 +1,10 @@
-package com.rokid.mobile.sdk.demo.skill.webkit
+package com.rokid.mobile.sdk.demo.webkit
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.util.AttributeSet
 import android.webkit.WebSettings
@@ -13,13 +16,16 @@ import com.rokid.mobile.webview.lib.delegate.BridgeModuleViewDelegate
 import com.rokid.mobile.webview.lib.module.BridgeModuleApp
 import com.rokid.mobile.webview.lib.module.BridgeModulePhone
 import com.rokid.mobile.webview.lib.module.BridgeModuleView
+import java.lang.ref.WeakReference
 
 /**
  * Description: TODO
  * Author: Shper
  * Version: V0.1 2018/2/26
  */
-class SkillWebview : WebView, BridgeModuleAppDelegate, BridgeModuleViewDelegate {
+class DemoWebview : WebView, BridgeModuleAppDelegate, BridgeModuleViewDelegate {
+
+    private var contextWeak: WeakReference<Context>? = null
 
     constructor(context: Context) : super(context) {
         init(context)
@@ -35,6 +41,8 @@ class SkillWebview : WebView, BridgeModuleAppDelegate, BridgeModuleViewDelegate 
 
     @SuppressLint("SetJavaScriptEnabled")
     private fun init(context: Context) {
+        contextWeak = WeakReference(context)
+
         settings.javaScriptEnabled = true
         settings.useWideViewPort = true
         settings.loadWithOverviewMode = true
@@ -57,23 +65,41 @@ class SkillWebview : WebView, BridgeModuleAppDelegate, BridgeModuleViewDelegate 
 
         addJavascriptInterface(rokidWebBridge, RKWebBridge.BridgeName)
 
-        val sdkWebViewClient = SkillWebViewClient(rokidWebBridge)
+        val sdkWebViewClient = DemoWebViewClient(rokidWebBridge)
 
         webViewClient = sdkWebViewClient
-        webChromeClient = SkillWebChromeClient()
+        webChromeClient = DemoWebChromeClient()
     }
 
     // here is BridgeModuleAppDelegate
     override fun close() {
+        //contextWeak?.get()?.finish()
     }
 
     override fun open(title: String, url: String) {
-    }
-
-    override fun openExternal(url: String) {
+        this.loadUrl(url)
     }
 
     override fun openNewWebView(title: String, url: String) {
+        if (null == contextWeak || null == contextWeak?.get()) {
+            return
+        }
+
+        val intent = Intent(contextWeak!!.get(), DemoWebviewActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        intent.putExtra(DemoWebviewActivity.KEY_TITLE, title)
+        intent.putExtra(DemoWebviewActivity.KEY_URL, url)
+
+        contextWeak!!.get()!!.startActivity(intent)
+    }
+
+    override fun openExternal(url: String) {
+        val intent = Intent()
+        intent.action = "android.intent.action.VIEW"
+        val content_url = Uri.parse(url)
+        intent.data = content_url
+
+        contextWeak?.get()?.startActivity(intent)
     }
 
     // here is BridgeModuleViewDelegate

@@ -1,89 +1,37 @@
 package com.rokid.mobile.sdk.demo.device
 
-import android.content.Context
-import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.rokid.mobile.lib.base.util.Logger
-import com.rokid.mobile.lib.entity.event.device.EventDeviceSysUpdate
 import com.rokid.mobile.sdk.demo.R
-import com.rokid.mobile.sdk.demo.base.adapter.TypeConstants
-import com.rokid.mobile.sdk.demo.base.adapter.data.ActionData
-import com.rokid.mobile.sdk.demo.base.adapter.item.ActionItem
-import com.rokid.mobile.sdk.demo.base.adapter.item.UnbindItem
-import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter
-import com.rokid.mobile.ui.recyclerview.item.BaseItem
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import java.util.*
+import com.rokid.mobile.sdk.demo.base.BaseActivity
+import com.rokid.mobile.sdk.demo.base.BaseFragment
+import com.rokid.mobile.sdk.demo.base.BaseFragmentAdapter
+import kotlinx.android.synthetic.main.device_fragment_index.view.*
 
 /**
- * Created by wangshuwen on 2017/12/4.
+ * Description: TODO
+ * Author: Shper
+ * Version: V0.1 2018/2/26
  */
-class DeviceIndexFragment : Fragment() {
+class DeviceIndexFragment : BaseFragment() {
 
-    private var rootView: View? = null
-    lateinit var rv: RecyclerView
-    lateinit var mAdapter: BaseRVAdapter<BaseItem<Any>>
+    override fun layoutId(): Int = R.layout.device_fragment_index
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun initViews() {
+        rootView!!.device_title.text = "设备"
+        rootView!!.device_subtitle.text = "SDK Device Demo"
 
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this)
-        }
-
-        if (null == rootView) {
-            rootView = inflater!!.inflate(R.layout.device_fragment_index, container!!, false)
-            rv = rootView!!.findViewById(R.id.fragment_common_rv)
-            initRv()
-            initData()
-        }
-
-        return rootView
+        rootView!!.device_tab_layout.setupWithViewPager(rootView!!.device_viewPager)
+        rootView!!.device_viewPager.adapter = BaseFragmentAdapter(activity.supportFragmentManager,
+                DeviceData.fragmentList)
     }
 
-
-    private fun initRv() {
-        rv.apply {
-            layoutManager = LinearLayoutManager(activity as Context?)
-            mAdapter = BaseRVAdapter()
-            adapter = mAdapter
-        }
+    override fun initListeners() {
     }
 
-    private fun initData() {
-        mAdapter.setItemViewList(getItemList())
-    }
-
-    fun getItemList(): List<BaseItem<Any>> {
-
-        val itemList = ArrayList<BaseItem<Any>>()
-
-        val actionList = listOf(
-                ActionData("获取设备列表", TypeConstants.GET_DEVICE_LIST),
-                ActionData("解绑设备", TypeConstants.UNBIND))
-
-        actionList.forEach {
-            when (it.type) {
-                TypeConstants.UNBIND -> itemList.add(UnbindItem(it) as BaseItem<Any>)
-                else -> itemList.add(ActionItem(it) as BaseItem<Any>)
-            }
-        }
-        return itemList
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        EventBus.getDefault().unregister(this)
-    }
-
-    @Subscribe
-    fun onSysInfo(eventDeviceSysUpdate: EventDeviceSysUpdate) {
-        Logger.e("onSysInfo eventDeviceSysUpdate" + eventDeviceSysUpdate.toString())
+    object DeviceData {
+        val fragmentList = listOf(
+                BaseFragmentAdapter.Companion.Node("绑定", DeviceBinderFragment()),
+                BaseFragmentAdapter.Companion.Node("设备列表", DeviceListFragment())
+        )
     }
 
 }

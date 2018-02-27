@@ -8,6 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <EditText
@@ -22,39 +25,46 @@
             android:id="@+id/fragment_bind_scan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:gravity="center"
             android:padding="5dp"
-            android:text="扫描"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"/>
+            android:text="扫描"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fragment_bind_rv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:layout_weight="1"/>
 
     <EditText
         android:id="@+id/fragment_bind_wifiname_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:hint="请输入wifi名字"/>
 
     <EditText
         android:id="@+id/fragment_bind_wifipwd_txt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:hint="请输入wifi密码"/>
 
     <Button
         android:id="@+id/fragment_bind_send_data_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
         android:gravity="center"
         android:padding="10dp"
-        android:text="绑定"
-        android:textColor="@android:color/white"
-        android:textSize="20sp"/>
+        android:text="绑定"/>
 
 </LinearLayout>

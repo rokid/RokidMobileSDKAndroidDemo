@@ -29,9 +29,14 @@ abstract class BaseActivity : AppCompatActivity() {
         val rootView = mContentView.getChildAt(0) as ViewGroup
         setSystemStatusBar(rootView)
 
+        initVariable()
+
         initViews()
 
         initListeners()
+    }
+
+    open fun initVariable() {
     }
 
     abstract fun layoutId(): Int

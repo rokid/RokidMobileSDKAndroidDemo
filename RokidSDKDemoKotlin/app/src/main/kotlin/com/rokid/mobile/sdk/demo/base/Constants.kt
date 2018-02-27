@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.base.adapter
+package com.rokid.mobile.sdk.demo.base
 
 /**
  * Created by wangshuwen on 2017/12/3.

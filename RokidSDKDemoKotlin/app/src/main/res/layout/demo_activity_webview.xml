@@ -5,48 +5,49 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/skill_titlebar"
+        android:id="@+id/webview_titlebar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/base_statusBar_light_bg"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:background="@color/base_statusBar_light_bg"
         android:gravity="center_vertical">
 
-        <TextView
-            android:id="@+id/skill_titlebar_left"
+        <com.rokid.mobile.sdk.demo.base.IconTextView
+            android:id="@+id/webkit_titlebar_left"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:gravity="center"
             android:padding="15dp"
-            android:text="返回"
-            android:textColor="@android:color/holo_blue_light"
-            android:textSize="14sp"/>
+            android:text="@string/icon_back"
+            android:textColor="@color/base_content"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/skill_titlebar_title"
+            android:id="@+id/webkit_titlebar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:gravity="center"
             android:padding="15dp"
-            android:text="智能家居"
-            android:textColor="@color/base_titleBar_light_content"
+            android:text="Rokid SDK Demo"
+            android:textColor="@color/base_content"
             android:textSize="16sp"
             android:textStyle="bold"/>
 
         <TextView
-            android:id="@+id/skill_titlebar_right"
+            android:id="@+id/webkit_titlebar_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:gravity="center"
             android:padding="15dp"
             android:text="关闭"
-            android:textColor="@color/base_titleBar_light_right_enable"
-            android:visibility="gone"
-            android:textSize="14sp"/>
+            android:textColor="@color/base_sub_content"
+            android:textSize="14sp"
+            android:visibility="gone"/>
 
         <View
             android:layout_width="match_parent"
@@ -56,10 +57,10 @@
 
     </RelativeLayout>
 
-    <com.rokid.mobile.sdk.demo.skill.webkit.SkillWebview
-        android:id="@+id/skill_homebase_webview"
+    <com.rokid.mobile.sdk.demo.webkit.DemoWebview
+        android:id="@+id/webkit_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/skill_titlebar"/>
+        android:layout_below="@+id/webview_titlebar"/>
 
 </RelativeLayout>

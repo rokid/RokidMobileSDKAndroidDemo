@@ -12,7 +12,7 @@ import java.util.*
  * Created by wangshuwen on 2017/12/23.
  */
 
-object WifiEngine {
+object WifiEngineHelper {
 
     private val wifiManager: WifiManager
 

@@ -1,14 +1,10 @@
 package com.rokid.mobile.sdk.demo.other
 
-import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.TextView
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean
 import com.rokid.mobile.sdk.demo.R
+import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.other_fragment_event.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -19,30 +15,21 @@ import org.greenrobot.eventbus.ThreadMode
  * Author: Shper
  * Version: V0.1 2018/1/18
  */
-class EventFragment : Fragment() {
+class EventFragment : BaseFragment() {
 
-    private var rootView: View? = null
     private lateinit var eventTxt: TextView
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        if (null == rootView) {
-            rootView = inflater!!.inflate(R.layout.other_fragment_event, container!!, false)
-            initView()
-            initListener()
-        }
+    override fun layoutId(): Int = R.layout.other_fragment_event
 
+    override fun initViews() {
         if (!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this)
         }
 
-        return rootView
-    }
-
-    private fun initView() {
         eventTxt = rootView!!.event_txt
     }
 
-    private fun initListener() {
+    override fun initListeners() {
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

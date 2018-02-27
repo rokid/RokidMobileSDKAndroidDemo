@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">Rokid SDK Demo Kotlin</string>
+    <string name="app_name">Rokid SDK</string>
+
+    <string name="icon_back">&#xe618;</string>
+
+    <string name="icon_account">&#xe75e;</string>
+    <string name="icon_device">&#xe650;</string>
+    <string name="icon_skill">&#xe627;</string>
+    <string name="icon_other">&#xe67d;</string>
 </resources>

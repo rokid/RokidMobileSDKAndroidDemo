@@ -6,11 +6,11 @@ import com.rokid.mobile.lib.entity.bean.device.RKDevice
 import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
-import com.rokid.mobile.sdk.demo.base.adapter.TypeConstants
+import com.rokid.mobile.sdk.demo.base.TypeConstants
 import com.rokid.mobile.sdk.demo.base.adapter.data.ActionData
 import com.rokid.mobile.ui.recyclerview.item.BaseItem
 import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder
-import kotlinx.android.synthetic.main.item_action.view.*
+import kotlinx.android.synthetic.main.device_item_action.view.*
 
 /**
  * Created by wangshuwen on 2017/12/3.
@@ -22,7 +22,7 @@ class ActionItem(data: ActionData) : BaseItem<ActionData>(data) {
 
     override fun getViewType(): Int = TYPE_NORMAL
 
-    override fun getLayoutId(viewType: Int): Int = R.layout.item_action
+    override fun getLayoutId(viewType: Int): Int = R.layout.device_item_action
 
     override fun onReleaseViews(holder: BaseViewHolder?, sectionKey: Int, sectionViewPosition: Int) {
         holder?.let {

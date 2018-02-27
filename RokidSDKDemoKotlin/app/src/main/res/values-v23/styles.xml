@@ -2,10 +2,16 @@
 
     <!-- This is Activity theme -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/base_color</item>
         <item name="colorPrimaryDark">@color/base_statusBar_light_bg</item>
         <item name="android:windowTranslucentStatus">false</item>
         <item name="android:windowTranslucentNavigation">false</item>
         <item name="android:windowLightStatusBar">true</item>
+
+        <item name="android:editTextStyle">@style/Widget.App.EditText</item>
+        <item name="android:textViewStyle">@style/Widget.App.TextView</item>
+        <item name="android:buttonStyle">@style/Widget.App.Button</item>
+        <item name="android:alertDialogTheme">@style/Widget.App.Alert</item>
     </style>
 
 </resources>

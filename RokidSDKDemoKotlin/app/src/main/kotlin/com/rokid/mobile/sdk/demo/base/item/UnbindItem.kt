@@ -24,7 +24,7 @@ class UnbindItem(data: ActionData) : BaseItem<ActionData>(data) {
 
     override fun getViewType(): Int = TYPE_UNBIND
 
-    override fun getLayoutId(viewType: Int): Int = R.layout.item_unbind
+    override fun getLayoutId(viewType: Int): Int = R.layout.device_item_unbind
 
     override fun onReleaseViews(holder: BaseViewHolder?, sectionKey: Int, sectionViewPosition: Int) {
 

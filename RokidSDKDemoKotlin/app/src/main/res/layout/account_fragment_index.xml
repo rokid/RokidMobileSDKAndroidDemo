@@ -1,36 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/fragment_login_username_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="请输入账号"/>
-
-    <EditText
-        android:id="@+id/fragment_login_pwd_et"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="请输入密码"/>
-
-    <Button
-        android:id="@+id/fragment_bind_login_btn"
+    <TextView
+        android:id="@+id/account_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="授权登录"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Rokid"
+        android:textColor="@color/base_content"
+        android:textSize="28sp"
+        android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/fragment_bind_logout_btn"
+    <TextView
+        android:id="@+id/account_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="登出"/>
+        android:layout_below="@+id/account_title"
+        android:layout_marginStart="20dp"
+        android:text="Rokid SDK Demo"
+        android:textColor="@color/base_sub_content"
+        android:textSize="18sp"/>
 
-</LinearLayout>
+    <View
+        android:id="@+id/account_tab_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/account_tab_layout"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-1dp"
+        android:background="@color/base_tab_normal"/>
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/account_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/account_subtitle"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:tabGravity="center"
+        app:tabIndicatorColor="@color/base_color"
+        app:tabIndicatorHeight="2dp"
+        app:tabMaxWidth="100dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/base_content"
+        app:tabTextColor="@color/base_tab_normal"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/account_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/account_tab_line"/>
+
+</RelativeLayout>

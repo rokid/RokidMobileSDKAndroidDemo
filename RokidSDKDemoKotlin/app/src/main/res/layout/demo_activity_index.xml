@@ -21,11 +21,9 @@
     <android.support.design.widget.TabLayout
         android:id="@+id/demo_tab_layout"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
         app:tabIndicatorHeight="0dp"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@android:color/holo_blue_light"
-        app:tabTextColor="#000000"/>
+        app:tabMode="fixed"/>
 
 </RelativeLayout>

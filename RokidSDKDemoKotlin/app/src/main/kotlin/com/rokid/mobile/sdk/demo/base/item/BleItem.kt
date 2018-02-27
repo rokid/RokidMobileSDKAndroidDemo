@@ -5,7 +5,7 @@ import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.ui.recyclerview.item.BaseItem
 import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder
-import kotlinx.android.synthetic.main.item_ble.view.*
+import kotlinx.android.synthetic.main.device_item_ble.view.*
 
 /**
  * Created by wangshuwen on 2017/12/8.
@@ -16,7 +16,7 @@ class BleItem(data: BTDeviceBean) : BaseItem<BTDeviceBean>(data) {
 
     override fun getViewType(): Int = BLE_ITEM_TYPE
 
-    override fun getLayoutId(viewType: Int): Int = R.layout.item_ble
+    override fun getLayoutId(viewType: Int): Int = R.layout.device_item_ble
 
     override fun onReleaseViews(holder: BaseViewHolder?, sectionKey: Int, sectionViewPosition: Int) {
         holder!!.itemView.apply {

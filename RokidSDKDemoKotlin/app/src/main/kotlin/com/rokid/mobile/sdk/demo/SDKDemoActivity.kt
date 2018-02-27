@@ -1,13 +1,19 @@
 package com.rokid.mobile.sdk.demo
 
+import android.app.AlertDialog
 import android.support.design.widget.TabLayout
+import android.support.v4.app.Fragment
+import android.text.TextUtils
+import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.account.AccountIndexFragment
 import com.rokid.mobile.sdk.demo.base.BaseActivity
-import com.rokid.mobile.sdk.demo.binder.BinderIndexFragment
 import com.rokid.mobile.sdk.demo.device.DeviceIndexFragment
-import com.rokid.mobile.sdk.demo.other.EventFragment
+import com.rokid.mobile.sdk.demo.other.OtherIndexFragment
 import com.rokid.mobile.sdk.demo.skill.SkillIndexFragment
 import kotlinx.android.synthetic.main.demo_activity_index.*
+import android.widget.TextView
+import com.rokid.mobile.sdk.demo.base.IconTextView
+
 
 /**
  * Description: TODO
@@ -16,8 +22,23 @@ import kotlinx.android.synthetic.main.demo_activity_index.*
  */
 class SDKDemoActivity : BaseActivity() {
 
+    private lateinit var fragmentList: Array<Fragment>
+    private lateinit var tabTitle: List<String>
+    private lateinit var tabIcon: List<String>
+
     override fun layoutId(): Int {
         return R.layout.demo_activity_index
+    }
+
+    override fun initVariable() {
+        fragmentList = arrayOf(AccountIndexFragment(),
+                DeviceIndexFragment(),
+                SkillIndexFragment(),
+                OtherIndexFragment())
+
+        tabTitle = listOf("帐号", "设备", "技能", "更多")
+
+        tabIcon = listOf(getString(R.string.icon_account), getString(R.string.icon_device), getString(R.string.icon_skill), getString(R.string.icon_other))
     }
 
     override fun initViews() {
@@ -26,6 +47,16 @@ class SDKDemoActivity : BaseActivity() {
     override fun initListeners() {
         demo_tab_layout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
+                if (tab.position != 0 && TextUtils.isEmpty(RokidMobileSDK.account.token)) {
+                    AlertDialog.Builder(this@SDKDemoActivity)
+                            .setPositiveButton("知道了", null)
+                            .setMessage("请先登录，才可以使用其他功能哟。")
+                            .show()
+
+                    demo_tab_layout.getTabAt(0)?.select()
+                    return
+                }
+
                 onTabItemSelected(tab.position)
             }
 
@@ -36,28 +67,26 @@ class SDKDemoActivity : BaseActivity() {
             }
         })
 
-        for (position in 0..(MainData.mainFragmentList.size - 1)) {
-            demo_tab_layout.addTab(demo_tab_layout.newTab().setText(getTabTitle(position)))
-        }
-    }
+        val mLayoutInflater = this.layoutInflater
 
-    private fun getTabTitle(position: Int): String {
-        return MainData.mainTabStr[position]
+        for (position in 0..(fragmentList.size - 1)) {
+            val tab = demo_tab_layout.newTab()
+            val view = mLayoutInflater.inflate(R.layout.demo_tab_item, null)
+            tab.customView = view
+
+            val icon = view.findViewById(R.id.demo_tab_icon) as IconTextView
+            icon.text = tabIcon[position]
+
+            val text = view.findViewById(R.id.demo_tab_title) as TextView
+            text.text = tabTitle[position]
+
+            demo_tab_layout.addTab(tab)
+        }
     }
 
     private fun onTabItemSelected(position: Int) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.demo_container, MainData.mainFragmentList[position]).commit()
-    }
-
-    object MainData {
-        val mainFragmentList = arrayOf(AccountIndexFragment(),
-                DeviceIndexFragment(),
-                BinderIndexFragment(),
-                SkillIndexFragment(),
-                EventFragment())
-
-        val mainTabStr = listOf("登录", "设备", "配网", "技能", "消息")
+        transaction.replace(R.id.demo_container, fragmentList[position]).commit()
     }
 
 }

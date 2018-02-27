@@ -1,12 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/fragment_common_rv"
+    <TextView
+        android:id="@+id/device_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Rokid"
+        android:textColor="@color/base_content"
+        android:textSize="28sp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/device_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/device_title"
+        android:layout_marginStart="20dp"
+        android:text="Rokid SDK Demo"
+        android:textColor="@color/base_sub_content"
+        android:textSize="18sp"/>
+
+    <View
+        android:id="@+id/device_tab_line"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="1dp"
+        android:layout_below="@+id/device_tab_layout"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-1dp"
+        android:background="@color/base_tab_normal"/>
 
-</LinearLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/device_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/device_subtitle"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:tabGravity="center"
+        app:tabIndicatorColor="@color/base_color"
+        app:tabIndicatorHeight="2dp"
+        app:tabMaxWidth="100dp"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/base_content"
+        app:tabTextColor="@color/base_tab_normal"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/device_viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/device_tab_line"/>
+
+</RelativeLayout>
