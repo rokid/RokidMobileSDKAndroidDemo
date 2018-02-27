@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_navigation_login"
+        android:checked="true"
+        android:icon="@drawable/ic_login"
+        android:title="@string/bottom_navigation_login" />
+
+    <item
+        android:id="@+id/bottom_navigation_device"
+        android:checked="true"
+        android:icon="@drawable/ic_device"
+        android:title="@string/bottom_navigation_device" />
+
+    <item
+        android:id="@+id/bottom_navigation_bind"
+        android:checked="true"
+        android:icon="@drawable/ic_bind"
+        android:title="@string/bottom_navigation_bind" />
+
+    <item
+        android:id="@+id/bottom_navigation_skill"
+        android:checked="true"
+        android:icon="@drawable/ic_skill"
+        android:title="@string/bottom_navigation_skill" />
+
+    <item
+        android:id="@+id/bottom_navigation_message"
+        android:checked="true"
+        android:icon="@drawable/ic_message"
+        android:title="@string/bottom_navigation_message" />
+
+</menu>

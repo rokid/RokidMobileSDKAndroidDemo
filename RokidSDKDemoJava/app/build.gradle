@@ -1,10 +1,11 @@
 apply plugin: 'com.android.application'
 
+
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "com.rokid.mobile.sdk.demo.java"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 22
         versionCode 1
         versionName "1.0.0"
@@ -21,5 +22,28 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
-//    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // ButterKnife
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+
+    // sdk
+    implementation(name: 'com.rokid.mobile.sdk-1.0.6-003', ext: "aar")
+
+    // 第三方库
+    implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
+    implementation 'com.umeng.analytics:analytics:6.1.2'
+
+    implementation 'pub.devrel:easypermissions:0.4.2'
+
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:greendao:3.2.2'
+    implementation 'org.greenrobot:greendao-generator:3.2.2'
 }

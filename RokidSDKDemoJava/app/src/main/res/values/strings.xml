@@ -1,3 +1,63 @@
 <resources>
     <string name="app_name">RokidSDKDemoJava</string>
+
+    <!--mainActivity-->
+    <string name="activity_main_not_login_tip">您还未登录，请登录后尝试</string>
+
+    <!--text of bottom navigation-->
+    <string name="bottom_navigation_login">登录</string>
+    <string name="bottom_navigation_device">设备</string>
+    <string name="bottom_navigation_bind">配网</string>
+    <string name="bottom_navigation_skill">技能</string>
+    <string name="bottom_navigation_message">消息</string>
+
+    <!--fragment of login-->
+    <string name="fragment_login_uid_hint">请输入账号</string>
+    <string name="fragment_login_pwd_hint">请输入密码</string>
+    <string name="fragment_login_tips">提示：只有登录成功后，才能使用其他功能哟</string>
+    <string name="fragment_login_btn">授权登录</string>
+    <string name="fragment_logout_btn">登　　出</string>
+    <string name="fragment_login_success">登录成功</string>
+    <string name="fragment_login_fail">登录失败</string>
+    <string name="fragment_logout_success">登出成功</string>
+    <string name="fragment_logout_fail">登出失败</string>
+
+    <!--fragment of device-->
+    <string name="fragment_device_list">获取设备列表</string>
+    <string name="fragment_device_list_empty">设备列表为空</string>
+    <string name="fragment_device_list_fail">获取设备列表失败</string>
+    <string name="fragment_device_unbind">解绑</string>
+    <string name="fragment_device_unbind_fail">解绑设备失败</string>
+    <string name="fragment_device_unbind_success">解绑设备成功</string>
+
+    <!--fragment of bind-->
+    <string name="fragment_bind_ble_name_prefix">Rokid-</string>
+    <string name="fragment_bind_ble_name_hint">请输入蓝牙前缀，如：Rokid-Pebble</string>
+    <string name="fragment_bind_ble_bind">已连接</string>
+    <string name="fragment_bind_ble_scan">扫　描</string>
+    <string name="fragment_bind_ble_scan_load_tip">正在扫描...</string>
+    <string name="fragment_bind_ble_name_empty">您还未输入蓝牙前缀</string>
+    <string name="fragment_bind_ble_list_empty">没有相匹配的蓝牙</string>
+    <string name="fragment_bind_ble_connect_success">蓝牙连接成功，请输入wifi信息给设备配网</string>
+    <string name="fragment_bind_ble_connect_fail">蓝牙连接失败</string>
+    <string name="fragment_bind">绑　定</string>
+    <string name="fragment_bind_wifi_name">请输入 wifi 名字</string>
+    <string name="fragment_bind_wifi_pwd">请输入 wifi 密码</string>
+    <string name="fragment_bind_wifi_empty">wifi 名字和密码为空，请重新输入</string>
+    <string name="fragment_bind_send_success">绑定成功</string>
+    <string name="fragment_bind_send_fail">绑定失败</string>
+
+    <!--fragment of skill-->
+    <string name="fragment_skill_devie_id">请输入设备 SN 号</string>
+    <string name="fragment_skill_alarm_btn">获取闹钟列表</string>
+    <string name="fragment_skill_reminder_btn">获取提醒列表</string>
+    <string name="fragment_skill_alarm_list_success">获取闹钟列表成功</string>
+    <string name="fragment_skill_alarm_list_fail">获取闹钟列表失败</string>
+    <string name="fragment_skill_reminder_list_success">获取提醒列表成功</string>
+    <string name="fragment_skill_reminder_list_fail">获取提醒列表失败</string>
+    <string name="fragment_skill_info">等待 Skill 的消息：</string>
+
+    <!--fragmetn of message-->
+    <string name="fragment_message_info">等待接收消息：</string>
+
 </resources>
