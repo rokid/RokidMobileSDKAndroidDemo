@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,10 +12,10 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Rokid"
+        android:text="其他"
         android:textColor="@color/base_content"
         android:textSize="28sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/other_subtitle"
@@ -24,9 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/other_title"
         android:layout_marginStart="20dp"
-        android:text="Rokid SDK Demo"
+        android:text="SDK Other Demo"
         android:textColor="@color/base_sub_content"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
     <View
         android:id="@+id/other_tab_line"
@@ -36,7 +35,7 @@
         android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="-1dp"
-        android:background="@color/base_tab_normal"/>
+        android:background="@color/base_tab_normal" />
 
     <android.support.design.widget.TabLayout
         android:id="@+id/other_tab_layout"
@@ -52,12 +51,12 @@
         app:tabMaxWidth="100dp"
         app:tabMode="scrollable"
         app:tabSelectedTextColor="@color/base_content"
-        app:tabTextColor="@color/base_tab_normal"/>
+        app:tabTextColor="@color/base_tab_normal" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/other_viewPager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/other_tab_line"/>
+        android:layout_below="@+id/other_tab_line" />
 
 </RelativeLayout>

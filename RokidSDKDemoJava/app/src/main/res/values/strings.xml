@@ -16,7 +16,7 @@
     <string name="bottom_navigation_account">账号</string>
     <string name="bottom_navigation_device">设备</string>
     <string name="bottom_navigation_skill">技能</string>
-    <string name="bottom_navigation_more">更多</string>
+    <string name="bottom_navigation_other">其他</string>
 
     <!--fragment of login-->
     <string name="fragment_login_uid_hint">请输入账号</string>
