@@ -2,29 +2,26 @@ package com.rokid.mobile.sdk.demo.java.activity;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Toast;
 
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.fragment.BindFragment;
-import com.rokid.mobile.sdk.demo.java.fragment.DeviceFragment;
-import com.rokid.mobile.sdk.demo.java.fragment.LoginFragment;
-import com.rokid.mobile.sdk.demo.java.fragment.MessageFragment;
-import com.rokid.mobile.sdk.demo.java.fragment.SkillFragment;
+import com.rokid.mobile.sdk.demo.java.fragment.AccountIndexFragment;
+import com.rokid.mobile.sdk.demo.java.fragment.DeviceIndexFragment;
+import com.rokid.mobile.sdk.demo.java.fragment.MoreIndexFragment;
+import com.rokid.mobile.sdk.demo.java.fragment.SkillIndexFragment;
 import com.rokid.mobile.sdk.demo.java.view.BottomNavigationViewEx;
 import com.rokid.mobile.sdk.demo.java.view.NoScrollViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -37,12 +34,32 @@ public class MainActivity extends AppCompatActivity {
     private BottomNavigationViewEx mBottomNavigationView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initVariables(@Nullable Bundle savedInstanceState) {
         initView();
         initFragment();
-        initListener();
+    }
+
+    @Override
+    protected void initListeners() {
+        mBottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        if (!ISLOGIN && !item.getTitle().equals(getString(R.string.bottom_navigation_account))) {
+                            Toast.makeText(MainActivity.this,
+                                    getString(R.string.activity_main_not_login_tip),
+                                    Toast.LENGTH_SHORT).show();
+                            return false;
+                        }
+
+                        return true;
+                    }
+                });
     }
 
     private void initView() {
@@ -54,14 +71,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initFragment() {
-        List<Fragment> fragments = new ArrayList<>(5);
+        List<Fragment> fragments = new ArrayList<>(4);
 
         // add to fragments for adapter
-        fragments.add(new LoginFragment());
-        fragments.add(new DeviceFragment());
-        fragments.add(new BindFragment());
-        fragments.add(new SkillFragment());
-        fragments.add(new MessageFragment());
+        fragments.add(new AccountIndexFragment());
+        fragments.add(new DeviceIndexFragment());
+        fragments.add(new SkillIndexFragment());
+        fragments.add(new MoreIndexFragment());
 
         // set adapter
         VpAdapter adapter = new VpAdapter(getSupportFragmentManager(), fragments);
@@ -69,22 +85,6 @@ public class MainActivity extends AppCompatActivity {
 
         // binding with ViewPager
         mBottomNavigationView.setupWithViewPager(mViewPager);
-    }
-
-    private void initListener() {
-        mBottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        if (!ISLOGIN && !item.getTitle().equals(getString(R.string.bottom_navigation_login))) {
-                            Toast.makeText(MainActivity.this,
-                                    getString(R.string.activity_main_not_login_tip),
-                                    Toast.LENGTH_SHORT).show();
-                            return false;
-                        }
-                        return true;
-                    }
-                });
     }
 
     /**
