@@ -42,7 +42,7 @@ public class MoreIndexFragment extends BaseFragment {
     protected void initVariables(View rootView, ViewGroup container, @Nullable Bundle savedInstanceState) {
         moreTab.setupWithViewPager(moreVp);
         List<BaseFragmentAdapter.Node> accountList = new ArrayList<>();
-        accountList.add(new BaseFragmentAdapter.Node("其他", new MoreMessageFragment()));
+        accountList.add(new BaseFragmentAdapter.Node("消息", new MoreMessageFragment()));
         BaseFragmentAdapter mAdapter = new BaseFragmentAdapter(getFragmentManager(), accountList);
 
         moreVp.setAdapter(mAdapter);
