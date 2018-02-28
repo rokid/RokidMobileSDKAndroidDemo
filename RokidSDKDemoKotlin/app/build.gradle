@@ -8,9 +8,8 @@ android {
         applicationId "com.rokid.mobile.sdk.demo.kotlin"
         minSdkVersion 19
         targetSdkVersion 22
-        versionCode 1
+        versionCode 180228001
         versionName "1.0.0"
-
         ndk {
             // 选择要添加的对应cpu类型的.so库。
             abiFilters 'armeabi', 'arm64-v8a', 'x86', 'mips'
@@ -21,30 +20,51 @@ android {
         main.java.srcDirs = ['src/main/kotlin']
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    signingConfigs {
+        config {
+            keyAlias 'demo'
+            keyPassword 'Rokid123456'
+            storeFile file('./key_demo.keystore')
+            storePassword 'Rokid123456'
+        }
+    }
+
     buildTypes {
         release {
+            debuggable true
+            signingConfig signingConfigs.config
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            outputFileName = "RokidSDKDemo_${variant.versionName}_${variant.versionCode}_${variant.buildType.name}.apk"
         }
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
-
     // sdk
     implementation(name: 'com.rokid.mobile.sdk-1.0.7-001', ext: "aar")
-
     // 第三方库
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
     implementation 'com.umeng.analytics:analytics:6.1.2'
-
     implementation 'pub.devrel:easypermissions:0.4.2'
-
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
     implementation 'org.greenrobot:eventbus:3.0.0'
