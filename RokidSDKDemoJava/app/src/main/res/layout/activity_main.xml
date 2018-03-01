@@ -4,20 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <FrameLayout
+        android:id="@+id/demo_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/demo_line"/>
+
     <com.rokid.mobile.sdk.demo.java.view.NoScrollViewPager
         android:id="@+id/activity_main_viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/activity_main_bottom_navigation_view" />
 
+    <View
+        android:id="@+id/demo_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/activity_main_bottom_navigation_view"
+        android:background="#AAAAAA" />
+
     <com.rokid.mobile.sdk.demo.java.view.BottomNavigationViewEx
         android:id="@+id/activity_main_bottom_navigation_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        app:itemIconTint="@color/selector_item_gray_color"
-        app:itemTextColor="@color/selector_item_gray_color"
+        app:itemIconTint="@color/selector_item_tab_color"
+        app:itemTextColor="@color/selector_item_tab_color"
         app:menu="@menu/menu_bottom_navigation" />
 
 </RelativeLayout>

@@ -7,24 +7,37 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.presenter.LoginFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.presenter.AccountLoginFragmentPresenter;
 import com.rokid.mobile.sdk.demo.java.util.SoftKeyBoardUtil;
+
+import butterknife.BindView;
 
 /**
  * Created by tt on 2018/2/24.
  */
 
-public class LoginFragment extends BaseFragment<LoginFragmentPresenter> {
+public class AccountLoginFragment extends BaseFragment<AccountLoginFragmentPresenter> {
 
-    private TextInputEditText uidEdit;
+    @BindView(R.id.fragment_login_uid_edit)
+    TextInputEditText uidEdit;
 
-    private TextInputEditText pwdEdit;
+    @BindView(R.id.fragment_login_pwd_edit)
+    TextInputEditText pwdEdit;
 
-    private Button loginBtn;
+    @BindView(R.id.fragment_login_btn)
+    Button loginBtn;
 
-    private Button logoutBtn;
+    @BindView(R.id.fragment_login_logout_layer)
+    LinearLayout logoutlayer;
+
+    @BindView(R.id.fragment_logout_btn)
+    Button logoutBtn;
+
+    @BindView(R.id.fragment_login_layer)
+    LinearLayout loginLayer;
 
     @Override
     protected int getLayoutId() {
@@ -32,16 +45,14 @@ public class LoginFragment extends BaseFragment<LoginFragmentPresenter> {
     }
 
     @Override
-    protected LoginFragmentPresenter initPresenter() {
-        return new LoginFragmentPresenter(this);
+    protected AccountLoginFragmentPresenter initPresenter() {
+        return new AccountLoginFragmentPresenter(this);
     }
 
     @Override
     protected void initVariables(View rootView, ViewGroup container, @Nullable Bundle savedInstanceState) {
-        uidEdit = rootView.findViewById(R.id.fragment_login_uid_edit);
-        pwdEdit = rootView.findViewById(R.id.fragment_login_pwd_edit);
-        loginBtn = rootView.findViewById(R.id.fragment_login_btn);
-        logoutBtn = rootView.findViewById(R.id.fragment_logout_btn);
+        logoutlayer.setVisibility(View.GONE);
+        loginLayer.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -66,12 +77,12 @@ public class LoginFragment extends BaseFragment<LoginFragmentPresenter> {
      */
     private void login() {
         if (TextUtils.isEmpty(uidEdit.getText())) {
-            showToast(getString(R.string.fragment_login_uid_hint));
+            showToastShort(getString(R.string.fragment_login_uid_hint));
             return;
         }
 
         if (TextUtils.isEmpty(pwdEdit.getText())) {
-            showToast(getString(R.string.fragment_login_pwd_hint));
+            showToastShort(getString(R.string.fragment_login_pwd_hint));
             return;
         }
 
@@ -87,7 +98,8 @@ public class LoginFragment extends BaseFragment<LoginFragmentPresenter> {
         getPresenter().logout();
     }
 
-    public void showToast(String text) {
-        showToastShort(text);
+    public void showView(boolean isLogin) {
+        loginLayer.setVisibility(isLogin ? View.GONE : View.VISIBLE);
+        logoutlayer.setVisibility(isLogin ? View.VISIBLE : View.GONE);
     }
 }

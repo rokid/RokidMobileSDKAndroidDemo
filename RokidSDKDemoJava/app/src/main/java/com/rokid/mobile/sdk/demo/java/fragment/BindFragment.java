@@ -68,11 +68,14 @@ public class BindFragment extends BaseFragment<BindFragmentPresenter> {
 
     @Override
     protected void initVariables(View rootView, ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         bleNameTxt.setSelection(bleNameTxt.getText().length());
 
         mAdapter = new BaseRVAdapter<>();
 
-        bleRV.setLayoutManager(new LinearLayoutManager(getActivity()));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setStackFromEnd(false);
+        bleRV.setLayoutManager(layoutManager);
         bleRV.setAdapter(mAdapter);
     }
 
@@ -84,6 +87,7 @@ public class BindFragment extends BaseFragment<BindFragmentPresenter> {
                 if (TextUtils.isEmpty(bleNameTxt.getText())) {
                     Logger.d("ble name is empty");
                     showToastShort(getString(R.string.fragment_bind_ble_name_empty));
+                    loadLayer.setVisibility(View.GONE);
                     return;
                 }
 
@@ -143,6 +147,12 @@ public class BindFragment extends BaseFragment<BindFragmentPresenter> {
         super.setUserVisibleHint(isVisibleToUser);
         if (!isVisibleToUser && null != getPresenter()) {
             getPresenter().stopScanBle();
+            return;
+        }
+
+        if (null != bleNameTxt && TextUtils.isEmpty(bleNameTxt.getText())) {
+            bleNameTxt.setText(getString(R.string.fragment_bind_ble_name_prefix));
+            bleNameTxt.setSelection(bleNameTxt.getText().length());
         }
     }
 

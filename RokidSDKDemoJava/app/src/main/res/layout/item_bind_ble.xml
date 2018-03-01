@@ -18,7 +18,6 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/dp_20"
         android:text="@string/fragment_bind_ble_bind"
-        android:textColor="@color/colorAccent"
         android:visibility="gone" />
 
     <ProgressBar

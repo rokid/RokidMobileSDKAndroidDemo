@@ -3,8 +3,8 @@
     <item
         android:id="@+id/bottom_navigation_login"
         android:checked="true"
-        android:icon="@drawable/ic_login"
-        android:title="@string/bottom_navigation_login" />
+        android:icon="@drawable/ic_account"
+        android:title="@string/bottom_navigation_account" />
 
     <item
         android:id="@+id/bottom_navigation_device"
@@ -13,21 +13,15 @@
         android:title="@string/bottom_navigation_device" />
 
     <item
-        android:id="@+id/bottom_navigation_bind"
-        android:checked="true"
-        android:icon="@drawable/ic_bind"
-        android:title="@string/bottom_navigation_bind" />
-
-    <item
         android:id="@+id/bottom_navigation_skill"
         android:checked="true"
         android:icon="@drawable/ic_skill"
         android:title="@string/bottom_navigation_skill" />
 
     <item
-        android:id="@+id/bottom_navigation_message"
+        android:id="@+id/bottom_navigation_more"
         android:checked="true"
-        android:icon="@drawable/ic_message"
-        android:title="@string/bottom_navigation_message" />
+        android:icon="@drawable/ic_more"
+        android:title="@string/bottom_navigation_other" />
 
 </menu>

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean;
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.presenter.MessageFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.presenter.MoreMessageFragmentPresenter;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -22,7 +22,7 @@ import butterknife.BindView;
  * Created by tt on 2018/2/24.
  */
 
-public class MessageFragment extends BaseFragment<MessageFragmentPresenter> {
+public class MoreMessageFragment extends BaseFragment<MoreMessageFragmentPresenter> {
     @BindView(R.id.fragment_message_info_txt)
     TextView infoTxt;
 
@@ -32,8 +32,8 @@ public class MessageFragment extends BaseFragment<MessageFragmentPresenter> {
     }
 
     @Override
-    protected MessageFragmentPresenter initPresenter() {
-        return new MessageFragmentPresenter(this);
+    protected MoreMessageFragmentPresenter initPresenter() {
+        return new MoreMessageFragmentPresenter(this);
     }
 
     @Override

@@ -16,9 +16,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/fragment_message_info"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/sp_16" />
+                android:text="@string/fragment_message_info"/>
 
             <TextView
                 android:id="@+id/fragment_message_info_txt"
