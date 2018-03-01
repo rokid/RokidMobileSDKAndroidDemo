@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.activity.BaseActivity;
+import com.rokid.mobile.sdk.demo.java.base.BaseActivity;
 import com.rokid.mobile.sdk.demo.java.view.IconTextView;
 
 /**

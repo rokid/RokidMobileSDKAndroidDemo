@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.fragment;
+package com.rokid.mobile.sdk.demo.java.base;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.rokid.mobile.lib.base.util.Logger;
-import com.rokid.mobile.sdk.demo.java.presenter.BaseFragmentPresenter;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

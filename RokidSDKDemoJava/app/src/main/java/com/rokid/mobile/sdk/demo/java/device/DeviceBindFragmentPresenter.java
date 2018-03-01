@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.presenter;
+package com.rokid.mobile.sdk.demo.java.device;
 
 import android.util.Log;
 
@@ -11,17 +11,17 @@ import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.activity.MainActivity;
-import com.rokid.mobile.sdk.demo.java.fragment.BindFragment;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
 /**
  * Created by tt on 2018/2/24.
  */
 
-public class BindFragmentPresenter extends BaseFragmentPresenter<BindFragment> {
+public class DeviceBindFragmentPresenter extends BaseFragmentPresenter<DeviceBindFragment> {
 
-    private static final String TAG = BindFragmentPresenter.class.getSimpleName();
+    private static final String TAG = DeviceBindFragmentPresenter.class.getSimpleName();
 
-    public BindFragmentPresenter(BindFragment fragment) {
+    public DeviceBindFragmentPresenter(DeviceBindFragment fragment) {
         super(fragment);
     }
 

@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.fragment;
+package com.rokid.mobile.sdk.demo.java.device;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,7 +16,7 @@ import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean;
 import com.rokid.mobile.lib.entity.bean.wifi.WifiBean;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.adapter.item.BleItem;
-import com.rokid.mobile.sdk.demo.java.presenter.BindFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 import com.rokid.mobile.sdk.demo.java.util.SoftKeyBoardUtil;
 import com.rokid.mobile.sdk.demo.java.util.WifiEngine;
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter;
@@ -27,7 +27,7 @@ import butterknife.BindView;
  * Created by tt on 2018/2/24.
  */
 
-public class BindFragment extends BaseFragment<BindFragmentPresenter> {
+public class DeviceBindFragment extends BaseFragment<DeviceBindFragmentPresenter> {
 
     @BindView(R.id.fragment_bind_ble_name_edit)
     TextInputEditText bleNameTxt;
@@ -62,8 +62,8 @@ public class BindFragment extends BaseFragment<BindFragmentPresenter> {
     }
 
     @Override
-    protected BindFragmentPresenter initPresenter() {
-        return new BindFragmentPresenter(this);
+    protected DeviceBindFragmentPresenter initPresenter() {
+        return new DeviceBindFragmentPresenter(this);
     }
 
     @Override

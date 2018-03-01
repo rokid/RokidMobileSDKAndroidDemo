@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.fragment;
+package com.rokid.mobile.sdk.demo.java.skill;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.adapter.BaseFragmentAdapter;
-import com.rokid.mobile.sdk.demo.java.presenter.BaseFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
 import java.util.ArrayList;
 import java.util.List;

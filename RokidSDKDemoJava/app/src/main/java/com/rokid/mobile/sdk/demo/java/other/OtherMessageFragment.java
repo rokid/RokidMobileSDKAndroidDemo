@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.fragment;
+package com.rokid.mobile.sdk.demo.java.other;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean;
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.presenter.MoreMessageFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -22,7 +22,7 @@ import butterknife.BindView;
  * Created by tt on 2018/2/24.
  */
 
-public class MoreMessageFragment extends BaseFragment<MoreMessageFragmentPresenter> {
+public class OtherMessageFragment extends BaseFragment<OtherMessageFragmentPresenter> {
     @BindView(R.id.fragment_message_info_txt)
     TextView infoTxt;
 
@@ -32,8 +32,8 @@ public class MoreMessageFragment extends BaseFragment<MoreMessageFragmentPresent
     }
 
     @Override
-    protected MoreMessageFragmentPresenter initPresenter() {
-        return new MoreMessageFragmentPresenter(this);
+    protected OtherMessageFragmentPresenter initPresenter() {
+        return new OtherMessageFragmentPresenter(this);
     }
 
     @Override

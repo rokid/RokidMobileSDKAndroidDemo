@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.fragment;
+package com.rokid.mobile.sdk.demo.java.device;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +14,7 @@ import com.rokid.mobile.lib.base.util.CollectionUtils;
 import com.rokid.mobile.lib.entity.bean.device.RKDevice;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.adapter.item.DeviceItem;
-import com.rokid.mobile.sdk.demo.java.presenter.DeviceFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import butterknife.BindView;
  * Created by tt on 2018/2/24.
  */
 
-public class DeviceFragment extends BaseFragment<DeviceFragmentPresenter> {
+public class DeviceListFragment extends BaseFragment<DeviceFragmentPresenter> {
 
     @BindView(R.id.fragment_device_list_btn)
     Button deviceListBtn;

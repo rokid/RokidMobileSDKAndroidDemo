@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.fragment;
+package com.rokid.mobile.sdk.demo.java.account;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.presenter.AccountLoginFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 import com.rokid.mobile.sdk.demo.java.util.SoftKeyBoardUtil;
 
 import butterknife.BindView;

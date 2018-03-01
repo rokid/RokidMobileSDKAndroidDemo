@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.fragment;
+package com.rokid.mobile.sdk.demo.java.device;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +9,8 @@ import android.view.ViewGroup;
 
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.adapter.BaseFragmentAdapter;
-import com.rokid.mobile.sdk.demo.java.presenter.BaseFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,8 +43,8 @@ public class DeviceIndexFragment extends BaseFragment {
     protected void initVariables(View rootView, ViewGroup container, @Nullable Bundle savedInstanceState) {
         deviceTab.setupWithViewPager(deviceVp);
         List<BaseFragmentAdapter.Node> deviceList = new ArrayList<>();
-        deviceList.add(new BaseFragmentAdapter.Node("绑定", new BindFragment()));
-        deviceList.add(new BaseFragmentAdapter.Node("设备列表", new DeviceFragment()));
+        deviceList.add(new BaseFragmentAdapter.Node("绑定", new DeviceBindFragment()));
+        deviceList.add(new BaseFragmentAdapter.Node("设备列表", new DeviceListFragment()));
         BaseFragmentAdapter mAdapter = new BaseFragmentAdapter(getFragmentManager(), deviceList);
 
         deviceVp.setAdapter(mAdapter);

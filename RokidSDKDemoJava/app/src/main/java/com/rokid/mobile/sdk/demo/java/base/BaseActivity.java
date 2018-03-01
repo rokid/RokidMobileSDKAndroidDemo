@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.activity;
+package com.rokid.mobile.sdk.demo.java.base;
 
 import android.os.Build;
 import android.os.Bundle;

@@ -11,10 +11,11 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.fragment.AccountIndexFragment;
-import com.rokid.mobile.sdk.demo.java.fragment.DeviceIndexFragment;
-import com.rokid.mobile.sdk.demo.java.fragment.MoreIndexFragment;
-import com.rokid.mobile.sdk.demo.java.fragment.SkillIndexFragment;
+import com.rokid.mobile.sdk.demo.java.account.AccountIndexFragment;
+import com.rokid.mobile.sdk.demo.java.base.BaseActivity;
+import com.rokid.mobile.sdk.demo.java.device.DeviceIndexFragment;
+import com.rokid.mobile.sdk.demo.java.other.OtherIndexFragment;
+import com.rokid.mobile.sdk.demo.java.skill.SkillIndexFragment;
 import com.rokid.mobile.sdk.demo.java.view.BottomNavigationViewEx;
 import com.rokid.mobile.sdk.demo.java.view.NoScrollViewPager;
 
@@ -77,7 +78,7 @@ public class MainActivity extends BaseActivity {
         fragments.add(new AccountIndexFragment());
         fragments.add(new DeviceIndexFragment());
         fragments.add(new SkillIndexFragment());
-        fragments.add(new MoreIndexFragment());
+        fragments.add(new OtherIndexFragment());
 
         // set adapter
         VpAdapter adapter = new VpAdapter(getSupportFragmentManager(), fragments);

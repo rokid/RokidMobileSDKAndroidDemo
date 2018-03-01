@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.presenter;
+package com.rokid.mobile.sdk.demo.java.account;
 
 import android.util.Log;
 
@@ -7,7 +7,7 @@ import com.rokid.mobile.lib.xbase.account.callback.ILogoutResultCallback;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.activity.MainActivity;
-import com.rokid.mobile.sdk.demo.java.fragment.AccountLoginFragment;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
 /**
  * Created by tt on 2018/2/24.

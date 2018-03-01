@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.fragment;
+package com.rokid.mobile.sdk.demo.java.skill;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,7 +15,7 @@ import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.lib.entity.bean.device.RKDevice;
 import com.rokid.mobile.lib.entity.event.skill.EventRemindBean;
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.presenter.SkillRemindFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;

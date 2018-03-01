@@ -1,9 +1,7 @@
-package com.rokid.mobile.sdk.demo.java.presenter;
+package com.rokid.mobile.sdk.demo.java.base;
 
 import android.content.Intent;
 import android.util.Log;
-
-import com.rokid.mobile.sdk.demo.java.fragment.BaseFragment;
 
 import java.lang.ref.WeakReference;
 
@@ -21,7 +19,7 @@ public abstract class BaseFragmentPresenter<F extends BaseFragment> {
     protected boolean isLogin;
 
     public BaseFragmentPresenter(F fragment) {
-        Log.d(TAG, "BindFragment: " + (null != fragment ? fragment.getClass().getSimpleName() : "Null"));
+        Log.d(TAG, "DeviceBindFragment: " + (null != fragment ? fragment.getClass().getSimpleName() : "Null"));
         // 绑定 Fragment
         this.mFragmentWeak = new WeakReference<F>(fragment);
     }
@@ -81,7 +79,7 @@ public abstract class BaseFragmentPresenter<F extends BaseFragment> {
      * 获取绑定的 Fragment
      */
     public F getFragment() {
-        Log.d(TAG, "BindFragment: " + (null != mFragmentWeak.get()
+        Log.d(TAG, "DeviceBindFragment: " + (null != mFragmentWeak.get()
                 ? mFragmentWeak.get().getClass().getSimpleName() : "Null"));
         return mFragmentWeak.get();
     }

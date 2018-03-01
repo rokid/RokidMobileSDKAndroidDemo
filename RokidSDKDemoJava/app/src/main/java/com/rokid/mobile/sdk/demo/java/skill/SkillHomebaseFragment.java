@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.fragment;
+package com.rokid.mobile.sdk.demo.java.skill;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.presenter.SkillHomebaseFragmentPresenter;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 import com.rokid.mobile.sdk.demo.java.util.webkit.DemoWebView;
 
 import butterknife.BindView;
