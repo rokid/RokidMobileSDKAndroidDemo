@@ -1,7 +1,5 @@
 package com.rokid.mobile.sdk.demo.webkit
 
-import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
@@ -9,13 +7,8 @@ import android.os.Build
 import android.util.AttributeSet
 import android.webkit.WebSettings
 import android.webkit.WebView
-import com.rokid.mobile.webview.lib.RKWebBridge
+import com.rokid.mobile.sdk.webkit.SDKWebview
 import com.rokid.mobile.webview.lib.bean.TitleBarButton
-import com.rokid.mobile.webview.lib.delegate.BridgeModuleAppDelegate
-import com.rokid.mobile.webview.lib.delegate.BridgeModuleViewDelegate
-import com.rokid.mobile.webview.lib.module.BridgeModuleApp
-import com.rokid.mobile.webview.lib.module.BridgeModulePhone
-import com.rokid.mobile.webview.lib.module.BridgeModuleView
 import java.lang.ref.WeakReference
 
 /**
@@ -23,7 +16,7 @@ import java.lang.ref.WeakReference
  * Author: Shper
  * Version: V0.1 2018/2/26
  */
-class DemoWebview : WebView, BridgeModuleAppDelegate, BridgeModuleViewDelegate {
+class DemoWebview : SDKWebview {
 
     private var contextWeak: WeakReference<Context>? = null
 
@@ -39,11 +32,9 @@ class DemoWebview : WebView, BridgeModuleAppDelegate, BridgeModuleViewDelegate {
         init(context)
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
     private fun init(context: Context) {
         contextWeak = WeakReference(context)
 
-        settings.javaScriptEnabled = true
         settings.useWideViewPort = true
         settings.loadWithOverviewMode = true
         settings.domStorageEnabled = true
@@ -57,17 +48,7 @@ class DemoWebview : WebView, BridgeModuleAppDelegate, BridgeModuleViewDelegate {
             settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         }
 
-        // 注册 Bridge 模块
-        val rokidWebBridge = RKWebBridge(this)
-        rokidWebBridge.register(BridgeModulePhone())
-        rokidWebBridge.register(BridgeModuleApp(this))
-        rokidWebBridge.register(BridgeModuleView(this))
-
-        addJavascriptInterface(rokidWebBridge, RKWebBridge.BridgeName)
-
-        val sdkWebViewClient = DemoWebViewClient(rokidWebBridge)
-
-        webViewClient = sdkWebViewClient
+        webViewClient = DemoWebViewClient(webBridge)
         webChromeClient = DemoWebChromeClient()
     }
 
