@@ -60,10 +60,9 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.0.7-001', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.0.7-002', ext: "aar")
     // 第三方库
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
-    implementation 'com.umeng.analytics:analytics:6.1.2'
     implementation 'pub.devrel:easypermissions:0.4.2'
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
