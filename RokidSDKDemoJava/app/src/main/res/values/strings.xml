@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RokidSDKDemoJava</string>
+    <string name="app_name">Rokid SDK</string>
 
     <!--iconfont-->
     <string name="icon_back">&#xe618;</string>

@@ -1,6 +1,5 @@
 package com.rokid.mobile.sdk.demo.java.util.webkit;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -8,24 +7,17 @@ import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.webkit.WebSettings;
-import android.webkit.WebView;
 
 import com.rokid.mobile.lib.base.util.Logger;
-import com.rokid.mobile.webview.lib.RKWebBridge;
+import com.rokid.mobile.sdk.webkit.SDKWebview;
 import com.rokid.mobile.webview.lib.bean.TitleBarButton;
-import com.rokid.mobile.webview.lib.delegate.BridgeModuleAppDelegate;
-import com.rokid.mobile.webview.lib.delegate.BridgeModuleViewDelegate;
-import com.rokid.mobile.webview.lib.module.BridgeModuleApp;
-import com.rokid.mobile.webview.lib.module.BridgeModulePhone;
-import com.rokid.mobile.webview.lib.module.BridgeModuleView;
 
 import java.lang.ref.WeakReference;
 
 /**
  * Created by wangshuwen on 2017/5/17.
  */
-public class DemoWebView extends WebView implements
-        BridgeModuleViewDelegate, BridgeModuleAppDelegate {
+public class DemoWebView extends SDKWebview {
 
     private WeakReference<Context> activityWeak;
 
@@ -44,17 +36,16 @@ public class DemoWebView extends WebView implements
         init(context);
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
     private void init(Context context) {
         Logger.i("init is called context=" + context);
 
         activityWeak = new WeakReference<>(context);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setWebContentsDebuggingEnabled(true);
+        }
+
         WebSettings webSettings = getSettings();
-        // 截取所有的a标签带 target=”_blank”执行跳转新的页面
-        webSettings.setSupportMultipleWindows(true);
-        // 开启 JavaScript 支持
-        webSettings.setJavaScriptEnabled(true);
         // 开始 css 适配
         webSettings.setUseWideViewPort(true);
         webSettings.setLoadWithOverviewMode(true);
@@ -67,25 +58,7 @@ public class DemoWebView extends WebView implements
             webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
 
-        // 允许https页面访问http图片 安卓5.0以上是默认不允许的
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-        }
-
-        // Bridge V1.0.0
-        RKWebBridge rokidWebBridge = new RKWebBridge(this);
-
-        // 注册模块
-        rokidWebBridge.register(new BridgeModulePhone());
-        rokidWebBridge.register(new BridgeModuleView(this));
-        rokidWebBridge.register(new BridgeModuleApp(this));
-
-        addJavascriptInterface(rokidWebBridge, RKWebBridge.Companion.getBridgeName());
-
-        DemoWebViewClient webViewClient = new DemoWebViewClient(rokidWebBridge);
-
-        this.setWebViewClient(webViewClient);
-
+        this.setWebViewClient(new DemoWebViewClient(webBridge));
         this.setWebChromeClient(new DemoWebChromeClient());
     }
 
@@ -171,4 +144,5 @@ public class DemoWebView extends WebView implements
     public void errorView(boolean state, String retryUrl) {
 
     }
+
 }
