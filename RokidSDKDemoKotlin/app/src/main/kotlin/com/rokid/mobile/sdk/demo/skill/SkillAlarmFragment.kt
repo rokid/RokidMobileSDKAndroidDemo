@@ -1,5 +1,6 @@
 package com.rokid.mobile.sdk.demo.skill
 
+import android.content.Intent
 import android.widget.*
 import com.google.gson.Gson
 import com.rokid.mobile.lib.base.util.Logger
@@ -37,7 +38,15 @@ class SkillAlarmFragment : BaseFragment() {
     }
 
     override fun initListeners() {
-        rootView!!.skill_alarm_list.setOnClickListener here@ {
+        rootView!!.skill_alarm_add.setOnClickListener {
+            val deviceId = skill_alarm_device_id.selectedItem.toString()
+
+            val intent = Intent(activity, SkillAlarmAddActivity::class.java)
+            intent.putExtra(SkillAlarmAddActivity.DEVICE_ID, deviceId)
+            activity.startActivity(intent)
+        }
+
+        rootView!!.skill_alarm_list.setOnClickListener here@{
             val deviceId = skill_alarm_device_id.selectedItem.toString()
             if (deviceId.isEmpty()) {
                 toast("请正确输入 SN")
