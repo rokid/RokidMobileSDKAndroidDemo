@@ -1,5 +1,6 @@
 package com.rokid.mobile.sdk.demo.java.skill;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -35,6 +36,9 @@ public class SkillAlarmFragment extends BaseFragment<SkillAlarmFragmentPresenter
     @BindView(R.id.skill_alarm_device_id)
     Spinner deviceSp;
 
+    @BindView(R.id.skill_alarm_add)
+    Button alarmAddBtn;
+
     @BindView(R.id.skill_alarm_list)
     Button alarmBtn;
 
@@ -69,6 +73,15 @@ public class SkillAlarmFragment extends BaseFragment<SkillAlarmFragmentPresenter
                 } else {
                     showToastShort(getString(R.string.fragment_skill_alarm_list_fail));
                 }
+            }
+        });
+
+        alarmAddBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), SkillAlarmAddActivity.class);
+                intent.putExtra(SkillAlarmAddActivity.DEVICE_ID, deviceSp.getSelectedItem().toString());
+                startActivity(intent);
             }
         });
     }

@@ -10,11 +10,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.rokid.mobile.lib.base.util.Logger;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+
+import static com.rokid.mobile.sdk.demo.java.application.RokidApplication.getContext;
 
 /**
  * Created by tt on 2018/2/28.
@@ -51,6 +54,16 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected abstract void initVariables(@Nullable Bundle savedInstanceState);
 
     protected abstract void initListeners();
+
+    public void showToastShort(final CharSequence text) {
+        Logger.i(this.getClass().getSimpleName() + " The toast context: " + text);
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(getContext(), text, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
     /**
      * 系统状态栏字体颜色设置
