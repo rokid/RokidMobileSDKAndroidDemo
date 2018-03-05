@@ -63,6 +63,11 @@ public class DemoWebView extends SDKWebview {
     }
 
     @Override
+    public boolean performClick() {
+        return super.performClick();
+    }
+
+    @Override
     public void close() {
 
     }

@@ -2,11 +2,15 @@ package com.rokid.mobile.sdk.demo.java.skill;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.DisplayMetrics;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
+import com.rokid.mobile.sdk.demo.java.util.DisplayUtils;
 import com.rokid.mobile.sdk.demo.java.util.webkit.DemoWebView;
 
 import butterknife.BindView;
@@ -37,7 +41,23 @@ public class SkillHomebaseFragment extends BaseFragment<SkillHomebaseFragmentPre
 
     @Override
     protected void initListeners() {
+        final DisplayMetrics dm = DisplayUtils.getDisplayMetrics(getActivity());
+        webview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        float point = event.getX();
+                        if (point > 0 && point < 50 || point > dm.widthPixels - 50 && point < dm.widthPixels) {
+                            webview.requestDisallowInterceptTouchEvent(false);
+                        } else {
+                            webview.requestDisallowInterceptTouchEvent(true);
+                        }
+                }
 
+                return false;
+            }
+        });
     }
 
     @Override
