@@ -16,6 +16,8 @@ import android.widget.TimePicker;
 import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.lib.entity.bean.skill.AlarmContentBean;
 import com.rokid.mobile.sdk.RokidMobileSDK;
+import com.rokid.mobile.sdk.annotation.SDKRepeatType;
+import com.rokid.mobile.sdk.bean.SDKAlarm;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseActivity;
 import com.rokid.mobile.sdk.demo.java.view.IconTextView;
@@ -81,15 +83,16 @@ public class SkillAlarmAddActivity extends BaseActivity {
     }
 
     private void addAlarm() {
-        AlarmContentBean alarmContent = new AlarmContentBean();
-        alarmContent.setYear(datePicker.getYear());
-        alarmContent.setMonth(datePicker.getMonth() + 1);
-        alarmContent.setDay(datePicker.getDayOfMonth());
+        SDKAlarm alarm = SDKAlarm.builder()
+                .year(datePicker.getYear())
+                .month(datePicker.getMonth() + 1)
+                .day(datePicker.getDayOfMonth())
+                .hour(timePicker.getCurrentHour())
+                .minute(timePicker.getCurrentMinute())
+                .repeatType(SDKRepeatType.EVERY_MONDAY)
+                .build();
 
-        alarmContent.setHour(timePicker.getCurrentHour());
-        alarmContent.setMinute(timePicker.getCurrentMinute());
-
-        boolean isSuccess = RokidMobileSDK.skill.alarm().add(deviceId, alarmContent, "");
+        boolean isSuccess = RokidMobileSDK.skill.alarm().add(deviceId, alarm);
 
         showToastShort(isSuccess ? "添加闹钟成功" : "添加闹钟失败");
     }

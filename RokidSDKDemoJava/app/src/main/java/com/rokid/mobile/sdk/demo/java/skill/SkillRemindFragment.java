@@ -14,6 +14,8 @@ import com.google.gson.Gson;
 import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.lib.entity.bean.device.RKDevice;
 import com.rokid.mobile.lib.entity.event.skill.EventRemindBean;
+import com.rokid.mobile.sdk.bean.SDKRemind;
+import com.rokid.mobile.sdk.callback.GetRemindListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 
@@ -53,9 +55,6 @@ public class SkillRemindFragment extends BaseFragment<SkillRemindFragmentPresent
 
     @Override
     protected void initVariables(View rootView, ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
     }
 
     @Override
@@ -64,11 +63,31 @@ public class SkillRemindFragment extends BaseFragment<SkillRemindFragmentPresent
             @Override
             public void onClick(View v) {
                 clearInfoText();
-                if (getPresenter().getRemindList(deviceSp.getSelectedItem().toString())) {
-                    showToastShort(getString(R.string.fragment_skill_reminder_list_success));
-                } else {
-                    showToastShort(getString(R.string.fragment_skill_reminder_list_fail));
-                }
+
+                getPresenter().getRemindList(deviceSp.getSelectedItem().toString(), new GetRemindListCallback() {
+                    @Override
+                    public void onSucceed(final List<SDKRemind> list) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                showToastShort(getString(R.string.fragment_skill_reminder_list_success));
+
+                                clearInfoText();
+                                infoTxt.setText(new Gson().toJson(list));
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onFailed(String errorCode, String errorMessage) {
+                        getActivity().runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                showToastShort(getString(R.string.fragment_skill_reminder_list_fail));
+                            }
+                        });
+                    }
+                });
             }
         });
     }
@@ -82,13 +101,6 @@ public class SkillRemindFragment extends BaseFragment<SkillRemindFragmentPresent
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.item_device_spinner, deviceIdList);
         deviceSp.setAdapter(adapter);
-    }
-
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onAlarmEvent(EventRemindBean eventRemind) {
-        Logger.d("onSysInfo eventDeviceSysUpdate" + new Gson().toJson(eventRemind));
-        clearInfoText();
-        infoTxt.setText(new Gson().toJson(eventRemind));
     }
 
     private void clearInfoText() {

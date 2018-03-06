@@ -4,6 +4,7 @@ import com.rokid.mobile.lib.base.util.CollectionUtils;
 import com.rokid.mobile.lib.entity.bean.device.RKDevice;
 import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback;
 import com.rokid.mobile.sdk.RokidMobileSDK;
+import com.rokid.mobile.sdk.callback.GetRemindListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
@@ -43,7 +44,7 @@ public class SkillRemindFragmentPresenter extends BaseFragmentPresenter<SkillRem
         });
     }
 
-    public boolean getRemindList(String deviceId) {
-        return RokidMobileSDK.skill.remind().getList(deviceId);
+    public boolean getRemindList(String deviceId, GetRemindListCallback callback) {
+        return RokidMobileSDK.skill.remind().getList(deviceId, callback);
     }
 }

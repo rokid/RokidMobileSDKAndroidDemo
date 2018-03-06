@@ -6,6 +6,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.View;
 import android.webkit.WebSettings;
 
 import com.rokid.mobile.lib.base.util.Logger;
@@ -19,21 +21,25 @@ import java.lang.ref.WeakReference;
  */
 public class DemoWebView extends SDKWebview {
 
+    private Boolean isMove = false;
     private WeakReference<Context> activityWeak;
 
     public DemoWebView(Context context) {
         super(context);
         init(context);
+        initListener();
     }
 
     public DemoWebView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
+        initListener();
     }
 
     public DemoWebView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
+        initListener();
     }
 
     private void init(Context context) {
@@ -62,9 +68,37 @@ public class DemoWebView extends SDKWebview {
         this.setWebChromeClient(new DemoWebChromeClient());
     }
 
+    private void initListener() {
+        setOnTouchListener(new OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        requestDisallowInterceptTouchEvent(isMove);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        isMove = false;
+                        requestDisallowInterceptTouchEvent(isMove);
+                        break;
+                }
+                return false;
+            }
+        });
+    }
+
     @Override
-    public boolean performClick() {
-        return super.performClick();
+    public void touchDown() {
+        isMove = true;
+    }
+
+    @Override
+    public void touchMove() {
+
+    }
+
+    @Override
+    public void touchUp() {
+        isMove = false;
     }
 
     @Override

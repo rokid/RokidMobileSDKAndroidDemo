@@ -15,6 +15,8 @@ import com.google.gson.Gson;
 import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.lib.entity.bean.device.RKDevice;
 import com.rokid.mobile.lib.entity.event.skill.EventAlarmBean;
+import com.rokid.mobile.sdk.bean.SDKAlarm;
+import com.rokid.mobile.sdk.callback.GetAlarmListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 
@@ -57,9 +59,6 @@ public class SkillAlarmFragment extends BaseFragment<SkillAlarmFragmentPresenter
 
     @Override
     protected void initVariables(View rootView, ViewGroup container, @Nullable Bundle savedInstanceState) {
-        if (!EventBus.getDefault().isRegistered(this)) {
-            EventBus.getDefault().register(this);
-        }
     }
 
     @Override
@@ -68,11 +67,31 @@ public class SkillAlarmFragment extends BaseFragment<SkillAlarmFragmentPresenter
             @Override
             public void onClick(View v) {
                 clearInfoText();
-                if (getPresenter().getAlarmList(deviceSp.getSelectedItem().toString())) {
-                    showToastShort(getString(R.string.fragment_skill_alarm_list_success));
-                } else {
-                    showToastShort(getString(R.string.fragment_skill_alarm_list_fail));
-                }
+                getPresenter().getAlarmList(deviceSp.getSelectedItem().toString(),
+                        new GetAlarmListCallback() {
+                            @Override
+                            public void onSucceed(final List<SDKAlarm> list) {
+                                showToastShort(getString(R.string.fragment_skill_alarm_list_success));
+
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        clearInfoText();
+                                        infoTxt.setText(new Gson().toJson(list));
+                                    }
+                                });
+                            }
+
+                            @Override
+                            public void onFailed(String errorCode, String errorMessage) {
+                                getActivity().runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        showToastShort(getString(R.string.fragment_skill_alarm_list_fail));
+                                    }
+                                });
+                            }
+                        });
             }
         });
 
@@ -93,15 +112,10 @@ public class SkillAlarmFragment extends BaseFragment<SkillAlarmFragmentPresenter
             deviceIdList.add(deviceId);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.item_device_spinner, deviceIdList);
-        deviceSp.setAdapter(adapter);
-    }
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), R.layout.item_device_spinner,
+                deviceIdList);
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onAlarmEvent(EventAlarmBean eventAlarm) {
-        Logger.d("onSysInfo eventDeviceSysUpdate" + new Gson().toJson(eventAlarm));
-        clearInfoText();
-        infoTxt.setText(new Gson().toJson(eventAlarm));
+        deviceSp.setAdapter(adapter);
     }
 
     private void clearInfoText() {

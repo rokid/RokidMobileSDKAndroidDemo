@@ -40,25 +40,7 @@ public class SkillHomebaseFragment extends BaseFragment<SkillHomebaseFragmentPre
     }
 
     @Override
-    protected void initListeners() {
-        final DisplayMetrics dm = DisplayUtils.getDisplayMetrics(getActivity());
-        webview.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        float point = event.getX();
-                        if (point > 0 && point < 50 || point > dm.widthPixels - 50 && point < dm.widthPixels) {
-                            webview.requestDisallowInterceptTouchEvent(false);
-                        } else {
-                            webview.requestDisallowInterceptTouchEvent(true);
-                        }
-                }
-
-                return false;
-            }
-        });
-    }
+    protected void initListeners() {}
 
     @Override
     public void onResume() {

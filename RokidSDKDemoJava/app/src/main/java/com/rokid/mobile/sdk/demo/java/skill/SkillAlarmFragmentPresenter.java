@@ -4,6 +4,7 @@ import com.rokid.mobile.lib.base.util.CollectionUtils;
 import com.rokid.mobile.lib.entity.bean.device.RKDevice;
 import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback;
 import com.rokid.mobile.sdk.RokidMobileSDK;
+import com.rokid.mobile.sdk.callback.GetAlarmListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
@@ -14,6 +15,7 @@ import java.util.List;
  */
 
 public class SkillAlarmFragmentPresenter extends BaseFragmentPresenter<SkillAlarmFragment> {
+
     public SkillAlarmFragmentPresenter(SkillAlarmFragment fragment) {
         super(fragment);
     }
@@ -24,11 +26,11 @@ public class SkillAlarmFragmentPresenter extends BaseFragmentPresenter<SkillAlar
         getDeviceList();
     }
 
-    private void getDeviceList(){
+    private void getDeviceList() {
         RokidMobileSDK.device.getDeviceList(new IGetDeviceListCallback() {
             @Override
             public void onGetDeviceListSucceed(List<RKDevice> list) {
-                if (CollectionUtils.isEmpty(list)){
+                if (CollectionUtils.isEmpty(list)) {
                     getFragment().showToastShort(getFragment().getString(R.string.fragment_device_list_empty));
                     return;
                 }
@@ -43,7 +45,7 @@ public class SkillAlarmFragmentPresenter extends BaseFragmentPresenter<SkillAlar
         });
     }
 
-    public boolean getAlarmList(String deviceId) {
-        return RokidMobileSDK.skill.alarm().getList(deviceId);
+    public boolean getAlarmList(String deviceId, GetAlarmListCallback callback) {
+        return RokidMobileSDK.skill.alarm().getList(deviceId, callback);
     }
 }
