@@ -3,6 +3,8 @@ package com.rokid.mobile.sdk.demo.skill
 import android.annotation.SuppressLint
 import com.rokid.mobile.lib.entity.bean.skill.AlarmContentBean
 import com.rokid.mobile.sdk.RokidMobileSDK
+import com.rokid.mobile.sdk.annotation.SDKRepeatType
+import com.rokid.mobile.sdk.bean.SDKAlarm
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseActivity
 import kotlinx.android.synthetic.main.base_titlebar.*
@@ -38,15 +40,16 @@ class SkillAlarmAddActivity : BaseActivity() {
         base_titlebar_left.setOnClickListener { finish() }
 
         alarm_add_btn.setOnClickListener {
-            val alarmContent = AlarmContentBean().apply {
+            val sdkAlarm = SDKAlarm().apply {
                 year = alarm_date.year
                 month = (alarm_date.month + 1)
                 day = alarm_date.dayOfMonth
                 hour = alarm_time.hour
                 minute = alarm_time.minute
+                repeatType = SDKRepeatType.EVERY_MONDAY
             }
 
-            RokidMobileSDK.skill.alarm().add(deviceId!!, alarmContent, "")
+            RokidMobileSDK.skill.alarm().add(deviceId!!, sdkAlarm)
 
             toast("添加成功")
             finish()
