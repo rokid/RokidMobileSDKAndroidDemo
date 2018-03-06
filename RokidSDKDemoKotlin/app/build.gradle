@@ -8,7 +8,7 @@ android {
         applicationId "com.rokid.mobile.sdk.demo.kotlin"
         minSdkVersion 19
         targetSdkVersion 22
-        versionCode 180228001
+        versionCode 180306002
         versionName "1.0.0"
         ndk {
             // 选择要添加的对应cpu类型的.so库。
@@ -60,7 +60,7 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.0.7-004', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.0.7-005', ext: "aar")
     // 第三方库
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
     implementation 'pub.devrel:easypermissions:0.4.2'

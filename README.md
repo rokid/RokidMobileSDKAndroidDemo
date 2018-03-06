@@ -14,4 +14,3 @@ Demo 有 Kotlin 和 Java 版本，请开发者各取所需。
 ## 3、文档地址
 [SDK 开发文档](https://rokid.github.io/mobile-sdk-android-docs/)
 
-

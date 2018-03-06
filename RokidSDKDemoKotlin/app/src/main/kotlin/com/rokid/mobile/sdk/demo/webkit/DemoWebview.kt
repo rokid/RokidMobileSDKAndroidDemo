@@ -5,8 +5,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.util.AttributeSet
+import android.view.MotionEvent
+import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
+import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.sdk.webkit.SDKWebview
 import com.rokid.mobile.webview.lib.bean.TitleBarButton
 import java.lang.ref.WeakReference
@@ -18,18 +21,22 @@ import java.lang.ref.WeakReference
  */
 class DemoWebview : SDKWebview {
 
+    private var isMove: Boolean = false
     private var contextWeak: WeakReference<Context>? = null
 
     constructor(context: Context) : super(context) {
         init(context)
+        initListener()
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         init(context)
+        initListener()
     }
 
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int) : super(context, attrs, defStyleAttr) {
         init(context)
+        initListener()
     }
 
     private fun init(context: Context) {
@@ -50,6 +57,37 @@ class DemoWebview : SDKWebview {
 
         webViewClient = DemoWebViewClient(webBridge)
         webChromeClient = DemoWebChromeClient()
+    }
+
+    private fun initListener(){
+        setOnTouchListener(object : OnTouchListener {
+            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
+                    }
+
+                    MotionEvent.ACTION_UP -> {
+                        isMove = false
+                        this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
+                    }
+                }
+
+                return false
+            }
+        })
+    }
+
+    // here is BridgeModulePhoneDelegate
+    override fun touchDown() {
+        isMove = true
+    }
+
+    override fun touchMove() {
+    }
+
+    override fun touchUp() {
+        isMove = false
     }
 
     // here is BridgeModuleAppDelegate
