@@ -33,7 +33,7 @@ class SDKDemoApplication : Application() {
 
                 })
 
-        RokidMobileSDK.debug()
+        //RokidMobileSDK.debug()
     }
 
 
