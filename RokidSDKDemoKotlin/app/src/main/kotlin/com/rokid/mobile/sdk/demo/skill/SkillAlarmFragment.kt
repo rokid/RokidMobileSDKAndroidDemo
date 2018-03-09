@@ -27,7 +27,6 @@ class SkillAlarmFragment : BaseFragment() {
 
     override fun initViews() {
         eventTxt = rootView!!.skill_txt
-        setDeviceList()
     }
 
     override fun initListeners() {
@@ -62,6 +61,12 @@ class SkillAlarmFragment : BaseFragment() {
                     })
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        setDeviceList()
     }
 
     private fun setDeviceList() {

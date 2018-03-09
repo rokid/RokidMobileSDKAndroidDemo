@@ -68,7 +68,6 @@ class DemoWebview : SDKWebview {
                     }
 
                     MotionEvent.ACTION_UP -> {
-                        isMove = false
                         this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
                     }
                 }

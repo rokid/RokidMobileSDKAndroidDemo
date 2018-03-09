@@ -2,7 +2,6 @@ package com.rokid.mobile.sdk.demo.base
 
 import android.os.Build
 import android.os.Bundle
-import android.support.v4.view.ViewCompat
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.ViewGroup
@@ -25,7 +24,7 @@ abstract class BaseActivity : AppCompatActivity() {
         setContentView(layoutId())
 
         // 获得 ContentView mRootView 设置 沉浸式系统状态栏
-        val mContentView = this.findViewById<View>(Window.ID_ANDROID_CONTENT) as ViewGroup
+        val mContentView = this.findViewById(Window.ID_ANDROID_CONTENT) as ViewGroup
         val rootView = mContentView.getChildAt(0) as ViewGroup
         setSystemStatusBar(rootView)
 

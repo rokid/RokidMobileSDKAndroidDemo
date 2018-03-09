@@ -26,7 +26,6 @@ class SkillRemindFragment : BaseFragment() {
     override fun layoutId(): Int = R.layout.skill_fragment_remind
 
     override fun initViews() {
-        setDeviceList()
     }
 
     override fun initListeners() {
@@ -53,6 +52,12 @@ class SkillRemindFragment : BaseFragment() {
                     })
         }
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        setDeviceList()
     }
 
     private fun setDeviceList() {

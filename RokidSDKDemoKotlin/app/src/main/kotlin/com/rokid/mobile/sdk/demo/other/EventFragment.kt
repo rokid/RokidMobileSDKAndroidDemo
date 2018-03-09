@@ -3,6 +3,7 @@ package com.rokid.mobile.sdk.demo.other
 import android.widget.TextView
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean
+import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.other_fragment_event.view.*
