@@ -3,9 +3,11 @@ package com.rokid.mobile.sdk.demo.skill
 import android.content.Intent
 import android.widget.*
 import com.google.gson.Gson
+import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.entity.bean.device.RKDevice
 import com.rokid.mobile.lib.entity.bean.skill.AlarmContentBean
 import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback
+import com.rokid.mobile.sdk.BuildConfig
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.bean.SDKAlarm
 import com.rokid.mobile.sdk.callback.GetAlarmListCallback
@@ -23,6 +25,8 @@ class SkillAlarmFragment : BaseFragment() {
 
     private lateinit var eventTxt: TextView
 
+    private var alarmList: MutableList<SDKAlarm>? = null
+
     override fun layoutId(): Int = R.layout.skill_fragment_alarm
 
     override fun initViews() {
@@ -38,6 +42,20 @@ class SkillAlarmFragment : BaseFragment() {
             activity.startActivity(intent)
         }
 
+        rootView!!.skill_alarm_update.setOnClickListener here@{
+            if (null == alarmList || alarmList!!.size <= 0){
+                toast("闹钟列表为空，请先获取 或者创建一个闹钟。")
+                return@here
+            }
+
+            val deviceId = skill_alarm_device_id.selectedItem.toString()
+
+            val intent = Intent(activity, SkillAlarmUpdateActivity::class.java)
+            intent.putExtra(SkillAlarmUpdateActivity.DEVICE_ID, deviceId)
+            intent.putExtra(SkillAlarmUpdateActivity.ALARM, alarmList!![0])
+            activity.startActivity(intent)
+        }
+
         rootView!!.skill_alarm_list.setOnClickListener here@{
             val deviceId = skill_alarm_device_id.selectedItem.toString()
             if (deviceId.isEmpty()) {
@@ -48,14 +66,16 @@ class SkillAlarmFragment : BaseFragment() {
             RokidMobileSDK.skill.alarm().getList(skill_alarm_device_id.selectedItem.toString(),
                     object : GetAlarmListCallback {
                         override fun onSucceed(alarmList: MutableList<SDKAlarm>?) {
+                            this@SkillAlarmFragment.alarmList = alarmList
+
                             activity.runOnUiThread {
-                                eventTxt.append("\n" + Gson().toJson(alarmList))
+                                eventTxt.text = "\n" + Gson().toJson(alarmList)
                             }
                         }
 
                         override fun onFailed(errorCode: String?, errorMessage: String?) {
                             activity.runOnUiThread {
-                                eventTxt.append("\n errorCode:${errorCode}; errorMessage:${errorMessage}")
+                                eventTxt.text = "\n errorCode:${errorCode}; errorMessage:${errorMessage}"
                             }
                         }
                     })
