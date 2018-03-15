@@ -47,6 +47,9 @@ class SkillAlarmAddActivity : BaseActivity() {
                 hour = alarm_time.hour
                 minute = alarm_time.minute
                 repeatType = SDKRepeatType.EVERY_MONDAY
+                ext = HashMap<String, String>().apply {
+                    put("TestKey","TestValue")
+                }
             }
 
             RokidMobileSDK.skill.alarm().add(deviceId!!, sdkAlarm)

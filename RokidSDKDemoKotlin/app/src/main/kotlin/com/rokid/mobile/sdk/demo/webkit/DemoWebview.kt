@@ -9,7 +9,8 @@ import android.view.MotionEvent
 import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
-import com.rokid.mobile.lib.base.util.Logger
+import android.webkit.WebViewClient
+import com.rokid.mobile.sdk.demo.SDKDemoActivity
 import com.rokid.mobile.sdk.webkit.SDKWebview
 import com.rokid.mobile.webview.lib.bean.TitleBarButton
 import java.lang.ref.WeakReference
@@ -55,8 +56,8 @@ class DemoWebview : SDKWebview {
             settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
         }
 
-        webViewClient = DemoWebViewClient(webBridge)
-        webChromeClient = DemoWebChromeClient()
+        webChromeClient = DemoWebChromeClient(webBridge)
+        webViewClient = WebViewClient()
     }
 
     private fun initListener(){
@@ -118,6 +119,13 @@ class DemoWebview : SDKWebview {
         intent.data = content_url
 
         contextWeak?.get()?.startActivity(intent)
+    }
+
+    override fun goBack(module: String, page: String) {
+        if (module == "homebase" && page == "index") {
+            val intent = Intent(contextWeak!!.get(), SDKDemoActivity::class.java)
+            contextWeak!!.get()!!.startActivity(intent)
+        }
     }
 
     // here is BridgeModuleViewDelegate
