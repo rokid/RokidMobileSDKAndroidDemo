@@ -13,7 +13,7 @@ import android.widget.ProgressBar;
 import com.rokid.mobile.lib.base.util.CollectionUtils;
 import com.rokid.mobile.lib.entity.bean.device.RKDevice;
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.adapter.item.DeviceItem;
+import com.rokid.mobile.sdk.demo.java.base.item.DeviceItem;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter;
 

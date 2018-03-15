@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.util.webkit;
+package com.rokid.mobile.sdk.demo.java.webkit;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

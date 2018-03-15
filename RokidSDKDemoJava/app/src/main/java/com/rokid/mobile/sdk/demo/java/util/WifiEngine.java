@@ -13,7 +13,7 @@ import com.rokid.mobile.lib.base.util.CollectionUtils;
 import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.lib.entity.bean.wifi.WifiBean;
 import com.rokid.mobile.lib.xbase.binder.wifi.WifiStateChangeListener;
-import com.rokid.mobile.sdk.demo.java.application.RokidApplication;
+import com.rokid.mobile.sdk.demo.java.DemoApplication;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class WifiEngine {
     private static volatile WifiEngine instance;
 
     private WifiEngine() {
-        wifiManager = (WifiManager) RokidApplication.getContext().getApplicationContext().getSystemService(WIFI_SERVICE);
+        wifiManager = (WifiManager) DemoApplication.getContext().getApplicationContext().getSystemService(WIFI_SERVICE);
         registerReceiver();
     }
 
@@ -55,7 +55,7 @@ public class WifiEngine {
         receiver = new WifiStateChangeReceiver();
         IntentFilter filter = new IntentFilter();
         filter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
-        RokidApplication.getContext().getApplicationContext().registerReceiver(receiver, filter);
+        DemoApplication.getContext().getApplicationContext().registerReceiver(receiver, filter);
     }
 
 
@@ -199,7 +199,7 @@ public class WifiEngine {
      */
     public void release() {
         Logger.d("release the WifiEngine.");
-        RokidApplication.getContext().getApplicationContext().unregisterReceiver(receiver);
+        DemoApplication.getContext().getApplicationContext().unregisterReceiver(receiver);
         instance = null;
     }
 

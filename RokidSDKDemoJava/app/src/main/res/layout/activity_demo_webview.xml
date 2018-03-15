@@ -57,7 +57,7 @@
 
     </RelativeLayout>
 
-    <com.rokid.mobile.sdk.demo.java.util.webkit.DemoWebView
+    <com.rokid.mobile.sdk.demo.java.webkit.DemoWebView
         android:id="@+id/webkit_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

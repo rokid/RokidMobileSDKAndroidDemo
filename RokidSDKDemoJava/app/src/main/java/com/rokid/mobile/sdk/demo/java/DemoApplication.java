@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.application;
+package com.rokid.mobile.sdk.demo.java;
 
 import android.app.Application;
 import android.util.Log;
@@ -10,9 +10,9 @@ import com.rokid.mobile.sdk.callback.InitCompletedCallback;
  * Created by tt on 2018/2/24.
  */
 
-public class RokidApplication extends Application {
+public class DemoApplication extends Application {
 
-    private static final String TAG = RokidApplication.class.getSimpleName();
+    private static final String TAG = DemoApplication.class.getSimpleName();
 
     private static Application instance;
 

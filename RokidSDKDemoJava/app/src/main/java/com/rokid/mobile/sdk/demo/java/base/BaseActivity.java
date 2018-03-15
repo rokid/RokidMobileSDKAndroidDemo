@@ -17,7 +17,7 @@ import com.rokid.mobile.lib.base.util.Logger;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import static com.rokid.mobile.sdk.demo.java.application.RokidApplication.getContext;
+import static com.rokid.mobile.sdk.demo.java.DemoApplication.getContext;
 
 /**
  * Created by tt on 2018/2/28.

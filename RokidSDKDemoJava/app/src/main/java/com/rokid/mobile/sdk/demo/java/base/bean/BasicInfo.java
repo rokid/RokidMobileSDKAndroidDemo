@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.adapter.bean;
+package com.rokid.mobile.sdk.demo.java.base.bean;
 
 import com.google.gson.annotations.Expose;
 import com.rokid.mobile.lib.entity.BaseBean;

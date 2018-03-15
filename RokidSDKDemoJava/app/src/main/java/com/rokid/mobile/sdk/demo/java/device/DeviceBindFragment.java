@@ -15,7 +15,7 @@ import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean;
 import com.rokid.mobile.lib.entity.bean.wifi.WifiBean;
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.adapter.item.BleItem;
+import com.rokid.mobile.sdk.demo.java.base.item.BleItem;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 import com.rokid.mobile.sdk.demo.java.util.SoftKeyBoardUtil;
 import com.rokid.mobile.sdk.demo.java.util.WifiEngine;

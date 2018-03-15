@@ -6,7 +6,7 @@ import com.rokid.mobile.lib.xbase.account.callback.ILoginResultCallback;
 import com.rokid.mobile.lib.xbase.account.callback.ILogoutResultCallback;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.activity.MainActivity;
+import com.rokid.mobile.sdk.demo.java.DemoMainActivity;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
 /**
@@ -34,8 +34,8 @@ public class AccountLoginFragmentPresenter extends BaseFragmentPresenter<Account
                 Log.d(TAG, "login success");
                 getFragment().showView(true);
                 getFragment().showToastShort(getFragment().getString(R.string.fragment_login_success));
-                MainActivity.ISLOGIN = true;
-                MainActivity.UID = uid;
+                DemoMainActivity.ISLOGIN = true;
+                DemoMainActivity.UID = uid;
             }
 
             @Override
@@ -43,7 +43,7 @@ public class AccountLoginFragmentPresenter extends BaseFragmentPresenter<Account
                 Log.d(TAG, "login failed, errorCode = " + s + " , errorMsg =  " + s1);
                 getFragment().showToastShort(getFragment().getString(R.string.fragment_login_fail)
                         + "\n errorCode = " + s + " , errorMsg =  " + s1);
-                MainActivity.ISLOGIN = false;
+                DemoMainActivity.ISLOGIN = false;
             }
         });
     }
@@ -58,8 +58,8 @@ public class AccountLoginFragmentPresenter extends BaseFragmentPresenter<Account
                 Log.d(TAG, "logout success");
                 getFragment().showView(false);
                 getFragment().showToastShort(getFragment().getString(R.string.fragment_logout_success));
-                MainActivity.ISLOGIN = false;
-                MainActivity.UID = "";
+                DemoMainActivity.ISLOGIN = false;
+                DemoMainActivity.UID = "";
             }
 
             @Override

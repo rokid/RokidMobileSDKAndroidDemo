@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.adapter.BaseFragmentAdapter;
+import com.rokid.mobile.sdk.demo.java.base.BaseFragmentAdapter;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 

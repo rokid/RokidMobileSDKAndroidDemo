@@ -2,16 +2,12 @@ package com.rokid.mobile.sdk.demo.java.skill;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.DisplayMetrics;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
-import com.rokid.mobile.sdk.demo.java.util.DisplayUtils;
-import com.rokid.mobile.sdk.demo.java.util.webkit.DemoWebView;
+import com.rokid.mobile.sdk.demo.java.webkit.DemoWebView;
 
 import butterknife.BindView;
 

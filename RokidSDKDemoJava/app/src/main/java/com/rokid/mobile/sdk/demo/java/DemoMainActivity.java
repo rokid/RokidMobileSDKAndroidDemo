@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.activity;
+package com.rokid.mobile.sdk.demo.java;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.account.AccountIndexFragment;
 import com.rokid.mobile.sdk.demo.java.base.BaseActivity;
 import com.rokid.mobile.sdk.demo.java.device.DeviceIndexFragment;
@@ -22,9 +21,9 @@ import com.rokid.mobile.sdk.demo.java.view.NoScrollViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
+public class DemoMainActivity extends BaseActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
+    private static final String TAG = DemoMainActivity.class.getSimpleName();
 
     public static boolean ISLOGIN = false;
 
@@ -52,7 +51,7 @@ public class MainActivity extends BaseActivity {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         if (!ISLOGIN && !item.getTitle().equals(getString(R.string.bottom_navigation_account))) {
-                            Toast.makeText(MainActivity.this,
+                            Toast.makeText(DemoMainActivity.this,
                                     getString(R.string.activity_main_not_login_tip),
                                     Toast.LENGTH_SHORT).show();
                             return false;

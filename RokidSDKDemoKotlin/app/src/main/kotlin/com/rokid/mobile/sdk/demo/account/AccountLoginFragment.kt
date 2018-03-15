@@ -2,7 +2,6 @@ package com.rokid.mobile.sdk.demo.account
 
 import android.text.TextUtils
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.device.RKDevice

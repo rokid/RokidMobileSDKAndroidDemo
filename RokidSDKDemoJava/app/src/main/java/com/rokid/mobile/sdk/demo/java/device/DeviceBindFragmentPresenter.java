@@ -10,7 +10,7 @@ import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTSendCallBack;
 import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.activity.MainActivity;
+import com.rokid.mobile.sdk.demo.java.DemoMainActivity;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
 /**
@@ -66,7 +66,7 @@ public class DeviceBindFragmentPresenter extends BaseFragmentPresenter<DeviceBin
     public void sendBindData(String ssid, String pwd, String bssid) {
 
         DeviceBinderData binderData = DeviceBinderData.newBuilder()
-                .userId(MainActivity.UID)
+                .userId(DemoMainActivity.UID)
                 .wifiPwd(pwd)
                 .wifiSsid(ssid)
                 .wifiBssid(bssid)

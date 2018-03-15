@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.util.webkit;
+package com.rokid.mobile.sdk.demo.java.webkit;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,10 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebSettings;
+import android.webkit.WebViewClient;
 
 import com.rokid.mobile.lib.base.util.Logger;
+import com.rokid.mobile.sdk.demo.java.DemoMainActivity;
 import com.rokid.mobile.sdk.webkit.SDKWebview;
 import com.rokid.mobile.webview.lib.bean.TitleBarButton;
 
@@ -64,8 +66,8 @@ public class DemoWebView extends SDKWebview {
             webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
 
-        this.setWebViewClient(new DemoWebViewClient(webBridge));
-        this.setWebChromeClient(new DemoWebChromeClient());
+        this.setWebViewClient(new WebViewClient());
+        this.setWebChromeClient(new DemoWebChromeClient(webBridge));
     }
 
     private void initListener() {
@@ -142,6 +144,14 @@ public class DemoWebView extends SDKWebview {
         intent.setData(content_url);
 
         activityWeak.get().startActivity(intent);
+    }
+
+    @Override
+    public void goBack(String module, String page) {
+        if (module.equals("homebase") && page.equals("index")) {
+            Intent intent = new Intent(activityWeak.get(), DemoMainActivity.class);
+            activityWeak.get().startActivity(intent);
+        }
     }
 
     @Override

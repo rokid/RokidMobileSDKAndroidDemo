@@ -1,20 +1,16 @@
 package com.rokid.mobile.sdk.demo.java.skill;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.rokid.mobile.lib.base.util.Logger;
-import com.rokid.mobile.lib.entity.bean.skill.AlarmContentBean;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.annotation.SDKRepeatType;
 import com.rokid.mobile.sdk.bean.SDKAlarm;
@@ -22,9 +18,7 @@ import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseActivity;
 import com.rokid.mobile.sdk.demo.java.view.IconTextView;
 
-import butterknife.BindView;
-
-import static com.rokid.mobile.sdk.demo.java.application.RokidApplication.getContext;
+import static com.rokid.mobile.sdk.demo.java.DemoApplication.getContext;
 
 public class SkillAlarmAddActivity extends BaseActivity {
 

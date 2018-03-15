@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.adapter;
+package com.rokid.mobile.sdk.demo.java.base;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

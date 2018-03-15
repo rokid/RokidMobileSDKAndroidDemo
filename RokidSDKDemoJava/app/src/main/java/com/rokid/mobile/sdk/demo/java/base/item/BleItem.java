@@ -1,4 +1,4 @@
-package com.rokid.mobile.sdk.demo.java.adapter.item;
+package com.rokid.mobile.sdk.demo.java.base.item;
 
 import android.text.TextUtils;
 import android.view.View;
