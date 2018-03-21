@@ -44,6 +44,7 @@ public class OtherIndexFragment extends BaseFragment {
         moreTab.setupWithViewPager(moreVp);
         List<BaseFragmentAdapter.Node> moreList = new ArrayList<>();
         moreList.add(new BaseFragmentAdapter.Node("消息", new OtherMessageFragment()));
+        moreList.add(new BaseFragmentAdapter.Node("card列表", new CardListFragment()));
         BaseFragmentAdapter mAdapter = new BaseFragmentAdapter(getFragmentManager(), moreList);
 
         moreVp.setAdapter(mAdapter);

@@ -67,5 +67,6 @@
 
     <!--fragmetn of message-->
     <string name="fragment_message_info">等待接收消息：</string>
-
+    <string name="fragment_card_list_fail">获取card列表失败</string>
+    <string name="fragment_card_list_empty">card列表为空</string>
 </resources>
