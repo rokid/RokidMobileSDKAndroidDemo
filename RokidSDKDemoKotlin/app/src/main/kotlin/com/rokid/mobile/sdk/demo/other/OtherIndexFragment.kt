@@ -29,7 +29,7 @@ class OtherIndexFragment : BaseFragment() {
     object OtherData {
         val fragmentList = listOf(
                 BaseFragmentAdapter.Companion.Node("消息", EventFragment()),
-                BaseFragmentAdapter.Companion.Node("消息", CardListFragment())
+                BaseFragmentAdapter.Companion.Node("card列表", CardListFragment())
         )
     }
 
