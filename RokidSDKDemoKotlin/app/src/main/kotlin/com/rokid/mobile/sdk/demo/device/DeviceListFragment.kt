@@ -1,16 +1,11 @@
 package com.rokid.mobile.sdk.demo.device
 
 import android.content.Context
-import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
-import android.widget.Toast
 import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.device.RKDevice
@@ -20,19 +15,11 @@ import com.rokid.mobile.lib.xbase.device.callback.IUnbindDeviceCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
-import com.rokid.mobile.sdk.demo.base.TypeConstants
-import com.rokid.mobile.sdk.demo.base.adapter.data.ActionData
-import com.rokid.mobile.sdk.demo.base.adapter.item.ActionItem
 import com.rokid.mobile.sdk.demo.base.adapter.item.DeviceItem
-import com.rokid.mobile.sdk.demo.base.adapter.item.UnbindItem
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter
-import com.rokid.mobile.ui.recyclerview.item.BaseItem
-import kotlinx.android.synthetic.main.device_fragment_list.*
 import kotlinx.android.synthetic.main.device_fragment_list.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
-import java.util.*
-import kotlin.collections.ArrayList
 
 /**
  * Created by wangshuwen on 2017/12/4.

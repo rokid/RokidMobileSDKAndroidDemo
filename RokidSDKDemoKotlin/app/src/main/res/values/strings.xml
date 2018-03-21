@@ -7,4 +7,9 @@
     <string name="icon_device">&#xe650;</string>
     <string name="icon_skill">&#xe627;</string>
     <string name="icon_other">&#xe67d;</string>
+
+
+    <string name="fragment_card_list_fail">获取card列表失败</string>
+    <string name="fragment_card_list_empty">card列表为空</string>
+    <string name="fragment_card_list_action">获取Card列表</string>
 </resources>
