@@ -1,8 +1,8 @@
 package com.rokid.mobile.sdk.demo.java.skill;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -23,9 +23,11 @@ import java.util.Map;
 
 import static com.rokid.mobile.sdk.demo.java.DemoApplication.getContext;
 
-public class SkillAlarmAddActivity extends BaseActivity {
+public class SkillAlarmUpdateActivity extends BaseActivity {
 
     public final static String DEVICE_ID = "device_id";
+
+    public final static String ALARM = "alarm";
 
     private RelativeLayout titlebarLl;
 
@@ -33,33 +35,34 @@ public class SkillAlarmAddActivity extends BaseActivity {
 
     private TextView titleTxt;
 
-    private DatePicker datePicker;
-
     private TimePicker timePicker;
 
-    private Button addBtn;
+    private Button updateBtn;
 
     private String deviceId;
 
+    private SDKAlarm oldAlarm;
+
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_skill_alarm_add;
+        return R.layout.activity_skill_alarm_update;
     }
 
     @Override
     protected void initVariables(@Nullable Bundle savedInstanceState) {
-        titlebarLl = findViewById(R.id.alarm_add_titlebar);
+        titlebarLl = findViewById(R.id.alarm_update_titlebar);
         backIcon = titlebarLl.findViewById(R.id.base_titlebar_left);
         titleTxt = titlebarLl.findViewById(R.id.base_titlebar_title);
 
-        datePicker = findViewById(R.id.alarm_date);
         timePicker = findViewById(R.id.alarm_time);
-        addBtn = findViewById(R.id.alarm_add_btn);
+        updateBtn = findViewById(R.id.alarm_update_btn);
 
-        titleTxt.setText("添加闹钟");
+        titleTxt.setText("修改闹钟");
         initTimerPicker();
 
         deviceId = getIntent().getStringExtra(DEVICE_ID);
+
+        oldAlarm = getIntent().getParcelableExtra(ALARM);
     }
 
     @Override
@@ -71,31 +74,28 @@ public class SkillAlarmAddActivity extends BaseActivity {
             }
         });
 
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addAlarm();
+                updateAlarm();
             }
         });
     }
 
-    private void addAlarm() {
+    private void updateAlarm() {
         Map<String, String> map = new HashMap<>();
-        map.put("TestKey", "TestValue");
+        map.put("NewTestKey", "NewTestValue");
 
-        SDKAlarm alarm = SDKAlarm.builder()
-                .year(datePicker.getYear())
-                .month(datePicker.getMonth() + 1)
-                .day(datePicker.getDayOfMonth())
+        SDKAlarm newAlarm = SDKAlarm.builder()
                 .hour(timePicker.getCurrentHour())
                 .minute(timePicker.getCurrentMinute())
                 .repeatType(SDKRepeatType.EVERY_MONDAY)
                 .ext(map)
                 .build();
 
-        boolean isSuccess = RokidMobileSDK.skill.alarm().add(deviceId, alarm);
+        boolean isSuccess = RokidMobileSDK.skill.alarm().update(deviceId, oldAlarm, newAlarm);
 
-        showToastShort(isSuccess ? "添加闹钟成功" : "添加闹钟失败");
+        showToastShort(isSuccess ? "修改闹钟成功" : "修改闹钟失败");
 
         if (isSuccess) {
             finish();

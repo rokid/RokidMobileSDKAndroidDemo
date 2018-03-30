@@ -31,6 +31,15 @@
         android:text="添加闹钟" />
 
     <Button
+        android:id="@+id/skill_alarm_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="修改闹钟" />
+
+    <Button
         android:id="@+id/skill_alarm_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
