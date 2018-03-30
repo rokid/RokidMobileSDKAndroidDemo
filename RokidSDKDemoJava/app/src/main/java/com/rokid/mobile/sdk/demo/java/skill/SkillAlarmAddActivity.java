@@ -18,6 +18,9 @@ import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseActivity;
 import com.rokid.mobile.sdk.demo.java.view.IconTextView;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.rokid.mobile.sdk.demo.java.DemoApplication.getContext;
 
 public class SkillAlarmAddActivity extends BaseActivity {
@@ -77,6 +80,9 @@ public class SkillAlarmAddActivity extends BaseActivity {
     }
 
     private void addAlarm() {
+        Map<String, String> map = new HashMap<>();
+        map.put("TestKey", "TestValue");
+
         SDKAlarm alarm = SDKAlarm.builder()
                 .year(datePicker.getYear())
                 .month(datePicker.getMonth() + 1)
@@ -84,6 +90,7 @@ public class SkillAlarmAddActivity extends BaseActivity {
                 .hour(timePicker.getCurrentHour())
                 .minute(timePicker.getCurrentMinute())
                 .repeatType(SDKRepeatType.EVERY_MONDAY)
+                .ext(map)
                 .build();
 
         boolean isSuccess = RokidMobileSDK.skill.alarm().add(deviceId, alarm);

@@ -5,10 +5,11 @@ import com.google.gson.Gson
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.device.RKDevice
 import com.rokid.mobile.lib.entity.event.skill.EventRemindBean
-import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
+import com.rokid.mobile.sdk.bean.SDKDevice
 import com.rokid.mobile.sdk.bean.SDKRemind
 import com.rokid.mobile.sdk.callback.GetRemindListCallback
+import com.rokid.mobile.sdk.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.skill_fragment_remind.view.*
@@ -29,7 +30,7 @@ class SkillRemindFragment : BaseFragment() {
     }
 
     override fun initListeners() {
-        rootView!!.skill_remind_list.setOnClickListener here@{
+        rootView!!.skill_remind_list.setOnClickListener here@ {
             val deviceId = rootView!!.skill_remind_device_id.selectedItem.toString()
             if (deviceId.isEmpty()) {
                 toast("请正确输入 SN")
@@ -63,7 +64,7 @@ class SkillRemindFragment : BaseFragment() {
     private fun setDeviceList() {
         RokidMobileSDK.device.getDeviceList(object : IGetDeviceListCallback {
 
-            override fun onGetDeviceListSucceed(deviceList: MutableList<RKDevice>?) {
+            override fun onGetDeviceListSucceed(deviceList: MutableList<SDKDevice>?) {
                 if (null == deviceList || deviceList.size < 1) {
                     toast("设备列表为空")
                     return

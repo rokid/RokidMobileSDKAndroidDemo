@@ -48,6 +48,9 @@ class SkillAlarmUpdateActivity : BaseActivity() {
                 hour = alarm_time.hour
                 minute = alarm_time.minute
                 repeatType = SDKRepeatType.EVERY_MONDAY
+                ext = HashMap<String, String>().apply {
+                    put("NewTestKey", "NewTestValue")
+                }
             }
 
             val succeed = RokidMobileSDK.skill.alarm().update(deviceId!!, alarm, sdkAlarm)

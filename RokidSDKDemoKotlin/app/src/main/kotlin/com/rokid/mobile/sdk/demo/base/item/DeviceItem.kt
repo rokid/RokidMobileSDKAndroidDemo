@@ -1,7 +1,7 @@
 package com.rokid.mobile.sdk.demo.base.adapter.item
 
 import android.view.View
-import com.rokid.mobile.lib.entity.bean.device.RKDevice
+import com.rokid.mobile.sdk.bean.SDKDevice
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.ui.recyclerview.item.BaseItem
 import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder
@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.device_item_list.view.*
 
 typealias Unbind = () -> Unit
 
-class DeviceItem(data: RKDevice, var unbind: Unbind) : BaseItem<RKDevice>(data) {
+class DeviceItem(data: SDKDevice, var unbind: Unbind) : BaseItem<SDKDevice>(data) {
 
     val DeviceItem_ITEM_TYPE = 0
 

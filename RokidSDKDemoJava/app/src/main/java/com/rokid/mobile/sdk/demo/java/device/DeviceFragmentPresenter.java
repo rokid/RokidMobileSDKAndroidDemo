@@ -1,9 +1,10 @@
 package com.rokid.mobile.sdk.demo.java.device;
 
 import com.rokid.mobile.lib.entity.bean.device.RKDevice;
-import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback;
 import com.rokid.mobile.lib.xbase.device.callback.IUnbindDeviceCallback;
 import com.rokid.mobile.sdk.RokidMobileSDK;
+import com.rokid.mobile.sdk.bean.SDKDevice;
+import com.rokid.mobile.sdk.callback.IGetDeviceListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
@@ -21,7 +22,7 @@ public class DeviceFragmentPresenter extends BaseFragmentPresenter<DeviceListFra
     public void getDeviceList() {
         RokidMobileSDK.device.getDeviceList(new IGetDeviceListCallback() {
             @Override
-            public void onGetDeviceListSucceed(List<RKDevice> list) {
+            public void onGetDeviceListSucceed(List<SDKDevice> list) {
                 getFragment().setDeviceListData(list);
             }
 

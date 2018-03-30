@@ -12,9 +12,10 @@ import android.widget.ProgressBar;
 
 import com.rokid.mobile.lib.base.util.CollectionUtils;
 import com.rokid.mobile.lib.entity.bean.device.RKDevice;
+import com.rokid.mobile.sdk.bean.SDKDevice;
 import com.rokid.mobile.sdk.demo.java.R;
-import com.rokid.mobile.sdk.demo.java.base.item.DeviceItem;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
+import com.rokid.mobile.sdk.demo.java.base.item.DeviceItem;
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter;
 
 import java.util.ArrayList;
@@ -95,7 +96,7 @@ public class DeviceListFragment extends BaseFragment<DeviceFragmentPresenter> {
         }
     }
 
-    public void setDeviceListData(List<RKDevice> itemList) {
+    public void setDeviceListData(List<SDKDevice> itemList) {
         progressBar.setVisibility(View.GONE);
         if (CollectionUtils.isEmpty(itemList)) {
             showToast(getString(R.string.fragment_device_list_empty));

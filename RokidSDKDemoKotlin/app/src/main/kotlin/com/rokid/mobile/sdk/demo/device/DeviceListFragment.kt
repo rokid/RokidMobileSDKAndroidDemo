@@ -8,11 +8,11 @@ import android.widget.Button
 import android.widget.ProgressBar
 import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.base.util.Logger
-import com.rokid.mobile.lib.entity.bean.device.RKDevice
 import com.rokid.mobile.lib.entity.event.device.EventDeviceSysUpdate
-import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback
 import com.rokid.mobile.lib.xbase.device.callback.IUnbindDeviceCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
+import com.rokid.mobile.sdk.bean.SDKDevice
+import com.rokid.mobile.sdk.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import com.rokid.mobile.sdk.demo.base.adapter.item.DeviceItem
@@ -69,7 +69,7 @@ class DeviceListFragment : BaseFragment() {
                 toast("获取设备列表失败 errorCode=" + (p0 ?: "") + "errorMsg= " + (p1 ?: ""))
             }
 
-            override fun onGetDeviceListSucceed(deviceList: MutableList<RKDevice>?) {
+            override fun onGetDeviceListSucceed(deviceList: MutableList<SDKDevice>?) {
                 progressBar.visibility = View.GONE
                 if (CollectionUtils.isEmpty(deviceList)) {
                     toast("设备列表为空")

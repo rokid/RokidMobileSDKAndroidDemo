@@ -1,16 +1,14 @@
 package com.rokid.mobile.sdk.demo.skill
 
 import android.content.Intent
-import android.widget.*
+import android.widget.ArrayAdapter
+import android.widget.TextView
 import com.google.gson.Gson
-import com.rokid.mobile.lib.base.util.CollectionUtils
-import com.rokid.mobile.lib.entity.bean.device.RKDevice
-import com.rokid.mobile.lib.entity.bean.skill.AlarmContentBean
-import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback
-import com.rokid.mobile.sdk.BuildConfig
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.bean.SDKAlarm
+import com.rokid.mobile.sdk.bean.SDKDevice
 import com.rokid.mobile.sdk.callback.GetAlarmListCallback
+import com.rokid.mobile.sdk.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.skill_fragment_alarm.*
@@ -92,7 +90,7 @@ class SkillAlarmFragment : BaseFragment() {
     private fun setDeviceList() {
         RokidMobileSDK.device.getDeviceList(object : IGetDeviceListCallback {
 
-            override fun onGetDeviceListSucceed(deviceList: MutableList<RKDevice>?) {
+            override fun onGetDeviceListSucceed(deviceList: MutableList<SDKDevice>?) {
                 if (null == deviceList || deviceList.size < 1) {
                     toast("设备列表为空")
                     return

@@ -12,17 +12,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.rokid.mobile.lib.base.util.Logger;
-import com.rokid.mobile.lib.entity.bean.device.RKDevice;
-import com.rokid.mobile.lib.entity.event.skill.EventAlarmBean;
 import com.rokid.mobile.sdk.bean.SDKAlarm;
+import com.rokid.mobile.sdk.bean.SDKDevice;
 import com.rokid.mobile.sdk.callback.GetAlarmListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,9 +99,9 @@ public class SkillAlarmFragment extends BaseFragment<SkillAlarmFragmentPresenter
         });
     }
 
-    public void setDeviceListInfo(List<RKDevice> deviceList) {
+    public void setDeviceListInfo(List<SDKDevice> deviceList) {
         List<String> deviceIdList = new ArrayList<>();
-        for (RKDevice rkDevice : deviceList) {
+        for (SDKDevice rkDevice : deviceList) {
             String deviceId = rkDevice.getRokiId();
             deviceIdList.add(deviceId);
         }

@@ -2,9 +2,9 @@ package com.rokid.mobile.sdk.demo.base.adapter.item
 
 import android.view.View
 import android.widget.Toast
-import com.rokid.mobile.lib.entity.bean.device.RKDevice
-import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
+import com.rokid.mobile.sdk.bean.SDKDevice
+import com.rokid.mobile.sdk.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.TypeConstants
 import com.rokid.mobile.sdk.demo.base.adapter.data.ActionData
@@ -58,7 +58,7 @@ class ActionItem(data: ActionData) : BaseItem<ActionData>(data) {
     fun getDeviceList() {
 
         RokidMobileSDK.device.getDeviceList(object : IGetDeviceListCallback {
-            override fun onGetDeviceListSucceed(p0: MutableList<RKDevice>?) {
+            override fun onGetDeviceListSucceed(p0: MutableList<SDKDevice>?) {
 
                 RokidMobileSDK.device.getVersionInfo(p0!![0].rokiId)
 
