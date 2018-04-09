@@ -2,9 +2,6 @@ package com.rokid.mobile.sdk.demo.skill
 
 import android.widget.ArrayAdapter
 import com.google.gson.Gson
-import com.rokid.mobile.lib.base.util.Logger
-import com.rokid.mobile.lib.entity.bean.device.RKDevice
-import com.rokid.mobile.lib.entity.event.skill.EventRemindBean
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.bean.SDKDevice
 import com.rokid.mobile.sdk.bean.SDKRemind
@@ -13,9 +10,6 @@ import com.rokid.mobile.sdk.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.skill_fragment_remind.view.*
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 /**
  * Description: TODO
