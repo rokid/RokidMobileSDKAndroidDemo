@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.rokid.mobile.lib.base.util.CollectionUtils;
-import com.rokid.mobile.lib.entity.bean.device.RKDevice;
 import com.rokid.mobile.sdk.bean.SDKDevice;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
@@ -105,7 +104,7 @@ public class DeviceListFragment extends BaseFragment<DeviceFragmentPresenter> {
         }
 
         List<DeviceItem> deviceItemList = new ArrayList<>();
-        for (RKDevice rkDevice : itemList) {
+        for (SDKDevice rkDevice : itemList) {
             DeviceItem deviceItem = new DeviceItem(rkDevice);
             deviceItemList.add(deviceItem);
             setUnbindDeviceClick(deviceItem);
@@ -117,7 +116,7 @@ public class DeviceListFragment extends BaseFragment<DeviceFragmentPresenter> {
     private void setUnbindDeviceClick(DeviceItem deviceItem) {
         deviceItem.setUnbindClickListener(new DeviceItem.UnbindClickListener() {
             @Override
-            public void getCurrentItem(RKDevice currentItem) {
+            public void getCurrentItem(SDKDevice currentItem) {
                 if (null == currentItem) {
                     return;
                 }

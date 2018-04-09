@@ -55,6 +55,9 @@ class DeviceListFragment : BaseFragment() {
         }
 
         mAdapter.setOnItemViewClickListener { deviceItem, sectionKey, sectionItemPosition ->
+            if (deviceItem == null) {
+                return@setOnItemViewClickListener
+            }
             Logger.i("onItemClick position=" + sectionItemPosition + " deviceId=" + deviceItem.data.rokiId)
             toast(deviceItem.data.toString())
         }

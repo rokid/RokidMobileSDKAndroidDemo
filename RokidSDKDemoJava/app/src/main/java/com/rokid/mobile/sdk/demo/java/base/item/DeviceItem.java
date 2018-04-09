@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.rokid.mobile.lib.entity.bean.device.RKDevice;
+import com.rokid.mobile.sdk.bean.SDKDevice;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.ui.recyclerview.item.BaseItem;
 import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder;
@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
  * Created by tt on 2018/2/24.
  */
 
-public class DeviceItem extends BaseItem<RKDevice> {
+public class DeviceItem extends BaseItem<SDKDevice> {
 
     @BindView(R.id.fragment_device_id)
     TextView deviceId;
@@ -25,7 +25,7 @@ public class DeviceItem extends BaseItem<RKDevice> {
     @BindView(R.id.fragment_device_unbind)
     TextView unbindTxt;
 
-    public DeviceItem(RKDevice data) {
+    public DeviceItem(SDKDevice data) {
         super(data);
     }
 
@@ -59,7 +59,7 @@ public class DeviceItem extends BaseItem<RKDevice> {
     }
 
     public interface UnbindClickListener {
-        void getCurrentItem(RKDevice currentItem);
+        void getCurrentItem(SDKDevice currentItem);
     }
 
     public DeviceItem.UnbindClickListener unbindClickListener;
