@@ -98,7 +98,7 @@ class SkillAlarmFragment : BaseFragment() {
 
                 val deviceIdList: MutableList<String> = mutableListOf()
                 deviceList.forEach {
-                    deviceIdList.add(it.rokiId)
+                    deviceIdList.add(it.deviceId)
                 }
 
                 skill_alarm_device_id.adapter = ArrayAdapter<String>(activity,

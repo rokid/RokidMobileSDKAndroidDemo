@@ -121,11 +121,11 @@ public class DeviceListFragment extends BaseFragment<DeviceFragmentPresenter> {
                     return;
                 }
 
-                if (TextUtils.isEmpty(currentItem.getRokiId())) {
+                if (TextUtils.isEmpty(currentItem.getDeviceId())) {
                     return;
                 }
 
-                getPresenter().unbindDevice(currentItem.getRokiId());
+                getPresenter().unbindDevice(currentItem.getDeviceId());
             }
         });
     }

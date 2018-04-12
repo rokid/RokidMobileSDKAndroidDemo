@@ -58,7 +58,7 @@ class DeviceListFragment : BaseFragment() {
             if (deviceItem == null) {
                 return@setOnItemViewClickListener
             }
-            Logger.i("onItemClick position=" + sectionItemPosition + " deviceId=" + deviceItem.data.rokiId)
+            Logger.i("onItemClick position=" + sectionItemPosition + " deviceId=" + deviceItem.data.deviceId)
             toast(deviceItem.data.toString())
         }
     }
@@ -83,7 +83,7 @@ class DeviceListFragment : BaseFragment() {
                 val deviceItemList = ArrayList<DeviceItem>()
                 deviceList!!.forEachIndexed { index, rkDevice ->
                     deviceItemList.add(DeviceItem(rkDevice, {
-                        RokidMobileSDK.device.unbindDevice(rkDevice.rokiId!!, object : IUnbindDeviceCallback {
+                        RokidMobileSDK.device.unbindDevice(rkDevice.deviceId!!, object : IUnbindDeviceCallback {
                             override fun onUnbindDeviceSucceed() {
                                 toast("解绑设备成功")
                                 mAdapter.removeItemView(index)

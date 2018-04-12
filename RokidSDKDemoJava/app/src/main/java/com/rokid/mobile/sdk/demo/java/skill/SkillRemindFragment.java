@@ -89,7 +89,7 @@ public class SkillRemindFragment extends BaseFragment<SkillRemindFragmentPresent
     public void setDeviceListInfo(List<SDKDevice> deviceList) {
         List<String> deviceIdList = new ArrayList<>();
         for (SDKDevice rkDevice : deviceList) {
-            String deviceId = rkDevice.getRokiId();
+            String deviceId = rkDevice.getDeviceId();
             deviceIdList.add(deviceId);
         }
 

@@ -27,7 +27,7 @@ class DeviceItem(data: SDKDevice, var unbind: Unbind) : BaseItem<SDKDevice>(data
 
     override fun onSetViewsData(holder: BaseViewHolder?, sectionKey: Int, sectionViewPosition: Int) {
         holder!!.itemView.apply {
-            fragment_device_id.text = data.rokiId
+            fragment_device_id.text = data.deviceId
             fragment_device_id.visibility = View.VISIBLE
             fragment_device_unbind.visibility = View.VISIBLE
 

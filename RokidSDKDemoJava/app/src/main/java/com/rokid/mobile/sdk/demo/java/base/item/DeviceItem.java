@@ -49,8 +49,8 @@ public class DeviceItem extends BaseItem<SDKDevice> {
 
     @Override
     public void onSetViewsData(BaseViewHolder holder, int sectionKey, int sectionViewPosition) {
-        if (!TextUtils.isEmpty(getData().getRokiId())) {
-            deviceId.setText(getData().getRokiId());
+        if (!TextUtils.isEmpty(getData().getDeviceId())) {
+            deviceId.setText(getData().getDeviceId());
             deviceId.setVisibility(View.VISIBLE);
             unbindTxt.setVisibility(View.VISIBLE);
 

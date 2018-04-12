@@ -66,7 +66,7 @@ class SkillRemindFragment : BaseFragment() {
 
                 val deviceIdList: MutableList<String> = mutableListOf()
                 deviceList.forEach {
-                    deviceIdList.add(it.rokiId)
+                    deviceIdList.add(it.deviceId)
                 }
 
                 rootView!!.skill_remind_device_id.adapter = ArrayAdapter<String>(activity,

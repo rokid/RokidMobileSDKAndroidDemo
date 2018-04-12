@@ -60,7 +60,7 @@ class ActionItem(data: ActionData) : BaseItem<ActionData>(data) {
         RokidMobileSDK.device.getDeviceList(object : IGetDeviceListCallback {
             override fun onGetDeviceListSucceed(p0: MutableList<SDKDevice>?) {
 
-                RokidMobileSDK.device.getVersionInfo(p0!![0].rokiId)
+                RokidMobileSDK.device.getVersionInfo(p0!![0].deviceId)
 
                 holder.itemView.post {
                     Toast.makeText(holder.context, "获取设备列表成功 " + p0.let { p0.toString() }, Toast.LENGTH_LONG).show()

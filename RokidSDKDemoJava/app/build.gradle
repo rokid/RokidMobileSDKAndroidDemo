@@ -9,6 +9,8 @@ android {
         minSdkVersion 19
         targetSdkVersion 22
         versionCode 180228001
+
+
         versionName "1.0.0"
 
         ndk {
@@ -58,7 +60,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.0.8-180409012', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.0.8-180412011', ext: "aar")
 
     // 第三方库
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
