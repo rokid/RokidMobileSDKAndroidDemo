@@ -23,7 +23,7 @@ class SDKDemoApplication : Application() {
         RokidMobileSDK.init(this,
                 "rokid-demo",
                 "rokid-demo-secret",
-                "",
+                "rokid-demo-accessKey",
                 object : InitCompletedCallback {
                     override fun onInitFailed(p0: String?, p1: String?) {
                     }

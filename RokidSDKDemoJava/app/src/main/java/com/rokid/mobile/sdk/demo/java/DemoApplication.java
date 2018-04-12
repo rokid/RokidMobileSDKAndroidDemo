@@ -26,9 +26,9 @@ public class DemoApplication extends Application {
         instance = this;
         //initial rokid sdk
         RokidMobileSDK.init(this,
-                "your rokid appKey",
-                "your rokid appSecret",
-                "your rokid accessKey",
+                "rokid-demo",
+                "rokid-demo-secret",
+                "rokid-demo-accessKey",
                 new InitCompletedCallback() {
                     @Override
                     public void onInitSuccess() {
