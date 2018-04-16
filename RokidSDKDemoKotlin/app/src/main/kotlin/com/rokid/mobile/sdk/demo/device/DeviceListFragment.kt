@@ -8,7 +8,9 @@ import android.widget.Button
 import android.widget.ProgressBar
 import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.base.util.Logger
+import com.rokid.mobile.lib.entity.event.device.EventDeviceStatus
 import com.rokid.mobile.lib.entity.event.device.EventDeviceSysUpdate
+import com.rokid.mobile.lib.xbase.device.callback.IPingDeviceCallback
 import com.rokid.mobile.lib.xbase.device.callback.IUnbindDeviceCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.bean.SDKDevice
@@ -60,6 +62,7 @@ class DeviceListFragment : BaseFragment() {
             }
             Logger.i("onItemClick position=" + sectionItemPosition + " deviceId=" + deviceItem.data.deviceId)
             toast(deviceItem.data.toString())
+//            getDeviceStatus(deviceItem.data)
         }
     }
 
@@ -111,6 +114,18 @@ class DeviceListFragment : BaseFragment() {
     @Subscribe
     fun onSysInfo(eventDeviceSysUpdate: EventDeviceSysUpdate) {
         Logger.e("onSysInfo eventDeviceSysUpdate" + eventDeviceSysUpdate.toString())
+    }
+
+    fun getDeviceStatus(sddDevice: SDKDevice) {
+        RokidMobileSDK.device.pingDevice(sddDevice, object : IPingDeviceCallback {
+            override fun onSuccess(p0: EventDeviceStatus?) {
+                toast("获取设备状态成功，" + p0.toString())
+            }
+
+            override fun onFailed(p0: String?, p1: String?) {
+                toast("获取设备状态失败，errorCode=" + (p0 ?: "") + "errorMsg= " + (p1 ?: ""))
+            }
+        })
     }
 
 }

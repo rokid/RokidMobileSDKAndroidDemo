@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 
 import com.rokid.mobile.lib.base.util.CollectionUtils;
+import com.rokid.mobile.lib.entity.event.device.EventDeviceStatus;
+import com.rokid.mobile.lib.xbase.device.callback.IPingDeviceCallback;
+import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.bean.SDKDevice;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
@@ -81,6 +84,7 @@ public class DeviceListFragment extends BaseFragment<DeviceFragmentPresenter> {
                 }
 
                 showToast(deviceItem.getData().toString());
+//                pingDevice(deviceItem.getData());
             }
         });
 
@@ -133,4 +137,21 @@ public class DeviceListFragment extends BaseFragment<DeviceFragmentPresenter> {
     public void showToast(String text) {
         showToastShort(text);
     }
+
+    private void pingDevice(SDKDevice sddDevice) {
+        RokidMobileSDK.device.pingDevice(sddDevice, new IPingDeviceCallback() {
+
+            @Override
+            public void onSuccess(EventDeviceStatus eventDeviceStatus) {
+                showToast("获取设备状态成功，" + eventDeviceStatus.toString());
+            }
+
+            @Override
+            public void onFailed(String s, String s1) {
+                showToast("获取设备状态失败，errorCode=" + s + "errorMsg= " + s1);
+            }
+        });
+    }
+
+
 }
