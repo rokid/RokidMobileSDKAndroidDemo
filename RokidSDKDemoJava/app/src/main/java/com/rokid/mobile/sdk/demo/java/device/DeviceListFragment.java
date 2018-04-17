@@ -83,8 +83,8 @@ public class DeviceListFragment extends BaseFragment<DeviceFragmentPresenter> {
                     return;
                 }
 
-                showToast(deviceItem.getData().toString());
-//                pingDevice(deviceItem.getData());
+//                showToast(deviceItem.getData().toString());
+                pingDevice(deviceItem.getData());
             }
         });
 
@@ -142,13 +142,13 @@ public class DeviceListFragment extends BaseFragment<DeviceFragmentPresenter> {
         RokidMobileSDK.device.pingDevice(sddDevice, new IPingDeviceCallback() {
 
             @Override
-            public void onSuccess(EventDeviceStatus eventDeviceStatus) {
-                showToast("获取设备状态成功，" + eventDeviceStatus.toString());
+            public void onSuccess(String deviceId, boolean isOnline) {
+                showToast("获取设备状态成功,deviceId=" + deviceId + ",isOnline=" + isOnline);
             }
 
             @Override
-            public void onFailed(String s, String s1) {
-                showToast("获取设备状态失败，errorCode=" + s + "errorMsg= " + s1);
+            public void onFailed(String deviceId, String errorCode, String errorMsg) {
+                showToast("获取设备状态失败，deviceId" + deviceId + ",errorCode=" + errorCode + "errorMsg= " + errorMsg);
             }
         });
     }
