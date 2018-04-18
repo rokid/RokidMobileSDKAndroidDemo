@@ -118,11 +118,11 @@ class DeviceListFragment : BaseFragment() {
 
     fun getDeviceStatus(sddDevice: SDKDevice) {
         RokidMobileSDK.device.pingDevice(sddDevice, object : IPingDeviceCallback {
-            override fun onSuccess(p0: EventDeviceStatus?) {
+            override fun onSuccess(p0: String?, p1: Boolean) {
                 toast("获取设备状态成功，" + p0.toString())
             }
 
-            override fun onFailed(p0: String?, p1: String?) {
+            override fun onFailed(p0: String?, p1: String?, p2: String?) {
                 toast("获取设备状态失败，errorCode=" + (p0 ?: "") + "errorMsg= " + (p1 ?: ""))
             }
         })

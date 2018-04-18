@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.webkit.WebSettings
@@ -14,6 +15,7 @@ import com.rokid.mobile.sdk.demo.SDKDemoActivity
 import com.rokid.mobile.sdk.webkit.SDKWebview
 import com.rokid.mobile.webview.lib.bean.TitleBarButton
 import java.lang.ref.WeakReference
+import java.util.logging.Logger
 
 /**
  * Description: TODO
@@ -60,15 +62,29 @@ class DemoWebview : SDKWebview {
         webViewClient = WebViewClient()
     }
 
-    private fun initListener(){
+    private fun initListener() {
         setOnTouchListener(object : OnTouchListener {
             override fun onTouch(v: View?, event: MotionEvent?): Boolean {
+
                 when (event?.action) {
                     MotionEvent.ACTION_DOWN -> {
+                        Log.d("DemoWebview", "ACTION_DOWN:" + isMove)
+                        this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
+                    }
+
+                    MotionEvent.ACTION_MOVE -> {
+                        Log.d("DemoWebview", "ACTION_MOVE:" + isMove)
+                        this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
+                    }
+
+                    MotionEvent.ACTION_CANCEL -> {
+                        Log.d("DemoWebview", "ACTION_CANCEL:" + isMove)
                         this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
                     }
 
                     MotionEvent.ACTION_UP -> {
+                        Log.d("DemoWebview", "ACTION_UP:" + isMove)
+
                         this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
                     }
                 }
@@ -80,6 +96,8 @@ class DemoWebview : SDKWebview {
 
     // here is BridgeModulePhoneDelegate
     override fun touchDown() {
+        Log.d("DemoWebview", "touchDown:" + isMove)
+
         isMove = true
     }
 
@@ -87,6 +105,8 @@ class DemoWebview : SDKWebview {
     }
 
     override fun touchUp() {
+        Log.d("DemoWebview", "touchUp:" + isMove)
+
         isMove = false
     }
 

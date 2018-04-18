@@ -78,6 +78,12 @@ public class DemoWebView extends SDKWebview {
                     case MotionEvent.ACTION_DOWN:
                         requestDisallowInterceptTouchEvent(isMove);
                         break;
+                    case MotionEvent.ACTION_MOVE:
+                        requestDisallowInterceptTouchEvent(isMove);
+                        break;
+                    case MotionEvent.ACTION_CANCEL:
+                        requestDisallowInterceptTouchEvent(isMove);
+                        break;
                     case MotionEvent.ACTION_UP:
                         isMove = false;
                         requestDisallowInterceptTouchEvent(isMove);
