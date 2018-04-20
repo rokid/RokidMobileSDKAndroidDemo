@@ -12,4 +12,8 @@
     <string name="fragment_card_list_fail">获取card列表失败</string>
     <string name="fragment_card_list_empty">card列表为空</string>
     <string name="fragment_card_list_action">获取Card列表</string>
+    <string name="fragment_asr_add_action">ASR纠错创建</string>
+
+    <string name="fragment_asr_add_fail">asr纠错失败</string>
+    <string name="fragment_asr_add_success">asr纠错成功</string>
 </resources>

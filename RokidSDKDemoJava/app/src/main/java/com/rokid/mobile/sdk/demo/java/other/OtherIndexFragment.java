@@ -45,6 +45,7 @@ public class OtherIndexFragment extends BaseFragment {
         List<BaseFragmentAdapter.Node> moreList = new ArrayList<>();
         moreList.add(new BaseFragmentAdapter.Node("消息", new OtherMessageFragment()));
         moreList.add(new BaseFragmentAdapter.Node("card列表", new CardListFragment()));
+        moreList.add(new BaseFragmentAdapter.Node("ASR纠错", new AsrFragment()));
         BaseFragmentAdapter mAdapter = new BaseFragmentAdapter(getFragmentManager(), moreList);
 
         moreVp.setAdapter(mAdapter);
