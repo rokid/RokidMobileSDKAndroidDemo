@@ -24,7 +24,7 @@ public class CardPresenter extends BaseFragmentPresenter<CardListFragment> {
 
 
     public void getDeviceList(int maxDbId) {
-        RokidMobileSDK.vui.getCardList(maxDbId, new IGetCardsCallback() {
+        RokidMobileSDK.vui.getCardList(maxDbId, 2,new IGetCardsCallback() {
             @Override
             public void onGetCardsSucceed(List<CardMsgBean> list, boolean var2) {
                 getFragment().setDeviceListData(list);

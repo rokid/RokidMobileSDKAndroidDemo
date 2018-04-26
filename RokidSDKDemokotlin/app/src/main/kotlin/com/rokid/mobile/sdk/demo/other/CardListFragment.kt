@@ -51,7 +51,7 @@ class CardListFragment : BaseFragment() {
     }
 
     fun getDeviceList(maxDbId: Int) {
-        RokidMobileSDK.vui.getCardList(maxDbId, object : IGetCardsCallback {
+        RokidMobileSDK.vui.getCardList(maxDbId, 2,object : IGetCardsCallback {
             override fun onGetCardsSucceed(list: List<CardMsgBean>, var2: Boolean) {
                 setDeviceListData(list)
             }
