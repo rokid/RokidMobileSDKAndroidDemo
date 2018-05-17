@@ -41,6 +41,6 @@ public class SkillHomebaseFragment extends BaseFragment<SkillHomebaseFragmentPre
     @Override
     public void onResume() {
         super.onResume();
-        webview.loadUrl("https://s.rokidcdn.com/homebase/himalaya/pre/index.html#/homes/index");
+        webview.loadUrl("https://s.rokidcdn.com/homebase/tob/index.html#/homes/index?theme=default Rokid";
     }
 }

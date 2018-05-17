@@ -24,8 +24,7 @@ class SkillHomebaseFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        skill_homebase_webview.loadUrl("http://10.89.2.109:8080/#/homes/index")
-//        skill_homebase_webview.loadUrl("https://s.rokidcdn.com/homebase/himalaya/pre/index.html#/homes/index")
+        skill_homebase_webview.loadUrl("https://s.rokidcdn.com/homebase/tob/index.html#/homes/index?theme=default Rokid")
     }
 
 }
