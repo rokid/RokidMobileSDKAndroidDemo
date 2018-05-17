@@ -17,6 +17,8 @@ import butterknife.BindView;
 
 public class SkillHomebaseFragment extends BaseFragment<SkillHomebaseFragmentPresenter> {
 
+    private static final String IOT_URL = "https://s.rokidcdn.com/homebase/tob/index.html#/homes/index?theme=default";
+
     @BindView(R.id.skill_homebase_webview)
     DemoWebView webview;
 
@@ -41,6 +43,6 @@ public class SkillHomebaseFragment extends BaseFragment<SkillHomebaseFragmentPre
     @Override
     public void onResume() {
         super.onResume();
-        webview.loadUrl("https://s.rokidcdn.com/homebase/tob/index.html#/homes/index?theme=default Rokid";
+        webview.loadUrl(IOT_URL);
     }
 }

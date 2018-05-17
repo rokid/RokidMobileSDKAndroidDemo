@@ -12,6 +12,8 @@ import kotlinx.android.synthetic.main.skill_fragment_homebase.*
  */
 class SkillHomebaseFragment : BaseFragment() {
 
+    val IOT_URL = "https://s.rokidcdn.com/homebase/tob/index.html#/homes/index?theme=default"
+
     override fun layoutId(): Int {
         return R.layout.skill_fragment_homebase
     }
@@ -24,7 +26,8 @@ class SkillHomebaseFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        skill_homebase_webview.loadUrl("https://s.rokidcdn.com/homebase/tob/index.html#/homes/index?theme=default Rokid")
+
+        skill_homebase_webview.loadUrl(IOT_URL)
     }
 
 }
