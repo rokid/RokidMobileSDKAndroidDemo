@@ -2,10 +2,14 @@ package com.rokid.mobile.sdk.demo.other
 
 import android.widget.TextView
 import com.rokid.mobile.lib.base.util.Logger
+import com.rokid.mobile.lib.entity.bean.media.v3.template.MediaEventTemplate
 import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean
+import com.rokid.mobile.lib.entity.event.device.EventVolumeChange
+import com.rokid.mobile.lib.entity.event.media.EventMediaV3
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
+import com.rokid.mobile.sdk.event.SDKMediaEvent
 import kotlinx.android.synthetic.main.other_fragment_event.view.*
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -36,7 +40,13 @@ class EventFragment : BaseFragment() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onReceivedCard(cardMsgBean: CardMsgBean) {
         Logger.d("onSysInfo eventDeviceSysUpdate" + cardMsgBean.toString())
-        eventTxt.append("\n" + cardMsgBean.msgTxt)
+        eventTxt.append("\n\n" + cardMsgBean.msgTxt)
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onReceivedMediaMessage(sdkMediaEvent: SDKMediaEvent) {
+        Logger.d("onReceivedMediaEvent" + sdkMediaEvent.toString())
+        eventTxt.append("\n\n" + sdkMediaEvent.toString())
     }
 
 }
