@@ -1,14 +1,13 @@
 package com.rokid.mobile.sdk.demo.java.other;
 
-import com.rokid.mobile.lib.entity.bean.device.RKDevice;
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean;
-import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback;
+import com.rokid.mobile.lib.entity.bean.channel.CardMsgBean;
 import com.rokid.mobile.lib.xbase.home.callback.IGetCardsCallback;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
 import java.util.List;
+
 
 /**
  * Created by hongquan.zhao on 2018/03/21.
@@ -24,7 +23,7 @@ public class CardPresenter extends BaseFragmentPresenter<CardListFragment> {
 
 
     public void getDeviceList(int maxDbId) {
-        RokidMobileSDK.vui.getCardList(maxDbId, 2,new IGetCardsCallback() {
+        RokidMobileSDK.vui.getCardList(maxDbId, 2, new IGetCardsCallback() {
             @Override
             public void onGetCardsSucceed(List<CardMsgBean> list, boolean var2) {
                 getFragment().setDeviceListData(list);

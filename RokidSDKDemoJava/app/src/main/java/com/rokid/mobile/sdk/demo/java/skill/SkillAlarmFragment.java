@@ -13,10 +13,9 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.rokid.mobile.lib.base.util.CollectionUtils;
-import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.sdk.bean.SDKAlarm;
 import com.rokid.mobile.sdk.bean.SDKDevice;
-import com.rokid.mobile.sdk.callback.GetAlarmListCallback;
+import com.rokid.mobile.sdk.callback.SDKGetAlarmListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 
@@ -69,7 +68,7 @@ public class SkillAlarmFragment extends BaseFragment<SkillAlarmFragmentPresenter
             public void onClick(View v) {
                 clearInfoText();
                 getPresenter().getAlarmList(deviceSp.getSelectedItem().toString(),
-                        new GetAlarmListCallback() {
+                        new SDKGetAlarmListCallback() {
                             @Override
                             public void onSucceed(final List<SDKAlarm> list) {
                                 showToastShort(getString(R.string.fragment_skill_alarm_list_success));

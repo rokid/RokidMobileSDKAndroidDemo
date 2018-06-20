@@ -2,6 +2,7 @@ package com.rokid.mobile.sdk.demo.skill
 
 import android.annotation.SuppressLint
 import com.rokid.mobile.lib.entity.bean.skill.AlarmContentBean
+import com.rokid.mobile.lib.xbase.channel.IChannelPublishCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.annotation.SDKRepeatType
 import com.rokid.mobile.sdk.bean.SDKAlarm
@@ -52,10 +53,17 @@ class SkillAlarmAddActivity : BaseActivity() {
                 }
             }
 
-            RokidMobileSDK.skill.alarm().add(deviceId!!, sdkAlarm)
+            RokidMobileSDK.skill.alarm().add(deviceId!!, sdkAlarm, object : IChannelPublishCallback {
+                override fun onSucceed() {
+                    toast("添加成功")
+                    finish()
+                }
 
-            toast("添加成功")
-            finish()
+                override fun onFailed() {
+                    toast("添加失败")
+                }
+
+            })
 
         }
     }

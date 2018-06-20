@@ -8,13 +8,12 @@ import android.widget.Button
 import android.widget.ProgressBar
 import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.base.util.Logger
-import com.rokid.mobile.lib.entity.event.device.EventDeviceStatus
 import com.rokid.mobile.lib.entity.event.device.EventDeviceSysUpdate
 import com.rokid.mobile.lib.xbase.device.callback.IPingDeviceCallback
 import com.rokid.mobile.lib.xbase.device.callback.IUnbindDeviceCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.bean.SDKDevice
-import com.rokid.mobile.sdk.callback.IGetDeviceListCallback
+import com.rokid.mobile.sdk.callback.SDKGetDeviceListCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import com.rokid.mobile.sdk.demo.base.adapter.item.DeviceItem
@@ -70,7 +69,7 @@ class DeviceListFragment : BaseFragment() {
         progressBar.visibility = View.VISIBLE
         mRecycler.visibility = View.GONE
         mAdapter.clearAllItemView()
-        RokidMobileSDK.device.getDeviceList(object : IGetDeviceListCallback {
+        RokidMobileSDK.device.getDeviceList(object : SDKGetDeviceListCallback {
             override fun onGetDeviceListFailed(p0: String?, p1: String?) {
                 toast("获取设备列表失败 errorCode=" + (p0 ?: "") + "errorMsg= " + (p1 ?: ""))
             }

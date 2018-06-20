@@ -6,7 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.Button
 import com.rokid.mobile.lib.base.util.CollectionUtils
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean
+import com.rokid.mobile.lib.entity.bean.channel.CardMsgBean
 import com.rokid.mobile.lib.xbase.home.callback.IGetCardsCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
@@ -21,13 +21,12 @@ import kotlinx.android.synthetic.main.device_fragment_list.view.*
  * Version:V1.0
  */
 class CardListFragment : BaseFragment() {
+
     lateinit var carListBtn: Button
-    lateinit var mRecycler: RecyclerView;
-    lateinit var mAdapter: BaseRVAdapter<CardItem>;
+    lateinit var mRecycler: RecyclerView
+    lateinit var mAdapter: BaseRVAdapter<CardItem>
 
-
-    override fun layoutId(): Int = R.layout.device_fragment_list;
-
+    override fun layoutId(): Int = R.layout.device_fragment_list
 
     override fun initViews() {
         carListBtn = rootView!!.fragment_device_list_btn

@@ -39,9 +39,9 @@ public class DemoWebviewActivity extends BaseActivity {
         title = getIntent().getStringExtra(KEY_TITLE);
         url = getIntent().getStringExtra(KEY_URL);
 
-        titleTxt = findViewById(R.id.webkit_titlebar_title);
-        backIcon = findViewById(R.id.webkit_titlebar_left);
-        webView = findViewById(R.id.webkit_webview);
+        titleTxt = (TextView) findViewById(R.id.webkit_titlebar_title);
+        backIcon = (IconTextView) findViewById(R.id.webkit_titlebar_left);
+        webView = (DemoWebView) findViewById(R.id.webkit_webview);
 
         titleTxt.setText(title);
         webView.loadUrl(url);

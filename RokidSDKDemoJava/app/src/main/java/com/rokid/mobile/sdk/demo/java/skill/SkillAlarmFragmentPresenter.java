@@ -3,8 +3,8 @@ package com.rokid.mobile.sdk.demo.java.skill;
 import com.rokid.mobile.lib.base.util.CollectionUtils;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.bean.SDKDevice;
-import com.rokid.mobile.sdk.callback.GetAlarmListCallback;
-import com.rokid.mobile.sdk.callback.IGetDeviceListCallback;
+import com.rokid.mobile.sdk.callback.SDKGetAlarmListCallback;
+import com.rokid.mobile.sdk.callback.SDKGetDeviceListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
@@ -27,7 +27,7 @@ public class SkillAlarmFragmentPresenter extends BaseFragmentPresenter<SkillAlar
     }
 
     private void getDeviceList() {
-        RokidMobileSDK.device.getDeviceList(new IGetDeviceListCallback() {
+        RokidMobileSDK.device.getDeviceList(new SDKGetDeviceListCallback() {
             @Override
             public void onGetDeviceListSucceed(List<SDKDevice> list) {
                 if (CollectionUtils.isEmpty(list)) {
@@ -45,7 +45,7 @@ public class SkillAlarmFragmentPresenter extends BaseFragmentPresenter<SkillAlar
         });
     }
 
-    public boolean getAlarmList(String deviceId, GetAlarmListCallback callback) {
-        return RokidMobileSDK.skill.alarm().getList(deviceId, callback);
+    public void getAlarmList(String deviceId, SDKGetAlarmListCallback callback) {
+        RokidMobileSDK.skill.alarm().getList(deviceId, callback);
     }
 }

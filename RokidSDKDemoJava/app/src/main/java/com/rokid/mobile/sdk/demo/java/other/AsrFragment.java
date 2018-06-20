@@ -7,16 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-
-import com.rokid.mobile.lib.base.util.CollectionUtils;
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 import com.rokid.mobile.sdk.demo.java.base.item.CardItem;
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 

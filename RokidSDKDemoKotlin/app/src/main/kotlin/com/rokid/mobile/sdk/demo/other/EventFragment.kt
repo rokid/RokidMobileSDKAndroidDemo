@@ -2,11 +2,7 @@ package com.rokid.mobile.sdk.demo.other
 
 import android.widget.TextView
 import com.rokid.mobile.lib.base.util.Logger
-import com.rokid.mobile.lib.entity.bean.media.v3.template.MediaEventTemplate
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean
-import com.rokid.mobile.lib.entity.event.device.EventVolumeChange
-import com.rokid.mobile.lib.entity.event.media.EventMediaV3
-import com.rokid.mobile.sdk.RokidMobileSDK
+import com.rokid.mobile.lib.entity.bean.channel.CardMsgBean
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import com.rokid.mobile.sdk.event.SDKMediaEvent

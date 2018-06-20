@@ -3,8 +3,8 @@ package com.rokid.mobile.sdk.demo.java.skill;
 import com.rokid.mobile.lib.base.util.CollectionUtils;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.bean.SDKDevice;
-import com.rokid.mobile.sdk.callback.GetRemindListCallback;
-import com.rokid.mobile.sdk.callback.IGetDeviceListCallback;
+import com.rokid.mobile.sdk.callback.SDKGetDeviceListCallback;
+import com.rokid.mobile.sdk.callback.SDKGetRemindListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
 
@@ -26,7 +26,7 @@ public class SkillRemindFragmentPresenter extends BaseFragmentPresenter<SkillRem
     }
 
     private void getDeviceList() {
-        RokidMobileSDK.device.getDeviceList(new IGetDeviceListCallback() {
+        RokidMobileSDK.device.getDeviceList(new SDKGetDeviceListCallback() {
             @Override
             public void onGetDeviceListSucceed(List<SDKDevice> list) {
                 if (CollectionUtils.isEmpty(list)) {
@@ -44,7 +44,7 @@ public class SkillRemindFragmentPresenter extends BaseFragmentPresenter<SkillRem
         });
     }
 
-    public boolean getRemindList(String deviceId, GetRemindListCallback callback) {
-        return RokidMobileSDK.skill.remind().getList(deviceId, callback);
+    public void getRemindList(String deviceId, SDKGetRemindListCallback callback) {
+        RokidMobileSDK.skill.remind().getList(deviceId, callback);
     }
 }

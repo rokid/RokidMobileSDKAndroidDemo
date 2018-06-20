@@ -7,8 +7,8 @@ import com.google.gson.Gson
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.bean.SDKAlarm
 import com.rokid.mobile.sdk.bean.SDKDevice
-import com.rokid.mobile.sdk.callback.GetAlarmListCallback
-import com.rokid.mobile.sdk.callback.IGetDeviceListCallback
+import com.rokid.mobile.sdk.callback.SDKGetAlarmListCallback
+import com.rokid.mobile.sdk.callback.SDKGetDeviceListCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.skill_fragment_alarm.*
@@ -62,7 +62,7 @@ class SkillAlarmFragment : BaseFragment() {
             }
 
             RokidMobileSDK.skill.alarm().getList(skill_alarm_device_id.selectedItem.toString(),
-                    object : GetAlarmListCallback {
+                    object : SDKGetAlarmListCallback {
                         override fun onSucceed(alarmList: MutableList<SDKAlarm>?) {
                             this@SkillAlarmFragment.alarmList = alarmList
 
@@ -88,7 +88,7 @@ class SkillAlarmFragment : BaseFragment() {
     }
 
     private fun setDeviceList() {
-        RokidMobileSDK.device.getDeviceList(object : IGetDeviceListCallback {
+        RokidMobileSDK.device.getDeviceList(object : SDKGetDeviceListCallback {
 
             override fun onGetDeviceListSucceed(deviceList: MutableList<SDKDevice>?) {
                 if (null == deviceList || deviceList.size < 1) {

@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 import com.rokid.mobile.sdk.bean.SDKDevice;
 import com.rokid.mobile.sdk.bean.SDKRemind;
-import com.rokid.mobile.sdk.callback.GetRemindListCallback;
+import com.rokid.mobile.sdk.callback.SDKGetRemindListCallback;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 
@@ -58,7 +58,7 @@ public class SkillRemindFragment extends BaseFragment<SkillRemindFragmentPresent
             public void onClick(View v) {
                 clearInfoText();
 
-                getPresenter().getRemindList(deviceSp.getSelectedItem().toString(), new GetRemindListCallback() {
+                getPresenter().getRemindList(deviceSp.getSelectedItem().toString(), new SDKGetRemindListCallback() {
                     @Override
                     public void onSucceed(final List<SDKRemind> list) {
                         getActivity().runOnUiThread(new Runnable() {

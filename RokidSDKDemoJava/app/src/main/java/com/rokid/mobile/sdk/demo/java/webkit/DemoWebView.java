@@ -16,6 +16,8 @@ import com.rokid.mobile.sdk.demo.java.DemoMainActivity;
 import com.rokid.mobile.sdk.webkit.SDKWebview;
 import com.rokid.mobile.webview.lib.bean.TitleBarButton;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.lang.ref.WeakReference;
 
 /**
@@ -166,11 +168,6 @@ public class DemoWebView extends SDKWebview {
     }
 
     @Override
-    public void showLoading(String message) {
-
-    }
-
-    @Override
     public void hideLoading() {
 
     }
@@ -200,4 +197,23 @@ public class DemoWebView extends SDKWebview {
 
     }
 
+    @Override
+    public void scroll(float x, float y) {
+
+    }
+
+    @Override
+    public void showBridgeLoading() {
+
+    }
+
+    @Override
+    public void setTitleBarRight(@NotNull TitleBarButton[] buttons) {
+
+    }
+
+    @Override
+    public void titleBarVisibility(boolean visibility) {
+
+    }
 }

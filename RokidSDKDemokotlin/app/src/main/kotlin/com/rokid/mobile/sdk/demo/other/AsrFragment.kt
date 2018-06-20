@@ -1,20 +1,11 @@
 package com.rokid.mobile.sdk.demo.other
 
-import android.content.Context
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.View
 import android.widget.Button
-import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.entity.bean.home.AsrErrorCorrectBean
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean
 import com.rokid.mobile.lib.xbase.home.callback.IGetAsrErrorCallback
-import com.rokid.mobile.lib.xbase.home.callback.IGetCardsCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
-import com.rokid.mobile.sdk.demo.base.item.CardItem
-import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter
 import kotlinx.android.synthetic.main.device_fragment_list.view.*
 
 /**

@@ -1,12 +1,9 @@
 package com.rokid.mobile.sdk.demo.java.base.item;
 
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
-import com.rokid.mobile.lib.entity.bean.device.RKDevice;
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean;
+import com.rokid.mobile.lib.entity.bean.channel.CardMsgBean;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.ui.recyclerview.item.BaseItem;
 import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder;

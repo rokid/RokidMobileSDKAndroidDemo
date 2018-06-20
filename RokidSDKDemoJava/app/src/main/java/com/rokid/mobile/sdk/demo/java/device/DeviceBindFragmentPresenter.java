@@ -7,6 +7,7 @@ import com.rokid.mobile.lib.entity.bean.bluetooth.DeviceBinderData;
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTConnectCallBack;
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTScanCallBack;
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTSendCallBack;
+import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBinderCallBack;
 import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.demo.java.R;
@@ -72,17 +73,17 @@ public class DeviceBindFragmentPresenter extends BaseFragmentPresenter<DeviceBin
                 .wifiBssid(bssid)
                 .build();
 
-        RokidMobileSDK.binder.sendBTBinderData(binderData, new IBTSendCallBack() {
+        RokidMobileSDK.binder.sendBTBinderData(binderData, new IBinderCallBack() {
             @Override
-            public void onSendSuccess(BTDeviceBean btDeviceBean) {
+            public void onSendSucceed(BTDeviceBean btDeviceBean) {
                 getFragment().showToastShort(getFragment().getString(R.string.fragment_bind_send_success));
             }
 
             @Override
-            public void onSendFailed(BTDeviceBean btDeviceBean, BleException e) {
-                Log.d(TAG, "sendBindData failed, btDeviceBean = " + btDeviceBean + " , errorMsg =  " + e);
+            public void onSendFailed(BTDeviceBean btDeviceBean, BleException bleException) {
+                Log.d(TAG, "sendBindData failed, btDeviceBean = " + btDeviceBean);
                 getFragment().showToastShort(getFragment().getString(R.string.fragment_bind_send_fail)
-                        + "\n btDeviceBean = " + btDeviceBean.toString() + " , errorMsg =  " + e);
+                        + "\n btDeviceBean = " + btDeviceBean.toString());
             }
         });
     }

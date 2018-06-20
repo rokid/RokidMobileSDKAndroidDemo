@@ -123,7 +123,7 @@ public class WifiEngine {
         WifiBean wifiBean = new WifiBean();
         wifiBean.setBssid(wifiInfo.getBSSID());
         wifiBean.setSsid(clearQuotesFromSSID(wifiInfo.getSSID()));
-        wifiBean.setLevle(wifiInfo.getRssi());
+        wifiBean.setLevel(wifiInfo.getRssi());
 
         Logger.i(" getConnectWifiInfo wifiBean = " + wifiBean.toString());
         return wifiBean;
@@ -184,7 +184,7 @@ public class WifiEngine {
 
             WifiBean wifiBean = new WifiBean();
             wifiBean.setBssid(scanResult.BSSID);
-            wifiBean.setLevle(scanResult.level);
+            wifiBean.setLevel(scanResult.level);
             wifiBean.setSsid(scanResult.SSID);
             wifiBean.setFrequency(scanResult.frequency);
             wifiList.add(wifiBean);

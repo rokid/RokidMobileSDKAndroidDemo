@@ -4,7 +4,7 @@ import android.app.Application;
 import android.util.Log;
 
 import com.rokid.mobile.sdk.RokidMobileSDK;
-import com.rokid.mobile.sdk.callback.InitCompletedCallback;
+import com.rokid.mobile.sdk.callback.SDKInitCompletedCallback;
 
 /**
  * Created by tt on 2018/2/24.
@@ -29,7 +29,7 @@ public class DemoApplication extends Application {
                 "rokid-demo",
                 "rokid-demo-secret",
                 "rokid-demo-accessKey",
-                new InitCompletedCallback() {
+                new SDKInitCompletedCallback() {
                     @Override
                     public void onInitSuccess() {
                         Log.d(TAG, "initial rokid sdk success");

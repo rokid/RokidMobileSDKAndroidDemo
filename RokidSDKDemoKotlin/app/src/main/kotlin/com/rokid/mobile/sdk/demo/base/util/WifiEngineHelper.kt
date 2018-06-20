@@ -39,7 +39,7 @@ object WifiEngineHelper {
             val wifiBean = WifiBean()
             wifiBean.bssid = wifiInfo.bssid
             wifiBean.ssid = clearQuotesFromSSID(wifiInfo.ssid)
-            wifiBean.levle = wifiInfo.rssi
+            wifiBean.level = wifiInfo.rssi
             Logger.i("wifiBean=" + wifiBean.toString())
             return wifiBean
         }
@@ -98,7 +98,7 @@ object WifiEngineHelper {
 
             val wifiBean = WifiBean()
             wifiBean.bssid = scanResult.BSSID
-            wifiBean.levle = scanResult.level
+            wifiBean.level = scanResult.level
             wifiBean.ssid = scanResult.SSID
             wifiList.add(wifiBean)
         }

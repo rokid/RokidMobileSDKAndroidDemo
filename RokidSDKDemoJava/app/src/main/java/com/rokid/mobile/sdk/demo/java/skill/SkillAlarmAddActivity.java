@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.rokid.mobile.lib.base.util.Logger;
+import com.rokid.mobile.lib.xbase.channel.IChannelPublishCallback;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.annotation.SDKRepeatType;
 import com.rokid.mobile.sdk.bean.SDKAlarm;
@@ -48,13 +49,13 @@ public class SkillAlarmAddActivity extends BaseActivity {
 
     @Override
     protected void initVariables(@Nullable Bundle savedInstanceState) {
-        titlebarLl = findViewById(R.id.alarm_add_titlebar);
+        titlebarLl = (RelativeLayout) findViewById(R.id.alarm_add_titlebar);
         backIcon = titlebarLl.findViewById(R.id.base_titlebar_left);
         titleTxt = titlebarLl.findViewById(R.id.base_titlebar_title);
 
-        datePicker = findViewById(R.id.alarm_date);
-        timePicker = findViewById(R.id.alarm_time);
-        addBtn = findViewById(R.id.alarm_add_btn);
+        datePicker = (DatePicker) findViewById(R.id.alarm_date);
+        timePicker = (TimePicker) findViewById(R.id.alarm_time);
+        addBtn = (Button) findViewById(R.id.alarm_add_btn);
 
         titleTxt.setText("添加闹钟");
         initTimerPicker();
@@ -93,13 +94,19 @@ public class SkillAlarmAddActivity extends BaseActivity {
                 .ext(map)
                 .build();
 
-        boolean isSuccess = RokidMobileSDK.skill.alarm().add(deviceId, alarm);
+        RokidMobileSDK.skill.alarm().add(deviceId, alarm, new IChannelPublishCallback() {
+            @Override
+            public void onSucceed() {
+                showToastShort("添加闹钟成功");
+                finish();
+            }
 
-        showToastShort(isSuccess ? "添加闹钟成功" : "添加闹钟失败");
+            @Override
+            public void onFailed() {
+                showToastShort("添加闹钟失败");
 
-        if (isSuccess) {
-            finish();
-        }
+            }
+        });
     }
 
     private void initTimerPicker() {

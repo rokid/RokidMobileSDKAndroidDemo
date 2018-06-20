@@ -63,8 +63,8 @@ public class DemoMainActivity extends BaseActivity {
     }
 
     private void initView() {
-        mViewPager = findViewById(R.id.activity_main_viewpager);
-        mBottomNavigationView = findViewById(R.id.activity_main_bottom_navigation_view);
+        mViewPager = (NoScrollViewPager) findViewById(R.id.activity_main_viewpager);
+        mBottomNavigationView = (BottomNavigationViewEx) findViewById(R.id.activity_main_bottom_navigation_view);
         mBottomNavigationView.enableAnimation(true);
         mBottomNavigationView.enableShiftingMode(false);
         mBottomNavigationView.enableItemShiftingMode(false);
@@ -108,4 +108,5 @@ public class DemoMainActivity extends BaseActivity {
             return data.get(position);
         }
     }
+
 }

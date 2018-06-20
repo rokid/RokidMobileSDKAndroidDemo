@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.rokid.mobile.lib.base.util.Logger;
+import com.rokid.mobile.lib.xbase.channel.IChannelPublishCallback;
 import com.rokid.mobile.sdk.RokidMobileSDK;
 import com.rokid.mobile.sdk.annotation.SDKRepeatType;
 import com.rokid.mobile.sdk.bean.SDKAlarm;
@@ -50,12 +51,12 @@ public class SkillAlarmUpdateActivity extends BaseActivity {
 
     @Override
     protected void initVariables(@Nullable Bundle savedInstanceState) {
-        titlebarLl = findViewById(R.id.alarm_update_titlebar);
+        titlebarLl = (RelativeLayout) findViewById(R.id.alarm_update_titlebar);
         backIcon = titlebarLl.findViewById(R.id.base_titlebar_left);
         titleTxt = titlebarLl.findViewById(R.id.base_titlebar_title);
 
-        timePicker = findViewById(R.id.alarm_time);
-        updateBtn = findViewById(R.id.alarm_update_btn);
+        timePicker = (TimePicker) findViewById(R.id.alarm_time);
+        updateBtn = (Button) findViewById(R.id.alarm_update_btn);
 
         titleTxt.setText("修改闹钟");
         initTimerPicker();
@@ -93,13 +94,19 @@ public class SkillAlarmUpdateActivity extends BaseActivity {
                 .ext(map)
                 .build();
 
-        boolean isSuccess = RokidMobileSDK.skill.alarm().update(deviceId, oldAlarm, newAlarm);
+        RokidMobileSDK.skill.alarm().update(deviceId, oldAlarm, newAlarm, new IChannelPublishCallback() {
+            @Override
+            public void onSucceed() {
+                showToastShort("修改闹钟成功");
+                finish();
+            }
 
-        showToastShort(isSuccess ? "修改闹钟成功" : "修改闹钟失败");
+            @Override
+            public void onFailed() {
+                showToastShort("修改闹钟失败");
+            }
+        });
 
-        if (isSuccess) {
-            finish();
-        }
     }
 
     private void initTimerPicker() {

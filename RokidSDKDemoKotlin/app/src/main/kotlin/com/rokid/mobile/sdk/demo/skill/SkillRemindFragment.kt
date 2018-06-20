@@ -5,8 +5,8 @@ import com.google.gson.Gson
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.bean.SDKDevice
 import com.rokid.mobile.sdk.bean.SDKRemind
-import com.rokid.mobile.sdk.callback.GetRemindListCallback
-import com.rokid.mobile.sdk.callback.IGetDeviceListCallback
+import com.rokid.mobile.sdk.callback.SDKGetDeviceListCallback
+import com.rokid.mobile.sdk.callback.SDKGetRemindListCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.skill_fragment_remind.view.*
@@ -32,7 +32,7 @@ class SkillRemindFragment : BaseFragment() {
             }
 
             RokidMobileSDK.skill.remind().getList(rootView!!.skill_remind_device_id.selectedItem.toString(),
-                    object : GetRemindListCallback {
+                    object : SDKGetRemindListCallback {
                         override fun onSucceed(remindList: MutableList<SDKRemind>?) {
                             activity.runOnUiThread {
                                 rootView!!.skill_txt.append("\n" + Gson().toJson(remindList))
@@ -56,7 +56,7 @@ class SkillRemindFragment : BaseFragment() {
     }
 
     private fun setDeviceList() {
-        RokidMobileSDK.device.getDeviceList(object : IGetDeviceListCallback {
+        RokidMobileSDK.device.getDeviceList(object : SDKGetDeviceListCallback {
 
             override fun onGetDeviceListSucceed(deviceList: MutableList<SDKDevice>?) {
                 if (null == deviceList || deviceList.size < 1) {

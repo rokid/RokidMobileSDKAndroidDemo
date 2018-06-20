@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.rokid.mobile.lib.base.util.CollectionUtils;
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean;
+import com.rokid.mobile.lib.entity.bean.channel.CardMsgBean;
 import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragment;
 import com.rokid.mobile.sdk.demo.java.base.item.CardItem;

@@ -1,6 +1,6 @@
 package com.rokid.mobile.sdk.demo.base.item
 
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean
+import com.rokid.mobile.lib.entity.bean.channel.CardMsgBean
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.ui.recyclerview.item.BaseItem
 import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder

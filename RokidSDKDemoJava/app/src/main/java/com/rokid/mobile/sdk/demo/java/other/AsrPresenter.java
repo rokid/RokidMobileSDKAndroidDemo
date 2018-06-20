@@ -3,14 +3,9 @@ package com.rokid.mobile.sdk.demo.java.other;
 import android.support.annotation.NonNull;
 
 import com.rokid.mobile.lib.entity.bean.home.AsrErrorCorrectBean;
-import com.rokid.mobile.lib.entity.bean.remotechannel.CardMsgBean;
 import com.rokid.mobile.lib.xbase.home.callback.IGetAsrErrorCallback;
-import com.rokid.mobile.lib.xbase.home.callback.IGetCardsCallback;
 import com.rokid.mobile.sdk.RokidMobileSDK;
-import com.rokid.mobile.sdk.demo.java.R;
 import com.rokid.mobile.sdk.demo.java.base.BaseFragmentPresenter;
-
-import java.util.List;
 
 /**
  * Created by hongquan.zhao on 2018/03/21.

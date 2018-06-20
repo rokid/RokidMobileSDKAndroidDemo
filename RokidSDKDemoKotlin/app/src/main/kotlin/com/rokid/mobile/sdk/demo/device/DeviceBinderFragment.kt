@@ -12,6 +12,7 @@ import com.rokid.mobile.lib.entity.bean.bluetooth.DeviceBinderData
 import com.rokid.mobile.lib.entity.bean.wifi.WifiBean
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTConnectCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTSendCallBack
+import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBinderCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
@@ -196,25 +197,25 @@ class DeviceBinderFragment : BaseFragment() {
                 .wifiBssid(bssid)
                 .build()
 
-
-        RokidMobileSDK.binder.sendBTBinderData(bindData, object : IBTSendCallBack {
-            override fun onSendSuccess(p0: BTDeviceBean?) {
+        RokidMobileSDK.binder.sendBTBinderData(bindData, object : IBinderCallBack {
+            override fun onSendSucceed(btDeviceBean: BTDeviceBean?) {
                 Logger.e("Send Success -----------------")
                 this@DeviceBinderFragment.activity.runOnUiThread {
-                    Toast.makeText(this@DeviceBinderFragment.activity, "发送数据成功", Toast.LENGTH_LONG).show()
-
+                    Toast.makeText(this@DeviceBinderFragment.activity, "发送数据成功",
+                            Toast.LENGTH_LONG).show()
                 }
             }
 
-            override fun onSendFailed(p0: BTDeviceBean?, p1: BleException?) {
+            override fun onSendFailed(btDeviceBean: BTDeviceBean?, bleException: BleException?) {
                 Logger.e("SendFailed -----------------")
                 this@DeviceBinderFragment.activity.runOnUiThread {
                     Toast.makeText(this@DeviceBinderFragment.activity,
-                            "发送数据失败 errorCode=" + (p0 ?: "") + "errorMsg= " + (p1 ?: ""),
+                            "发送数据失败 error: ${bleException.toString()}",
                             Toast.LENGTH_LONG).show()
                 }
             }
         })
+
     }
 
 }

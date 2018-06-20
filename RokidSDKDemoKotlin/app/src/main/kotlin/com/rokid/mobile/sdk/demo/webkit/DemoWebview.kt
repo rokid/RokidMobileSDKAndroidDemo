@@ -167,7 +167,16 @@ class DemoWebview : SDKWebview {
     override fun setTitleBarStyle(style: String) {
     }
 
-    override fun showLoading(message: String) {
+    override fun scroll(x: Float, y: Float) {
+    }
+
+    override fun showBridgeLoading() {
+    }
+
+    override fun setTitleBarRight(buttons: Array<TitleBarButton>) {
+    }
+
+    override fun titleBarVisibility(visibility: Boolean) {
     }
 
     override fun showToast(message: String) {
