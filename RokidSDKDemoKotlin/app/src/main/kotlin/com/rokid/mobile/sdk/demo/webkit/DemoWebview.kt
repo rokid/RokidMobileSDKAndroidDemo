@@ -158,7 +158,7 @@ class DemoWebview : SDKWebview {
     override fun setTitle(title: String) {
     }
 
-    override fun setTitleBarRight(button: TitleBarButton) {
+    override fun setTitleBarRights(buttons: Array<TitleBarButton>) {
     }
 
     override fun setTitleBarRightDotState(state: Boolean) {
@@ -171,9 +171,6 @@ class DemoWebview : SDKWebview {
     }
 
     override fun showBridgeLoading() {
-    }
-
-    override fun setTitleBarRight(buttons: Array<TitleBarButton>) {
     }
 
     override fun titleBarVisibility(visibility: Boolean) {

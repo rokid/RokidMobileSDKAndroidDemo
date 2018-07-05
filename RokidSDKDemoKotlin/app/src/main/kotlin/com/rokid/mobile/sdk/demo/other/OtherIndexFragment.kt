@@ -30,7 +30,7 @@ class OtherIndexFragment : BaseFragment() {
         val fragmentList = listOf(
                 BaseFragmentAdapter.Companion.Node("消息", EventFragment()),
                 BaseFragmentAdapter.Companion.Node("card列表", CardListFragment()),
-                BaseFragmentAdapter.Companion.Node("asr纠错", AsrFragment())
+                BaseFragmentAdapter.Companion.Node("更多功能", MoreFragment())
         )
     }
 
