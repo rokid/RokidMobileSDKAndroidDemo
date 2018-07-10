@@ -5,6 +5,7 @@ import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.channel.CardMsgBean
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
+import com.rokid.mobile.sdk.event.SDKChannelMessage
 import com.rokid.mobile.sdk.event.SDKMediaEvent
 import kotlinx.android.synthetic.main.other_fragment_event.view.*
 import org.greenrobot.eventbus.EventBus
@@ -35,14 +36,20 @@ class EventFragment : BaseFragment() {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onReceivedCard(cardMsgBean: CardMsgBean) {
-        Logger.d("onSysInfo eventDeviceSysUpdate" + cardMsgBean.toString())
+        Logger.d("onSysInfo eventDeviceSysUpdate: " + cardMsgBean.toString())
         eventTxt.append("\n\n" + cardMsgBean.msgTxt)
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onReceivedMediaMessage(sdkMediaEvent: SDKMediaEvent) {
-        Logger.d("onReceivedMediaEvent" + sdkMediaEvent.toString())
+        Logger.d("onReceivedMediaEvent: " + sdkMediaEvent.toString())
         eventTxt.append("\n\n" + sdkMediaEvent.toString())
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onReceivedChannelMessage(sdkChannelMessage: SDKChannelMessage) {
+        Logger.d("onReceivedChannelMessage: " + sdkChannelMessage.toString())
+        eventTxt.append("\n\n" + sdkChannelMessage.toString())
     }
 
 }
