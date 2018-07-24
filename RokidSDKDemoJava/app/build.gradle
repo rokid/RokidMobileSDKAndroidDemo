@@ -10,7 +10,7 @@ android {
         targetSdkVersion 22
         versionCode 180228001
 
-
+        multiDexEnabled true
         versionName "1.0.0"
 
         ndk {
@@ -50,7 +50,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -60,7 +59,7 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.2.1-180710002', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.2.1-180724003', ext: "aar")
 
     // 第三方库
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")

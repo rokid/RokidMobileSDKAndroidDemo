@@ -14,6 +14,7 @@ android {
             // 选择要添加的对应cpu类型的.so库。
             abiFilters 'armeabi', 'arm64-v8a', 'x86', 'mips'
         }
+        multiDexEnabled true
     }
 
     sourceSets {
@@ -60,7 +61,7 @@ dependencies {
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.2.1-180710002', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.2.1-180724003', ext: "aar")
 
     // 第三方库
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")

@@ -14,8 +14,8 @@ import android.webkit.WebViewClient
 import com.rokid.mobile.sdk.demo.SDKDemoActivity
 import com.rokid.mobile.sdk.webkit.SDKWebview
 import com.rokid.mobile.webview.lib.bean.TitleBarButton
+import com.rokid.mobile.webview.lib.callback.StorageCallback
 import java.lang.ref.WeakReference
-import java.util.logging.Logger
 
 /**
  * Description: TODO
@@ -23,6 +23,17 @@ import java.util.logging.Logger
  * Version: V0.1 2018/2/26
  */
 class DemoWebview : SDKWebview {
+    override fun storageGet(key: String, callback: StorageCallback) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun storageRemove(key: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun storageSave(key: String, value: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private var isMove: Boolean = false
     private var contextWeak: WeakReference<Context>? = null

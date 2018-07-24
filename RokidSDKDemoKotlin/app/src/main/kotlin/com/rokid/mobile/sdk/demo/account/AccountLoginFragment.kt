@@ -3,11 +3,8 @@ package com.rokid.mobile.sdk.demo.account
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
-import com.rokid.mobile.lib.base.util.Logger
-import com.rokid.mobile.lib.entity.bean.device.RKDevice
 import com.rokid.mobile.lib.xbase.account.callback.ILoginResultCallback
 import com.rokid.mobile.lib.xbase.account.callback.ILogoutResultCallback
-import com.rokid.mobile.lib.xbase.device.callback.IGetDeviceListCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment

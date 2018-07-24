@@ -15,8 +15,7 @@ import com.rokid.mobile.lib.base.util.Logger;
 import com.rokid.mobile.sdk.demo.java.DemoMainActivity;
 import com.rokid.mobile.sdk.webkit.SDKWebview;
 import com.rokid.mobile.webview.lib.bean.TitleBarButton;
-
-import org.jetbrains.annotations.NotNull;
+import com.rokid.mobile.webview.lib.callback.StorageCallback;
 
 import java.lang.ref.WeakReference;
 
@@ -182,10 +181,6 @@ public class DemoWebView extends SDKWebview {
 
     }
 
-    @Override
-    public void setTitleBarRight(TitleBarButton titleBarButton) {
-
-    }
 
     @Override
     public void setTitleBarRightDotState(boolean state) {
@@ -208,12 +203,27 @@ public class DemoWebView extends SDKWebview {
     }
 
     @Override
-    public void setTitleBarRight(@NotNull TitleBarButton[] buttons) {
+    public void titleBarVisibility(boolean visibility) {
 
     }
 
     @Override
-    public void titleBarVisibility(boolean visibility) {
+    public void storageGet(String s, StorageCallback storageCallback) {
+
+    }
+
+    @Override
+    public void storageSave(String s, String s1) {
+
+    }
+
+    @Override
+    public void storageRemove(String s) {
+
+    }
+
+    @Override
+    public void setTitleBarRights(TitleBarButton[] titleBarButtons) {
 
     }
 }
