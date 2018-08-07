@@ -31,10 +31,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".webkit.DemoWebviewActivity" />
-        <activity android:name=".skill.SkillAlarmAddActivity">
-        </activity>
-        <activity android:name=".skill.SkillAlarmUpdateActivity">
-        </activity>
+        <activity android:name=".skill.SkillAlarmAddActivity" />
+        <activity android:name=".skill.SkillAlarmUpdateActivity" />
     </application>
 
 </manifest>

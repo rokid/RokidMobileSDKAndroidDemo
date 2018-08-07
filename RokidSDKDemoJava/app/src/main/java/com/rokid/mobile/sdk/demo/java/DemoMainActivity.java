@@ -23,8 +23,6 @@ import java.util.List;
 
 public class DemoMainActivity extends BaseActivity {
 
-    private static final String TAG = DemoMainActivity.class.getSimpleName();
-
     public static boolean ISLOGIN = false;
 
     public static String UID = "";

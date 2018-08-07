@@ -3,15 +3,19 @@ apply plugin: 'kotlin-android'
 
 
 android {
+
     compileSdkVersion 26
+
     defaultConfig {
-        applicationId "com.rokid.mobile.sdk.demo.java"
+
         minSdkVersion 19
         targetSdkVersion 22
+
+        applicationId "com.rokid.mobile.sdk.demo.java"
         versionCode 180228001
+        versionName "1.0.0"
 
         multiDexEnabled true
-        versionName "1.0.0"
 
         ndk {
             // 选择要添加的对应cpu类型的.so库。
@@ -48,18 +52,20 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    //kotlin
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // ButterKnife
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.2.1-180724003', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.2.1-180807004', ext: "aar")
 
     // 第三方库
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
@@ -70,10 +76,8 @@ dependencies {
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
     implementation 'com.google.code.gson:gson:2.8.0'
     implementation 'com.squareup.okhttp3:okhttp:3.9.0'
-    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'org.greenrobot:greendao-generator:3.2.2'
 
-    //kotlin
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }

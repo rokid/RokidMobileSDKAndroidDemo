@@ -181,7 +181,6 @@ public class DemoWebView extends SDKWebview {
 
     }
 
-
     @Override
     public void setTitleBarRightDotState(boolean state) {
 
@@ -208,12 +207,12 @@ public class DemoWebView extends SDKWebview {
     }
 
     @Override
-    public void storageGet(String s, StorageCallback storageCallback) {
+    public void storageSave(String s, String s1) {
 
     }
 
     @Override
-    public void storageSave(String s, String s1) {
+    public void storageGet(String s, StorageCallback storageCallback) {
 
     }
 
@@ -226,4 +225,5 @@ public class DemoWebView extends SDKWebview {
     public void setTitleBarRights(TitleBarButton[] titleBarButtons) {
 
     }
+
 }
