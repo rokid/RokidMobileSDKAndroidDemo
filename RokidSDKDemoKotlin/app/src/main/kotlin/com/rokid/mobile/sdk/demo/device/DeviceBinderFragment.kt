@@ -1,11 +1,13 @@
 package com.rokid.mobile.sdk.demo.device
 
+import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean
 import com.rokid.mobile.lib.entity.bean.bluetooth.DeviceBinderData
@@ -13,6 +15,7 @@ import com.rokid.mobile.lib.entity.bean.wifi.WifiBean
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTConnectCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTSendCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBinderCallBack
+import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IGetWifiListCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
@@ -21,6 +24,7 @@ import com.rokid.mobile.sdk.demo.base.adapter.item.BleItem
 import com.rokid.mobile.sdk.demo.base.util.WifiEngineHelper
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter
 import kotlinx.android.synthetic.main.device_fragment_binder.view.*
+import org.greenrobot.eventbus.EventBus
 
 /**
  *
@@ -54,6 +58,10 @@ class DeviceBinderFragment : BaseFragment() {
      */
     private lateinit var wifiSSIDEdit: EditText
     /**
+     * wifi名字的输入框
+     */
+    private lateinit var wifiSelectBtn: Button
+    /**
      * wifi信息
      */
     private var wifiInfo: WifiBean? = null
@@ -74,6 +82,7 @@ class DeviceBinderFragment : BaseFragment() {
 
         wifiPasswordEdit = rootView!!.fragment_bind_wifipwd_txt
         wifiSSIDEdit = rootView!!.fragment_bind_wifiname_txt
+        wifiSelectBtn = rootView!!.fragment_bind_wifi_select
         sendDataBtn = rootView!!.fragment_bind_send_data_btn
 
         rv = rootView!!.fragment_bind_rv
@@ -110,6 +119,10 @@ class DeviceBinderFragment : BaseFragment() {
         //发送绑定数据 btn
         sendDataBtn.setOnClickListener {
             sendBindData()
+        }
+
+        wifiSelectBtn.setOnClickListener {
+            getDeviceWifiList()
         }
     }
 
@@ -199,7 +212,7 @@ class DeviceBinderFragment : BaseFragment() {
 
         RokidMobileSDK.binder.sendBTBinderData(bindData, object : IBinderCallBack {
             override fun onSendSucceed(btDeviceBean: BTDeviceBean?) {
-                Logger.e("Send Success -----------------")
+                Logger.d("Send Success -----------------")
                 this@DeviceBinderFragment.activity.runOnUiThread {
                     Toast.makeText(this@DeviceBinderFragment.activity, "发送数据成功",
                             Toast.LENGTH_LONG).show()
@@ -217,5 +230,29 @@ class DeviceBinderFragment : BaseFragment() {
         })
 
     }
+
+    private fun getDeviceWifiList() {
+        RokidMobileSDK.binder.getDeviceWifiList(object : IGetWifiListCallBack {
+            override fun onGetSuccess(btDeviceBean: BTDeviceBean?, wifiList: MutableList<WifiBean>?) {
+                if (CollectionUtils.isEmpty(wifiList)) {
+                    return
+                }
+
+                this@DeviceBinderFragment.activity.runOnUiThread {
+                    Toast.makeText(activity, wifiList.toString(), Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onGetFailed(btDeviceBean: BTDeviceBean?, bleException: BleException?) {
+                this@DeviceBinderFragment.activity.runOnUiThread {
+                    Toast.makeText(activity, bleException.toString(), Toast.LENGTH_SHORT).show()
+                }
+
+            }
+
+        })
+    }
+
+
 
 }
