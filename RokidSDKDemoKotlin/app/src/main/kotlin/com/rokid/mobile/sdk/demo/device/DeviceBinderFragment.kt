@@ -18,6 +18,7 @@ import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBinderCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IGetWifiListCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException
 import com.rokid.mobile.sdk.RokidMobileSDK
+import com.rokid.mobile.sdk.callback.SDKGetWifiListCallBack
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import com.rokid.mobile.sdk.demo.base.adapter.item.BleItem
@@ -232,7 +233,7 @@ class DeviceBinderFragment : BaseFragment() {
     }
 
     private fun getDeviceWifiList() {
-        RokidMobileSDK.binder.getDeviceWifiList(object : IGetWifiListCallBack {
+        RokidMobileSDK.binder.getDeviceWifiList(object : SDKGetWifiListCallBack {
             override fun onGetSuccess(btDeviceBean: BTDeviceBean?, wifiList: MutableList<WifiBean>?) {
                 if (CollectionUtils.isEmpty(wifiList)) {
                     return
