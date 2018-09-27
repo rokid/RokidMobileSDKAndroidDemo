@@ -1,6 +1,5 @@
 package com.rokid.mobile.sdk.demo.device
 
-import android.support.v7.app.AlertDialog
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
@@ -13,9 +12,7 @@ import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean
 import com.rokid.mobile.lib.entity.bean.bluetooth.DeviceBinderData
 import com.rokid.mobile.lib.entity.bean.wifi.WifiBean
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTConnectCallBack
-import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTSendCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBinderCallBack
-import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IGetWifiListCallBack
 import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.callback.SDKGetWifiListCallBack
@@ -25,7 +22,6 @@ import com.rokid.mobile.sdk.demo.base.adapter.item.BleItem
 import com.rokid.mobile.sdk.demo.base.util.WifiEngineHelper
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter
 import kotlinx.android.synthetic.main.device_fragment_binder.view.*
-import org.greenrobot.eventbus.EventBus
 
 /**
  *
