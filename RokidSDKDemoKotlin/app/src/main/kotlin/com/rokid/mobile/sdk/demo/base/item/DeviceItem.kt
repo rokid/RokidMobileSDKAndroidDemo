@@ -8,8 +8,9 @@ import com.rokid.mobile.ui.recyclerview.item.BaseViewHolder
 import kotlinx.android.synthetic.main.device_item_list.view.*
 
 typealias Unbind = () -> Unit
+typealias Ping = () -> Unit
 
-class DeviceItem(data: SDKDevice, var unbind: Unbind) : BaseItem<SDKDevice>(data) {
+class DeviceItem(data: SDKDevice, var ping: Ping, var unbind: Unbind) : BaseItem<SDKDevice>(data) {
 
     val DeviceItem_ITEM_TYPE = 0
 
@@ -22,6 +23,7 @@ class DeviceItem(data: SDKDevice, var unbind: Unbind) : BaseItem<SDKDevice>(data
             fragment_device_id.text = ""
             fragment_device_id.visibility = View.GONE
             fragment_device_unbind.visibility = View.GONE
+            fragment_device_ping.visibility = View.GONE
         }
     }
 
@@ -29,16 +31,14 @@ class DeviceItem(data: SDKDevice, var unbind: Unbind) : BaseItem<SDKDevice>(data
         holder!!.itemView.apply {
             fragment_device_id.text = data.deviceId
             fragment_device_id.visibility = View.VISIBLE
+
+            // Ping
+            fragment_device_ping.visibility = View.VISIBLE
+            fragment_device_ping.setOnClickListener{ ping() }
+
+            // Unbind
             fragment_device_unbind.visibility = View.VISIBLE
-
-            setOnClick(fragment_device_unbind)
-        }
-    }
-
-    private fun setOnClick(view: View) {
-        view.visibility = View.VISIBLE
-        view.setOnClickListener {
-            unbind()
+            fragment_device_unbind.setOnClickListener { unbind() }
         }
     }
 }

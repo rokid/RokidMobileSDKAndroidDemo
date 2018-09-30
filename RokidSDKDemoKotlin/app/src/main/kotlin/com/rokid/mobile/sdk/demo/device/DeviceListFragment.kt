@@ -61,7 +61,6 @@ class DeviceListFragment : BaseFragment() {
             }
             Logger.i("onItemClick position=" + sectionItemPosition + " deviceId=" + deviceItem.data.deviceId)
             toast(deviceItem.data.toString())
-//            getDeviceStatus(deviceItem.data)
         }
     }
 
@@ -85,6 +84,16 @@ class DeviceListFragment : BaseFragment() {
                 val deviceItemList = ArrayList<DeviceItem>()
                 deviceList!!.forEachIndexed { index, rkDevice ->
                     deviceItemList.add(DeviceItem(rkDevice, {
+                        RokidMobileSDK.device.pingDevice(rkDevice, object : IPingDeviceCallback {
+                            override fun onSuccess(deviceId: String?, isOnline: Boolean) {
+                                toast("设备在线！")
+                            }
+
+                            override fun onFailed(deviceId: String?, errorCode: String?, errorMsg: String?) {
+                                toast("设备离线！")
+                            }
+                        })
+                    }, {
                         RokidMobileSDK.device.unbindDevice(rkDevice.deviceId!!, object : IUnbindDeviceCallback {
                             override fun onUnbindDeviceSucceed() {
                                 toast("解绑设备成功")

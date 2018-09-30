@@ -52,7 +52,9 @@ abstract class BaseFragment : Fragment() {
     }
 
     fun toast(text: String) {
-        Toast.makeText(activity, text, Toast.LENGTH_LONG).show()
+        activity.runOnUiThread {
+            Toast.makeText(activity, text, Toast.LENGTH_LONG).show()
+        }
     }
 
 }
