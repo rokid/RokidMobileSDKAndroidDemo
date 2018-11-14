@@ -19,7 +19,7 @@ android {
 
         ndk {
             // 选择要添加的对应cpu类型的.so库。
-            abiFilters 'armeabi', 'arm64-v8a', 'x86', 'mips'
+            abiFilters 'armeabi', 'arm64-v8a', 'x86'
         }
         multiDexEnabled true
     }
@@ -62,24 +62,25 @@ android {
 }
 
 dependencies {
-//    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:multidex:1.0.3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:appcompat-v7:26.1.0'
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.3.1-180930001', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.3.1-181114003', ext: "aar")
 
     // 第三方库
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
 
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
     implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
-    implementation 'pub.devrel:easypermissions:0.4.2'
-    implementation 'com.google.code.gson:gson:2.8.0'
-    implementation 'com.squareup.okhttp3:okhttp:3.9.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'org.greenrobot:eventbus:3.1.1'
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'org.greenrobot:greendao-generator:3.2.2'
+
+    compile 'com.aliyun.openservices:aliyun-log-android-sdk:2.0.0'
 }

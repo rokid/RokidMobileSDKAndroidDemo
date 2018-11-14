@@ -1,14 +1,12 @@
 package com.rokid.mobile.sdk.demo.other
 
 import android.widget.Button
+import com.rokid.mobile.home.lib.callback.IGetAsrErrorCallback
 import com.rokid.mobile.lib.entity.bean.home.AsrErrorCorrectBean
 import com.rokid.mobile.lib.xbase.channel.IChannelPublishCallback
-import com.rokid.mobile.lib.xbase.home.callback.IGetAsrErrorCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
-import com.rokid.mobile.sdk.callback.SDKServiceInfoCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
-import com.rokid.mobile.sdk.event.SDKChannelMessage
 import kotlinx.android.synthetic.main.other_fragment_more.view.*
 
 /**

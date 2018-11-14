@@ -5,9 +5,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.Button
+import com.rokid.mobile.home.lib.callback.IGetCardsCallback
 import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.entity.bean.channel.CardMsgBean
-import com.rokid.mobile.lib.xbase.home.callback.IGetCardsCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment

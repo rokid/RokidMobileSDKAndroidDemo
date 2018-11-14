@@ -1,7 +1,6 @@
 package com.rokid.mobile.sdk.demo.skill
 
 import android.annotation.SuppressLint
-import com.rokid.mobile.lib.entity.bean.skill.AlarmContentBean
 import com.rokid.mobile.lib.xbase.channel.IChannelPublishCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.annotation.SDKRepeatType

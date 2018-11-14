@@ -6,14 +6,14 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.rokid.mobile.binder.lib.bluetooth.callBack.IBTConnectCallBack
+import com.rokid.mobile.binder.lib.bluetooth.callBack.IBinderCallBack
+import com.rokid.mobile.binder.lib.bluetooth.exception.BleException
 import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean
 import com.rokid.mobile.lib.entity.bean.bluetooth.DeviceBinderData
 import com.rokid.mobile.lib.entity.bean.wifi.WifiBean
-import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBTConnectCallBack
-import com.rokid.mobile.lib.xbase.binder.bluetooth.callBack.IBinderCallBack
-import com.rokid.mobile.lib.xbase.binder.bluetooth.exception.BleException
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.callback.SDKGetWifiListCallBack
 import com.rokid.mobile.sdk.demo.R
