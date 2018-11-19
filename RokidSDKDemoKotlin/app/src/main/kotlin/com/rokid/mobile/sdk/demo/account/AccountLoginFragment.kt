@@ -75,6 +75,8 @@ class AccountLoginFragment : BaseFragment() {
                 this@AccountLoginFragment.activity.runOnUiThread {
                     toast("登出失败 errorCode=" + (p0
                             ?: "") + "errorMsg= " + (p1 ?: ""))
+
+                    showView(false)
                 }
             }
 

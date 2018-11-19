@@ -36,16 +36,7 @@ class SDKDemoApplication : Application() {
 
                 })
 
-        //RokidMobileSDK.debug()
-
-        RokidMobileSDK.binder.connectBT("", object : IBTConnectCallBack {
-            override fun onConnectFailed(p0: BTDeviceBean?, p1: BleException?) {
-            }
-
-            override fun onConnectSucceed(p0: BTDeviceBean?) {
-            }
-
-        })
+        RokidMobileSDK.debug()
     }
 
 

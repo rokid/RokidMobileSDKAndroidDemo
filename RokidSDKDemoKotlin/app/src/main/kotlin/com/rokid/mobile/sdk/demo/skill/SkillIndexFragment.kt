@@ -30,6 +30,7 @@ class SkillIndexFragment : BaseFragment() {
         val fragmentList = listOf(
                 BaseFragmentAdapter.Companion.Node("闹钟", SkillAlarmFragment()),
                 BaseFragmentAdapter.Companion.Node("提醒", SkillRemindFragment()),
+                BaseFragmentAdapter.Companion.Node("媒体内容", SkillMediaFragment()),
                 BaseFragmentAdapter.Companion.Node("智能家居", SkillHomebaseFragment()),
                 BaseFragmentAdapter.Companion.Node("技能商店", SkillStoreFragment())
         )
