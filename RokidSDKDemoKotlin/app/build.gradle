@@ -70,7 +70,7 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:26.1.0'
 
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.4.0-181119005', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.4.1-181120008', ext: "aar")
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
 
     // 第三方库

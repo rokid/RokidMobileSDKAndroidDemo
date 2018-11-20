@@ -1,51 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingEnd="20dp"
-    android:paddingStart="20dp"
-    android:paddingTop="15dp">
-
-    <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="选择设备："-->
-        <!--android:textSize="16sp"/>-->
-
-    <!--<Spinner-->
-        <!--android:id="@+id/skill_alarm_device_id"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="40dp"-->
-        <!--android:layout_marginTop="10dp"/>-->
-
-    <Button
-        android:id="@+id/skill_media_getskill"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="GetSkill"/>
-
-    <Button
-        android:id="@+id/skill_media_home"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="Home"/>
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/skill_media_response_txt"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:text="Response:"/>
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingTop="15dp"
+            android:paddingEnd="20dp">
 
+            <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="选择设备："-->
+            <!--android:textSize="16sp"/>-->
+
+            <!--<Spinner-->
+            <!--android:id="@+id/skill_alarm_device_id"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="40dp"-->
+            <!--android:layout_marginTop="10dp"/>-->
+
+            <Button
+                android:id="@+id/skill_media_getskill"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="GetSkill" />
+
+            <Button
+                android:id="@+id/skill_media_home"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Home" />
+
+            <Button
+                android:id="@+id/skill_media_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="List" />
+
+            <Button
+                android:id="@+id/skill_media_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Detail" />
+
+            <Button
+                android:id="@+id/skill_media_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="play" />
+
+            <Button
+                android:id="@+id/skill_media_playInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="playInfo" />
+
+            <Button
+                android:id="@+id/skill_media_next"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Next" />
+
+            <Button
+                android:id="@+id/skill_media_pre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Pre" />
+
+            <TextView
+                android:id="@+id/skill_media_response_txt"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                android:text="Response:" />
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

@@ -1,10 +1,13 @@
 package com.rokid.mobile.sdk.demo.skill
 
 import com.rokid.mobile.lib.base.util.Logger
+import com.rokid.mobile.lib.entity.bean.media.cloud.data.MediaDetailV3Data
 import com.rokid.mobile.lib.entity.bean.media.cloud.data.MediaHomeV3Data
+import com.rokid.mobile.lib.entity.bean.media.cloud.data.MediaListV3Data
+import com.rokid.mobile.lib.entity.bean.media.cloud.template.MediaEventTemplate
+import com.rokid.mobile.lib.entity.bean.media.middleware.MediaWareControlData
 import com.rokid.mobile.lib.entity.bean.media.middleware.SkillBean
-import com.rokid.mobile.lib.xbase.media.callback.IGetMediaHomeDataCallBack
-import com.rokid.mobile.lib.xbase.media.callback.IMediaWareSkillListCallback
+import com.rokid.mobile.lib.xbase.media.callback.*
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
@@ -37,7 +40,10 @@ class SkillMediaFragment : BaseFragment() {
 
                 override fun onFailed(errorCode: String?, errorMessage: String?) {
                     Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
-                    rootView!!.skill_media_response_txt.text = errorMessage
+
+                    this@SkillMediaFragment.activity?.runOnUiThread {
+                        rootView!!.skill_media_response_txt.text = errorMessage
+                    }
                 }
 
             })
@@ -56,9 +62,154 @@ class SkillMediaFragment : BaseFragment() {
 
                 override fun onFailed(errorCode: String?, errorMessage: String?) {
                     Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
-                    rootView!!.skill_media_response_txt.text = errorMessage
+
+                    this@SkillMediaFragment.activity?.runOnUiThread {
+                        rootView!!.skill_media_response_txt.text = errorMessage
+                    }
                 }
             })
+        }
+
+        rootView!!.skill_media_list.setOnClickListener {
+            RokidMobileSDK.media.requestListIntent("RC528E2DD8E745E195173D9F8BE48436",
+                    "16",
+                    0,
+                    5,
+                    "",
+                    object :IGetMediaListDataCallBack {
+                        override fun onSucceed(mediaListV3Data: MediaListV3Data?) {
+                            Logger.d("onSucceed - ${mediaListV3Data.toString()}")
+
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = mediaListV3Data.toString()
+                            }
+                        }
+
+                        override fun onFailed(errorCode: String?, errorMessage: String?) {
+                            Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = errorMessage
+                            }
+                        }
+                    })
+        }
+
+        rootView!!.skill_media_detail.setOnClickListener {
+            RokidMobileSDK.media.requestDetailIntent("RC528E2DD8E745E195173D9F8BE48436",
+                    "16",
+                    0,
+                    5,
+                    "",
+                    "",
+                    object :IGetMediaWareDetailDataCallBack {
+                        override fun onSucceed(mediaDetailV3Data: MediaDetailV3Data?) {
+                            Logger.d("onSucceed - ${mediaDetailV3Data.toString()}")
+
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = mediaDetailV3Data.toString()
+                            }
+                        }
+
+                        override fun onFailed(errorCode: String?, errorMessage: String?) {
+                            Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = errorMessage
+                            }
+                        }
+                    })
+        }
+
+        rootView!!.skill_media_play.setOnClickListener {
+            RokidMobileSDK.media.requestPlayIntent("RC528E2DD8E745E195173D9F8BE48436",
+                    "326970",
+                    object :IMediaWareControlCallback {
+                        override fun onSucceed(mediaWareControlData: MediaWareControlData?) {
+                            Logger.d("onSucceed - ${mediaWareControlData.toString()}")
+
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = mediaWareControlData.toString()
+                            }
+                        }
+
+                        override fun onFailed(errorCode: String?, errorMessage: String?) {
+                            Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = errorMessage
+                            }
+                        }
+                    })
+        }
+
+        rootView!!.skill_media_playInfo.setOnClickListener {
+            RokidMobileSDK.media.requestPlayInfoIntent("RC528E2DD8E745E195173D9F8BE48436",
+                    object :IMediaPlayInfoCallback {
+                        override fun onSucceed(mediaEventTemplate: MediaEventTemplate?) {
+                            Logger.d("onSucceed - ${mediaEventTemplate.toString()}")
+
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = mediaEventTemplate.toString()
+                            }
+                        }
+
+                        override fun onFailed(errorCode: String?, errorMessage: String?) {
+                            Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = errorMessage
+                            }
+                        }
+                    })
+        }
+
+        rootView!!.skill_media_next.setOnClickListener {
+            RokidMobileSDK.media.requestNextIntent("RC528E2DD8E745E195173D9F8BE48436",
+                    object :IMediaWareControlCallback {
+                        override fun onSucceed(mediaWareControlData: MediaWareControlData?) {
+                            Logger.d("onSucceed - ${mediaWareControlData.toString()}")
+
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = mediaWareControlData.toString()
+                            }
+                        }
+
+                        override fun onFailed(errorCode: String?, errorMessage: String?) {
+                            Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = errorMessage
+                            }
+                        }
+                    })
+        }
+
+        rootView!!.skill_media_pre.setOnClickListener {
+            RokidMobileSDK.media.requestPreviousIntent("RC528E2DD8E745E195173D9F8BE48436",
+                    object :IMediaWareControlCallback {
+                        override fun onSucceed(mediaWareControlData: MediaWareControlData?) {
+                            Logger.d("onSucceed - ${mediaWareControlData.toString()}")
+
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = mediaWareControlData.toString()
+                            }
+                        }
+
+                        override fun onFailed(errorCode: String?, errorMessage: String?) {
+                            Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = errorMessage
+                            }
+                        }
+                    })
         }
     }
 
