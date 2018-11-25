@@ -64,6 +64,20 @@
                 android:text="play" />
 
             <Button
+                android:id="@+id/skill_media_pause"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Pause" />
+
+            <Button
+                android:id="@+id/skill_media_resume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Resume" />
+
+            <Button
                 android:id="@+id/skill_media_playInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                android:text="Pre" />
+                android:text="Previous" />
 
             <TextView
                 android:id="@+id/skill_media_response_txt"

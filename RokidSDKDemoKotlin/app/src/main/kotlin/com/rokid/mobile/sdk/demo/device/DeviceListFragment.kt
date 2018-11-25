@@ -9,6 +9,7 @@ import android.widget.ProgressBar
 import com.rokid.mobile.lib.base.util.CollectionUtils
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.event.device.EventDeviceSysUpdate
+import com.rokid.mobile.lib.xbase.account.callback.IChangePasswordResultCallback
 import com.rokid.mobile.lib.xbase.device.callback.IPingDeviceCallback
 import com.rokid.mobile.lib.xbase.device.callback.IUnbindDeviceCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
@@ -17,6 +18,7 @@ import com.rokid.mobile.sdk.callback.SDKGetDeviceListCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import com.rokid.mobile.sdk.demo.base.adapter.item.DeviceItem
+import com.rokid.mobile.sdk.event.SDKVolumeChange
 import com.rokid.mobile.ui.recyclerview.adapter.BaseRVAdapter
 import kotlinx.android.synthetic.main.device_fragment_list.view.*
 import org.greenrobot.eventbus.EventBus

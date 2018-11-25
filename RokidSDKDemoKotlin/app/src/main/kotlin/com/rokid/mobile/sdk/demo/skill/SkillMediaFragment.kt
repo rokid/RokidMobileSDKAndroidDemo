@@ -1,12 +1,15 @@
 package com.rokid.mobile.sdk.demo.skill
 
+import com.rokid.mobile.lib.annotation.ThirdAuth
 import com.rokid.mobile.lib.base.util.Logger
+import com.rokid.mobile.lib.entity.bean.auth.ThirdOauthInfoBean
 import com.rokid.mobile.lib.entity.bean.media.cloud.data.MediaDetailV3Data
 import com.rokid.mobile.lib.entity.bean.media.cloud.data.MediaHomeV3Data
 import com.rokid.mobile.lib.entity.bean.media.cloud.data.MediaListV3Data
 import com.rokid.mobile.lib.entity.bean.media.cloud.template.MediaEventTemplate
 import com.rokid.mobile.lib.entity.bean.media.middleware.MediaWareControlData
 import com.rokid.mobile.lib.entity.bean.media.middleware.SkillBean
+import com.rokid.mobile.lib.xbase.appserver.callback.IGetThirdOauthInfoCallback
 import com.rokid.mobile.lib.xbase.media.callback.*
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
@@ -76,7 +79,7 @@ class SkillMediaFragment : BaseFragment() {
                     0,
                     5,
                     "",
-                    object :IGetMediaListDataCallBack {
+                    object : IGetMediaListDataCallBack {
                         override fun onSucceed(mediaListV3Data: MediaListV3Data?) {
                             Logger.d("onSucceed - ${mediaListV3Data.toString()}")
 
@@ -103,7 +106,7 @@ class SkillMediaFragment : BaseFragment() {
                     5,
                     "",
                     "",
-                    object :IGetMediaWareDetailDataCallBack {
+                    object : IGetMediaWareDetailDataCallBack {
                         override fun onSucceed(mediaDetailV3Data: MediaDetailV3Data?) {
                             Logger.d("onSucceed - ${mediaDetailV3Data.toString()}")
 
@@ -126,7 +129,7 @@ class SkillMediaFragment : BaseFragment() {
         rootView!!.skill_media_play.setOnClickListener {
             RokidMobileSDK.media.requestPlayIntent("RC528E2DD8E745E195173D9F8BE48436",
                     "326970",
-                    object :IMediaWareControlCallback {
+                    object : IMediaWareControlCallback {
                         override fun onSucceed(mediaWareControlData: MediaWareControlData?) {
                             Logger.d("onSucceed - ${mediaWareControlData.toString()}")
 
@@ -148,7 +151,7 @@ class SkillMediaFragment : BaseFragment() {
 
         rootView!!.skill_media_playInfo.setOnClickListener {
             RokidMobileSDK.media.requestPlayInfoIntent("RC528E2DD8E745E195173D9F8BE48436",
-                    object :IMediaPlayInfoCallback {
+                    object : IMediaPlayInfoCallback {
                         override fun onSucceed(mediaEventTemplate: MediaEventTemplate?) {
                             Logger.d("onSucceed - ${mediaEventTemplate.toString()}")
 
@@ -168,9 +171,53 @@ class SkillMediaFragment : BaseFragment() {
                     })
         }
 
+        rootView!!.skill_media_pause.setOnClickListener {
+            RokidMobileSDK.media.requestPauseIntent("RC528E2DD8E745E195173D9F8BE48436",
+                    object : IMediaWareControlCallback {
+                        override fun onSucceed(mediaWareControlData: MediaWareControlData?) {
+                            Logger.d("onSucceed - ${mediaWareControlData.toString()}")
+
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = mediaWareControlData.toString()
+                            }
+                        }
+
+                        override fun onFailed(errorCode: String?, errorMessage: String?) {
+                            Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = errorMessage
+                            }
+                        }
+                    })
+        }
+
+        rootView!!.skill_media_resume.setOnClickListener {
+            RokidMobileSDK.media.requestResumeIntent("RC528E2DD8E745E195173D9F8BE48436",
+                    object : IMediaWareControlCallback {
+                        override fun onSucceed(mediaWareControlData: MediaWareControlData?) {
+                            Logger.d("onSucceed - ${mediaWareControlData.toString()}")
+
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = mediaWareControlData.toString()
+                            }
+                        }
+
+                        override fun onFailed(errorCode: String?, errorMessage: String?) {
+                            Logger.e("onFailed - errorCode: ${errorCode}; errorMessage: ${errorMessage}")
+
+                            this@SkillMediaFragment.activity?.runOnUiThread {
+                                rootView!!.skill_media_response_txt.text = errorMessage
+                            }
+                        }
+                    })
+        }
+
         rootView!!.skill_media_next.setOnClickListener {
             RokidMobileSDK.media.requestNextIntent("RC528E2DD8E745E195173D9F8BE48436",
-                    object :IMediaWareControlCallback {
+                    object : IMediaWareControlCallback {
                         override fun onSucceed(mediaWareControlData: MediaWareControlData?) {
                             Logger.d("onSucceed - ${mediaWareControlData.toString()}")
 
@@ -192,7 +239,7 @@ class SkillMediaFragment : BaseFragment() {
 
         rootView!!.skill_media_pre.setOnClickListener {
             RokidMobileSDK.media.requestPreviousIntent("RC528E2DD8E745E195173D9F8BE48436",
-                    object :IMediaWareControlCallback {
+                    object : IMediaWareControlCallback {
                         override fun onSucceed(mediaWareControlData: MediaWareControlData?) {
                             Logger.d("onSucceed - ${mediaWareControlData.toString()}")
 
