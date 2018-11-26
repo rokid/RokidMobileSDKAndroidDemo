@@ -3,6 +3,7 @@ package com.rokid.mobile.sdk.demo.skill
 import com.rokid.mobile.lib.annotation.ThirdAuth
 import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.bean.auth.ThirdOauthInfoBean
+import com.rokid.mobile.lib.entity.bean.auth.UploadInfoBean
 import com.rokid.mobile.lib.entity.bean.media.cloud.data.MediaDetailV3Data
 import com.rokid.mobile.lib.entity.bean.media.cloud.data.MediaHomeV3Data
 import com.rokid.mobile.lib.entity.bean.media.cloud.data.MediaListV3Data
@@ -10,11 +11,13 @@ import com.rokid.mobile.lib.entity.bean.media.cloud.template.MediaEventTemplate
 import com.rokid.mobile.lib.entity.bean.media.middleware.MediaWareControlData
 import com.rokid.mobile.lib.entity.bean.media.middleware.SkillBean
 import com.rokid.mobile.lib.xbase.appserver.callback.IGetThirdOauthInfoCallback
+import com.rokid.mobile.lib.xbase.appserver.callback.Thirdauth.IUploadThirdAuthCallback
 import com.rokid.mobile.lib.xbase.media.callback.*
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.skill_fragment_media.view.*
+import java.util.*
 
 /**
  * Description: TODO
