@@ -35,7 +35,7 @@ object WifiEngineHelper {
             if (!wifiState) {
                 return null
             }
-            val wifiInfo = wifiManager!!.connectionInfo ?: return null
+            val wifiInfo = wifiManager.connectionInfo ?: return null
             val wifiBean = WifiBean()
             wifiBean.bssid = wifiInfo.bssid
             wifiBean.ssid = clearQuotesFromSSID(wifiInfo.ssid)
@@ -76,7 +76,7 @@ object WifiEngineHelper {
      */
     fun startWifiScan(): List<WifiBean> {
         Logger.i("startWifiScan is called ")
-        wifiManager!!.startScan()
+        wifiManager.startScan()
 
         val scanResults = wifiManager.scanResults
 

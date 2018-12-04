@@ -21,7 +21,7 @@ abstract class BaseFragment : Fragment() {
         Logger.d("onCreateView: ${this}")
 
         if (null == rootView) {
-            rootView = inflater!!.inflate(layoutId(), null)
+            rootView = inflater.inflate(layoutId(), null)
 
             initViews()
 
