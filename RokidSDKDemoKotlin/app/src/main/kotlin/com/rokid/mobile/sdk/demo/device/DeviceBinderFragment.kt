@@ -168,14 +168,14 @@ class DeviceBinderFragment : BaseFragment() {
         RokidMobileSDK.binder.connectBT(bleName, object : IBTConnectCallBack {
 
             override fun onConnectSucceed(p0: BTDeviceBean?) {
-                this@DeviceBinderFragment.activity.runOnUiThread {
+                this@DeviceBinderFragment.activity!!.runOnUiThread {
                     Toast.makeText(this@DeviceBinderFragment.activity, "连接成功 请输入wifi信息", Toast.LENGTH_LONG).show()
                     currentBleItem?.hideProgress()
                 }
             }
 
             override fun onConnectFailed(p0: BTDeviceBean?, p1: BleException?) {
-                this@DeviceBinderFragment.activity.runOnUiThread {
+                this@DeviceBinderFragment.activity!!.runOnUiThread {
                     Toast.makeText(this@DeviceBinderFragment.activity,
                             "连接失败 errorCode=" + (p0 ?: "") + "errorMsg= " + (p1 ?: ""),
                             Toast.LENGTH_LONG).show()
@@ -210,7 +210,7 @@ class DeviceBinderFragment : BaseFragment() {
         RokidMobileSDK.binder.sendBTBinderData(bindData, object : IBinderCallBack {
             override fun onSendSucceed(btDeviceBean: BTDeviceBean?) {
                 Logger.d("Send Success -----------------")
-                this@DeviceBinderFragment.activity.runOnUiThread {
+                this@DeviceBinderFragment.activity?.runOnUiThread {
                     Toast.makeText(this@DeviceBinderFragment.activity, "发送数据成功",
                             Toast.LENGTH_LONG).show()
                 }
@@ -218,7 +218,7 @@ class DeviceBinderFragment : BaseFragment() {
 
             override fun onSendFailed(btDeviceBean: BTDeviceBean?, bleException: BleException?) {
                 Logger.e("SendFailed -----------------")
-                this@DeviceBinderFragment.activity.runOnUiThread {
+                this@DeviceBinderFragment.activity?.runOnUiThread {
                     Toast.makeText(this@DeviceBinderFragment.activity,
                             "发送数据失败 error: ${bleException.toString()}",
                             Toast.LENGTH_LONG).show()
@@ -235,13 +235,13 @@ class DeviceBinderFragment : BaseFragment() {
                     return
                 }
 
-                this@DeviceBinderFragment.activity.runOnUiThread {
+                this@DeviceBinderFragment.activity!!.runOnUiThread {
                     Toast.makeText(activity, wifiList.toString(), Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onGetFailed(btDeviceBean: BTDeviceBean?, bleException: BleException?) {
-                this@DeviceBinderFragment.activity.runOnUiThread {
+                this@DeviceBinderFragment.activity!!.runOnUiThread {
                     Toast.makeText(activity, bleException.toString(), Toast.LENGTH_SHORT).show()
                 }
 
@@ -249,7 +249,5 @@ class DeviceBinderFragment : BaseFragment() {
 
         })
     }
-
-
 
 }

@@ -8,7 +8,7 @@ android {
     defaultConfig {
 
         minSdkVersion 19
-        targetSdkVersion 22
+        targetSdkVersion 26
 
         applicationId "com.rokid.mobile.sdk.demo.kotlin"
 
@@ -64,18 +64,23 @@ android {
 dependencies {
     // implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:multidex:1.0.3'
+    implementation "com.android.support:support-v4:$support_version"
+    implementation "com.android.support:support-compat:$support_version"
+    implementation "com.android.support:support-core-ui:$support_version"
+    implementation "com.android.support:appcompat-v7:$support_version"
+    implementation "com.android.support:recyclerview-v7:$support_version"
+    implementation "com.android.support:design:$support_version"
+    implementation "com.android.support:percent:$support_version"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'com.android.support:recyclerview-v7:26.1.0'
-    implementation 'com.android.support:design:26.1.0'
-    implementation 'com.android.support:appcompat-v7:26.1.0'
 
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.6.0-181125003', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.6.0-181204008', ext: "aar")
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
 
     // 第三方库
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
-//    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
+    implementation 'org.eclipse.paho:org.eclipse.paho.android.service:1.1.1'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'
     implementation 'org.greenrobot:eventbus:3.1.1'

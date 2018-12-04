@@ -19,7 +19,7 @@ class OtherIndexFragment : BaseFragment() {
         rootView!!.other_subtitle.text = "SDK Other Demo"
 
         rootView!!.other_tab_layout.setupWithViewPager(rootView!!.other_viewPager)
-        rootView!!.other_viewPager.adapter = BaseFragmentAdapter(activity.supportFragmentManager,
+        rootView!!.other_viewPager.adapter = BaseFragmentAdapter(activity!!.supportFragmentManager,
                 OtherData.fragmentList)
     }
 

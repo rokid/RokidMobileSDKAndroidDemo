@@ -19,7 +19,7 @@ class AccountIndexFragment : BaseFragment() {
         rootView!!.account_subtitle.text = "SDK Account Demo"
 
         rootView!!.account_tab_layout.setupWithViewPager(rootView!!.account_viewPager)
-        rootView!!.account_viewPager.adapter = BaseFragmentAdapter(activity.supportFragmentManager,
+        rootView!!.account_viewPager.adapter = BaseFragmentAdapter(activity!!.supportFragmentManager,
                 AccountData.fragmentList)
     }
 

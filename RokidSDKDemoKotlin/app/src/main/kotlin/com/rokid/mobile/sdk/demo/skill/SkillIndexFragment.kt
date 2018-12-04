@@ -19,7 +19,7 @@ class SkillIndexFragment : BaseFragment() {
         rootView!!.skill_subtitle.text = "SDK Skill Demo"
 
         rootView!!.skill_tab_layout.setupWithViewPager(rootView!!.skill_viewPager)
-        rootView!!.skill_viewPager.adapter = BaseFragmentAdapter(activity.supportFragmentManager,
+        rootView!!.skill_viewPager.adapter = BaseFragmentAdapter(activity!!.supportFragmentManager,
                 SkillData.fragmentList)
     }
 

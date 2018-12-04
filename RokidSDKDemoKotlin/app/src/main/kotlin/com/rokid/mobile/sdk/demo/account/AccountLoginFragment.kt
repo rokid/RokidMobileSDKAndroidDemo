@@ -50,7 +50,7 @@ class AccountLoginFragment : BaseFragment() {
                 rootView!!.account_login_pwd_et.text.toString(), object : ILoginResultCallback {
 
             override fun onLoginSucceed() {
-                this@AccountLoginFragment.activity.runOnUiThread {
+                this@AccountLoginFragment.activity?.runOnUiThread {
                     toast("登录成功")
 
                     showView(true)
@@ -58,7 +58,7 @@ class AccountLoginFragment : BaseFragment() {
             }
 
             override fun onLoginFailed(p0: String?, p1: String?) {
-                this@AccountLoginFragment.activity.runOnUiThread {
+                this@AccountLoginFragment.activity!!.runOnUiThread {
                     toast("登录失败 errorCode=" + (p0 ?: "") + "errorMsg= " + (p1 ?: ""))
                 }
             }
@@ -72,7 +72,7 @@ class AccountLoginFragment : BaseFragment() {
     private fun logout() {
         RokidMobileSDK.account.logout(object : ILogoutResultCallback {
             override fun onLogoutFailed(p0: String?, p1: String?) {
-                this@AccountLoginFragment.activity.runOnUiThread {
+                this@AccountLoginFragment.activity!!.runOnUiThread {
                     toast("登出失败 errorCode=" + (p0
                             ?: "") + "errorMsg= " + (p1 ?: ""))
 
@@ -81,7 +81,7 @@ class AccountLoginFragment : BaseFragment() {
             }
 
             override fun onLogoutSucceed() {
-                this@AccountLoginFragment.activity.runOnUiThread {
+                this@AccountLoginFragment.activity!!.runOnUiThread {
                     toast("登出成功")
                     showView(false)
                 }

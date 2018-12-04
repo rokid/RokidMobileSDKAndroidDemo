@@ -17,7 +17,7 @@ abstract class BaseFragment : Fragment() {
 
     var rootView: View? = null
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         Logger.d("onCreateView: ${this}")
 
         if (null == rootView) {
@@ -52,7 +52,7 @@ abstract class BaseFragment : Fragment() {
     }
 
     fun toast(text: String) {
-        activity.runOnUiThread {
+        activity!!.runOnUiThread {
             Toast.makeText(activity, text, Toast.LENGTH_LONG).show()
         }
     }

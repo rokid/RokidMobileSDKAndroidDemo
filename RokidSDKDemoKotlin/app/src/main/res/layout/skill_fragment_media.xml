@@ -29,6 +29,13 @@
             <!--android:layout_marginTop="10dp"/>-->
 
             <Button
+                android:id="@+id/skill_media_getThirdOauthToken"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="GetThirdOauthToken" />
+
+            <Button
                 android:id="@+id/skill_media_getskill"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

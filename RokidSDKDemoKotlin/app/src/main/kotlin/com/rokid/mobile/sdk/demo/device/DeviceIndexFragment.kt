@@ -20,7 +20,7 @@ class DeviceIndexFragment : BaseFragment() {
         rootView!!.device_subtitle.text = "SDK Device Demo"
 
         rootView!!.device_tab_layout.setupWithViewPager(rootView!!.device_viewPager)
-        rootView!!.device_viewPager.adapter = BaseFragmentAdapter(activity.supportFragmentManager,
+        rootView!!.device_viewPager.adapter = BaseFragmentAdapter(activity!!.supportFragmentManager,
                 DeviceData.fragmentList)
     }
 

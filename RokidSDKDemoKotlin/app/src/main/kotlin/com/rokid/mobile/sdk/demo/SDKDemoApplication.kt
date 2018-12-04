@@ -37,7 +37,7 @@ class SDKDemoApplication : Application() {
 
                 })
 
-        RokidMobileSDK.env(SDKEnvType.PRE)
+        RokidMobileSDK.env(SDKEnvType.RELEASE)
         RokidMobileSDK.openLog(true)
     }
 

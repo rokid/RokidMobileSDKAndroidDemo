@@ -34,13 +34,13 @@ class SkillRemindFragment : BaseFragment() {
             RokidMobileSDK.skill.remind().getList(rootView!!.skill_remind_device_id.selectedItem.toString(),
                     object : SDKGetRemindListCallback {
                         override fun onSucceed(remindList: MutableList<SDKRemind>?) {
-                            activity.runOnUiThread {
+                            activity?.runOnUiThread {
                                 rootView!!.skill_txt.append("\n" + Gson().toJson(remindList))
                             }
                         }
 
                         override fun onFailed(errorCode: String?, errorMessage: String?) {
-                            activity.runOnUiThread {
+                            activity?.runOnUiThread {
                                 rootView!!.skill_txt.append("\n errorCode:${errorCode}; errorMessage:${errorMessage}")
                             }
                         }

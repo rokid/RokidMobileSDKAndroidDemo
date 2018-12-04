@@ -37,7 +37,7 @@ class SkillAlarmFragment : BaseFragment() {
 
             val intent = Intent(activity, SkillAlarmAddActivity::class.java)
             intent.putExtra(SkillAlarmAddActivity.DEVICE_ID, deviceId)
-            activity.startActivity(intent)
+            activity?.startActivity(intent)
         }
 
         rootView!!.skill_alarm_update.setOnClickListener here@{
@@ -51,7 +51,7 @@ class SkillAlarmFragment : BaseFragment() {
             val intent = Intent(activity, SkillAlarmUpdateActivity::class.java)
             intent.putExtra(SkillAlarmUpdateActivity.DEVICE_ID, deviceId)
             intent.putExtra(SkillAlarmUpdateActivity.ALARM, alarmList!![0])
-            activity.startActivity(intent)
+            activity?.startActivity(intent)
         }
 
         rootView!!.skill_alarm_list.setOnClickListener here@{
@@ -66,13 +66,13 @@ class SkillAlarmFragment : BaseFragment() {
                         override fun onSucceed(alarmList: MutableList<SDKAlarm>?) {
                             this@SkillAlarmFragment.alarmList = alarmList
 
-                            activity.runOnUiThread {
+                            activity!!.runOnUiThread {
                                 eventTxt.text = "\n" + Gson().toJson(alarmList)
                             }
                         }
 
                         override fun onFailed(errorCode: String?, errorMessage: String?) {
-                            activity.runOnUiThread {
+                            activity!!.runOnUiThread {
                                 eventTxt.text = "\n errorCode:${errorCode}; errorMessage:${errorMessage}"
                             }
                         }
