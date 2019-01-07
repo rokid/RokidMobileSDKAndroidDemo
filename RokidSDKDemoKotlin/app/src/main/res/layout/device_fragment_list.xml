@@ -17,6 +17,16 @@
             android:text="获取设备列表"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/fragment_device_list_status_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_toEndOf="@+id/fragment_device_list_btn"
+            android:padding="10dp"
+            android:text="获取设备状态"
+            android:textStyle="bold" />
+
         <ProgressBar
             android:id="@+id/fragment_device_list_pb"
             android:layout_width="30dp"
@@ -32,8 +42,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fragment_device_list_btn_layer"
-        android:layout_marginEnd="20dp"
         android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
         android:background="@drawable/device_list_bg"
         android:overScrollMode="ifContentScrolls"
         android:scrollbars="vertical"
