@@ -5,6 +5,7 @@ import com.rokid.mobile.lib.xbase.channel.IChannelPublishCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.annotation.SDKRepeatType
 import com.rokid.mobile.sdk.bean.SDKAlarm
+import com.rokid.mobile.sdk.callback.SDKOperateAlarmCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseActivity
 import kotlinx.android.synthetic.main.base_titlebar.*
@@ -46,12 +47,26 @@ class SkillAlarmAddActivity : BaseActivity() {
                 day = alarm_date.dayOfMonth
                 hour = alarm_time.hour
                 minute = alarm_time.minute
-                repeatType = SDKRepeatType.EVERY_MONDAY
+                repeatType = SDKRepeatType.ONCE
                 ext = HashMap<String, String>().apply {
-                    put("TestKey","TestValue")
+                    put("TestKey", "TestValue")
                 }
             }
 
+            //添加云闹钟
+//            RokidMobileSDK.skill.cloudAlarm().addAlarm(deviceId, sdkAlarm, object : SDKOperateAlarmCallback {
+//                override fun onSucceed() {
+//                    toast("添加成功")
+//                    finish()
+//                }
+//
+//                override fun onFailed(p0: String?, p1: String?) {
+//                    toast("添加失败")
+//                }
+//
+//            })
+
+            //添加本地闹钟
             RokidMobileSDK.skill.alarm().add(deviceId!!, sdkAlarm, object : IChannelPublishCallback {
                 override fun onSucceed() {
                     toast("添加成功")

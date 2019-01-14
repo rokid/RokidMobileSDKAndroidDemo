@@ -9,6 +9,7 @@ import com.rokid.mobile.sdk.bean.SDKAlarm
 import com.rokid.mobile.sdk.bean.SDKDevice
 import com.rokid.mobile.sdk.callback.SDKGetAlarmListCallback
 import com.rokid.mobile.sdk.callback.SDKGetDeviceListCallback
+import com.rokid.mobile.sdk.callback.SDKOperateAlarmCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.skill_fragment_alarm.*
@@ -41,7 +42,7 @@ class SkillAlarmFragment : BaseFragment() {
         }
 
         rootView!!.skill_alarm_update.setOnClickListener here@{
-            if (null == alarmList || alarmList!!.size <= 0){
+            if (null == alarmList || alarmList!!.size <= 0) {
                 toast("闹钟列表为空，请先获取 或者创建一个闹钟。")
                 return@here
             }
@@ -61,6 +62,25 @@ class SkillAlarmFragment : BaseFragment() {
                 return@here
             }
 
+            //获取云闹钟列表
+//            RokidMobileSDK.skill.cloudAlarm().getList(deviceId, object : SDKGetAlarmListCallback {
+//                override fun onSucceed(alarmList: MutableList<SDKAlarm>?) {
+//                    this@SkillAlarmFragment.alarmList = alarmList
+//
+//                    activity!!.runOnUiThread {
+//                        eventTxt.text = "\n" + Gson().toJson(alarmList)
+//                    }
+//                }
+//
+//                override fun onFailed(errorCode: String?, errorMessage: String?) {
+//                    activity!!.runOnUiThread {
+//                        eventTxt.text = "\n errorCode:${errorCode}; errorMessage:${errorMessage}"
+//                    }
+//                }
+//
+//            })
+
+            //获取本地闹钟列表
             RokidMobileSDK.skill.alarm().getList(skill_alarm_device_id.selectedItem.toString(),
                     object : SDKGetAlarmListCallback {
                         override fun onSucceed(alarmList: MutableList<SDKAlarm>?) {
