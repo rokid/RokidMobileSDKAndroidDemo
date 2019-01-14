@@ -5,6 +5,7 @@ import com.rokid.mobile.lib.xbase.channel.IChannelPublishCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.annotation.SDKRepeatType
 import com.rokid.mobile.sdk.bean.SDKAlarm
+import com.rokid.mobile.sdk.callback.SDKOperateAlarmCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseActivity
 import kotlinx.android.synthetic.main.base_titlebar.*
@@ -46,23 +47,47 @@ class SkillAlarmUpdateActivity : BaseActivity() {
 
         alarm_update_btn.setOnClickListener {
             val newAlarm = SDKAlarm().apply {
+                year = 2019
+                month = 2
+                day = 1
                 hour = alarm_time.hour
                 minute = alarm_time.minute
-                repeatType = SDKRepeatType.EVERY_MONDAY
+                repeatType = SDKRepeatType.ONCE
                 ext = HashMap<String, String>().apply {
                     put("NewTestKey", "NewTestValue")
                 }
             }
 
+            //修改云闹钟
+//            alarm?.hour = alarm_time.hour
+//            alarm?.minute = alarm_time.minute
+//            RokidMobileSDK.skill.cloudAlarm().updateAlarm(deviceId, alarm, object : SDKOperateAlarmCallback {
+//                override fun onSucceed() {
+//                    runOnUiThread {
+//                        toast("修改成功")
+//                        finish()
+//                    }
+//
+//                }
+//
+//                override fun onFailed(p0: String?, p1: String?) {
+//                    runOnUiThread {
+//                        toast("修改失败")
+//                    }
+//                }
+//
+//            })
+
+            //修改本地闹钟
             RokidMobileSDK.skill.alarm().update(deviceId!!, alarm, newAlarm,
-                    object : IChannelPublishCallback{
+                    object : IChannelPublishCallback {
                         override fun onSucceed() {
-                            toast("添加成功")
+                            toast("修改成功")
                             finish()
                         }
 
                         override fun onFailed() {
-                            toast("添加失败")
+                            toast("修改失败")
                         }
                     })
         }
