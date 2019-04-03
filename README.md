@@ -6,9 +6,8 @@ Rokid Mobile SDK 提供了，Rokid 帐号、设备、配网、Vui反馈、Skill 
 
 ## 2、Demo
 
-Demo 有 Kotlin 和 Java 版本，请开发者各取所需。
+Demo 提供了 Kotlin 版本，请开发者自取。
 
-* [RokidSDKDemoJava](https://github.com/Rokid/RokidMobileSDKAndroidDemo/tree/master/RokidSDKDemoJava)
 * [RokidSDKDemoKotlin](https://github.com/Rokid/RokidMobileSDKAndroidDemo/tree/master/RokidSDKDemoKotlin)
 
 ## 3、文档地址
