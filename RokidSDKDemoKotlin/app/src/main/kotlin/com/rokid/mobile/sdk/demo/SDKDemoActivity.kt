@@ -4,19 +4,18 @@ import android.app.AlertDialog
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
 import android.text.TextUtils
+import android.widget.TextView
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.account.AccountIndexFragment
 import com.rokid.mobile.sdk.demo.base.BaseActivity
+import com.rokid.mobile.sdk.demo.base.IconTextView
 import com.rokid.mobile.sdk.demo.device.DeviceIndexFragment
 import com.rokid.mobile.sdk.demo.other.OtherIndexFragment
 import com.rokid.mobile.sdk.demo.skill.SkillIndexFragment
 import kotlinx.android.synthetic.main.demo_activity_index.*
-import android.widget.TextView
-import com.rokid.mobile.sdk.demo.base.IconTextView
 
 
 /**
- * Description: TODO
  * Author: Shper
  * Version: V0.1 2018/2/26
  */

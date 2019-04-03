@@ -5,7 +5,6 @@ import com.rokid.mobile.sdk.demo.base.BaseActivity
 import kotlinx.android.synthetic.main.demo_activity_webview.*
 
 /**
- * Description: TODO
  * Author: Shper
  * Version: V0.1 2018/2/27
  */

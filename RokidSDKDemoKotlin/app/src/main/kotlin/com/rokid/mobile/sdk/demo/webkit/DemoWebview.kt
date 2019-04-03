@@ -19,17 +19,14 @@ import com.rokid.mobile.webview.lib.callback.StorageCallback
 import java.lang.ref.WeakReference
 
 /**
- * Description: TODO
  * Author: Shper
  * Version: V0.1 2018/2/26
  */
 class DemoWebview : SDKWebview {
     override fun setTitleBarRightEnable(enable: Boolean) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun setTitleBarRightEnables(enables: Array<TitleBarButtonEnable>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun storageGet(key: String, callback: StorageCallback) {
@@ -88,22 +85,22 @@ class DemoWebview : SDKWebview {
 
                 when (event?.action) {
                     MotionEvent.ACTION_DOWN -> {
-                        Log.d("DemoWebview", "ACTION_DOWN:" + isMove)
+                        Log.d("DemoWebview", "ACTION_DOWN:$isMove")
                         this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
                     }
 
                     MotionEvent.ACTION_MOVE -> {
-                        Log.d("DemoWebview", "ACTION_MOVE:" + isMove)
+                        Log.d("DemoWebview", "ACTION_MOVE:$isMove")
                         this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
                     }
 
                     MotionEvent.ACTION_CANCEL -> {
-                        Log.d("DemoWebview", "ACTION_CANCEL:" + isMove)
+                        Log.d("DemoWebview", "ACTION_CANCEL:$isMove")
                         this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
                     }
 
                     MotionEvent.ACTION_UP -> {
-                        Log.d("DemoWebview", "ACTION_UP:" + isMove)
+                        Log.d("DemoWebview", "ACTION_UP:$isMove")
 
                         this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
                     }
@@ -116,7 +113,7 @@ class DemoWebview : SDKWebview {
 
     // here is BridgeModulePhoneDelegate
     override fun touchDown() {
-        Log.d("DemoWebview", "touchDown:" + isMove)
+        Log.d("DemoWebview", "touchDown:$isMove")
 
         isMove = true
     }
@@ -125,7 +122,7 @@ class DemoWebview : SDKWebview {
     }
 
     override fun touchUp() {
-        Log.d("DemoWebview", "touchUp:" + isMove)
+        Log.d("DemoWebview", "touchUp:$isMove")
 
         isMove = false
     }
@@ -155,8 +152,8 @@ class DemoWebview : SDKWebview {
     override fun openExternal(url: String) {
         val intent = Intent()
         intent.action = "android.intent.action.VIEW"
-        val content_url = Uri.parse(url)
-        intent.data = content_url
+        val contentUrl = Uri.parse(url)
+        intent.data = contentUrl
 
         contextWeak?.get()?.startActivity(intent)
     }

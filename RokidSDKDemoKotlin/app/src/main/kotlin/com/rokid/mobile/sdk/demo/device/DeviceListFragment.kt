@@ -61,7 +61,7 @@ class DeviceListFragment : BaseFragment() {
             getDeviceItemList()
         }
 
-        mAdapter.setOnItemViewClickListener { deviceItem, sectionKey, sectionItemPosition ->
+        mAdapter.setOnItemViewClickListener { deviceItem, _, sectionItemPosition ->
             if (deviceItem == null) {
                 return@setOnItemViewClickListener
             }
@@ -70,7 +70,7 @@ class DeviceListFragment : BaseFragment() {
         }
 
         statusBtn.setOnClickListener {
-            if(CollectionUtils.isEmpty(sdkDeviceList)){
+            if (CollectionUtils.isEmpty(sdkDeviceList)) {
                 toast("设备列表为空")
                 return@setOnClickListener
             }
@@ -99,16 +99,16 @@ class DeviceListFragment : BaseFragment() {
 
             override fun onGetDeviceListSucceed(deviceList: MutableList<SDKDevice>?) {
                 progressBar.visibility = View.GONE
-                if (CollectionUtils.isEmpty(deviceList)) {
+                if (deviceList.isNullOrEmpty()) {
                     toast("设备列表为空")
                     mRecycler.visibility = View.GONE
                     return
                 }
 
-                sdkDeviceList = deviceList!!
+                sdkDeviceList = deviceList
 
                 val deviceItemList = ArrayList<DeviceItem>()
-                deviceList!!.forEachIndexed { index, rkDevice ->
+                deviceList.forEachIndexed { index, rkDevice ->
                     deviceItemList.add(DeviceItem(rkDevice, {
                         RokidMobileSDK.device.pingDevice(rkDevice, object : IPingDeviceCallback {
                             override fun onSuccess(deviceId: String?, isOnline: Boolean) {
@@ -147,7 +147,7 @@ class DeviceListFragment : BaseFragment() {
 
     @Subscribe
     fun onSysInfo(eventDeviceSysUpdate: EventDeviceSysUpdate) {
-        Logger.e("onSysInfo eventDeviceSysUpdate" + eventDeviceSysUpdate.toString())
+        Logger.e("onSysInfo eventDeviceSysUpdate$eventDeviceSysUpdate")
     }
 
     fun getDeviceStatus(sddDevice: SDKDevice) {

@@ -1,9 +1,6 @@
 package com.rokid.mobile.sdk.demo
 
 import android.app.Application
-import com.rokid.mobile.binder.lib.bluetooth.callBack.IBTConnectCallBack
-import com.rokid.mobile.binder.lib.bluetooth.exception.BleException
-import com.rokid.mobile.lib.entity.bean.bluetooth.BTDeviceBean
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.annotation.SDKEnvType
 import com.rokid.mobile.sdk.callback.SDKInitCompletedCallback
