@@ -14,6 +14,7 @@ import android.webkit.WebViewClient
 import com.rokid.mobile.sdk.demo.SDKDemoActivity
 import com.rokid.mobile.sdk.webkit.SDKWebview
 import com.rokid.mobile.webview.lib.bean.TitleBarButton
+import com.rokid.mobile.webview.lib.bean.TitleBarButtonEnable
 import com.rokid.mobile.webview.lib.callback.StorageCallback
 import java.lang.ref.WeakReference
 
@@ -23,6 +24,14 @@ import java.lang.ref.WeakReference
  * Version: V0.1 2018/2/26
  */
 class DemoWebview : SDKWebview {
+    override fun setTitleBarRightEnable(enable: Boolean) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun setTitleBarRightEnables(enables: Array<TitleBarButtonEnable>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun storageGet(key: String, callback: StorageCallback) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
