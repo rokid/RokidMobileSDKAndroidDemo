@@ -7,10 +7,10 @@ import android.os.Build
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
-import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import com.rokid.mobile.lib.xbase.appserver.callback.Thirdauth.IThirdAuthCallback
 import com.rokid.mobile.sdk.demo.SDKDemoActivity
 import com.rokid.mobile.sdk.webkit.SDKWebview
 import com.rokid.mobile.webview.lib.bean.TitleBarButton
@@ -23,6 +23,7 @@ import java.lang.ref.WeakReference
  * Version: V0.1 2018/2/26
  */
 class DemoWebview : SDKWebview {
+
     override fun setTitleBarRightEnable(enable: Boolean) {
     }
 
@@ -30,15 +31,24 @@ class DemoWebview : SDKWebview {
     }
 
     override fun storageGet(key: String, callback: StorageCallback) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun storageRemove(key: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun storageSave(key: String, value: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun qq(callback: IThirdAuthCallback) {
+    }
+
+    override fun wx(callback: IThirdAuthCallback) {
+    }
+
+    override fun xmly(callback: IThirdAuthCallback) {
+    }
+
+    override fun miHome(did: String, bindKey: String, requestCode: Int, callbackURL: String, callback: IThirdAuthCallback) {
     }
 
     private var isMove: Boolean = false
@@ -80,35 +90,32 @@ class DemoWebview : SDKWebview {
     }
 
     private fun initListener() {
-        setOnTouchListener(object : OnTouchListener {
-            override fun onTouch(v: View?, event: MotionEvent?): Boolean {
-
-                when (event?.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        Log.d("DemoWebview", "ACTION_DOWN:$isMove")
-                        this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
-                    }
-
-                    MotionEvent.ACTION_MOVE -> {
-                        Log.d("DemoWebview", "ACTION_MOVE:$isMove")
-                        this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
-                    }
-
-                    MotionEvent.ACTION_CANCEL -> {
-                        Log.d("DemoWebview", "ACTION_CANCEL:$isMove")
-                        this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
-                    }
-
-                    MotionEvent.ACTION_UP -> {
-                        Log.d("DemoWebview", "ACTION_UP:$isMove")
-
-                        this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
-                    }
+        setOnTouchListener { _, event ->
+            when (event?.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    Log.d("DemoWebview", "ACTION_DOWN:$isMove")
+                    this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
                 }
 
-                return false
+                MotionEvent.ACTION_MOVE -> {
+                    Log.d("DemoWebview", "ACTION_MOVE:$isMove")
+                    this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
+                }
+
+                MotionEvent.ACTION_CANCEL -> {
+                    Log.d("DemoWebview", "ACTION_CANCEL:$isMove")
+                    this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    Log.d("DemoWebview", "ACTION_UP:$isMove")
+
+                    this@DemoWebview.requestDisallowInterceptTouchEvent(isMove)
+                }
             }
-        })
+
+            false
+        }
     }
 
     // here is BridgeModulePhoneDelegate
