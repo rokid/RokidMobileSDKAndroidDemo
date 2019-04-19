@@ -68,7 +68,7 @@ class SDKDemoActivity : BaseActivity() {
 
         val mLayoutInflater = this.layoutInflater
 
-        for (position in 0..(fragmentList.size - 1)) {
+        for (position in 0 until fragmentList.size) {
             val tab = demo_tab_layout.newTab()
             val view = mLayoutInflater.inflate(R.layout.demo_tab_item, null)
             tab.customView = view

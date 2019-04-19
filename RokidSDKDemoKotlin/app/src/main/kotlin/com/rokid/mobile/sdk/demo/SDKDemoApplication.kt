@@ -21,10 +21,13 @@ class SDKDemoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         instance = this
+
+        RokidMobileSDK.env(SDKEnvType.DEV)
+
         RokidMobileSDK.init(this,
                 "rokid-demo",
                 "rokid-demo-secret",
-                "rokid-demo-accessKey",
+                "",
                 object : SDKInitCompletedCallback {
                     override fun onInitFailed(p0: String?, p1: String?) {
                     }
@@ -34,7 +37,6 @@ class SDKDemoApplication : Application() {
 
                 })
 
-        RokidMobileSDK.env(SDKEnvType.RELEASE)
         RokidMobileSDK.openLog(true)
     }
 
