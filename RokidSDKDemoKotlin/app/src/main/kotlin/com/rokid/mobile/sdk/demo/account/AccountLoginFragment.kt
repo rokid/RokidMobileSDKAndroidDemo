@@ -20,7 +20,7 @@ class AccountLoginFragment : BaseFragment() {
     }
 
     override fun initViews() {
-        showView(!TextUtils.isEmpty(RokidMobileSDK.account.token))
+        showView(!RokidMobileSDK.account?.token.isNullOrEmpty())
     }
 
     override fun initListeners() {
