@@ -1,5 +1,6 @@
 package com.rokid.mobile.sdk.demo.other
 
+import android.content.Intent
 import android.widget.Button
 import com.rokid.mobile.home.lib.callback.IGetAsrErrorCallback
 import com.rokid.mobile.lib.entity.bean.home.AsrErrorCorrectBean
@@ -7,6 +8,7 @@ import com.rokid.mobile.lib.xbase.channel.IChannelPublishCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
+import com.rokid.mobile.sdk.demo.webkit.DemoWebviewActivity
 import kotlinx.android.synthetic.main.other_fragment_more.view.*
 
 /**
@@ -18,12 +20,14 @@ class MoreFragment : BaseFragment() {
 
     lateinit var asrBtn: Button
     lateinit var ttsBtn: Button
+    lateinit var webBtn: Button
 
     override fun layoutId(): Int = R.layout.other_fragment_more
 
     override fun initViews() {
         asrBtn = rootView!!.fragment_more_asr_btn
         ttsBtn = rootView!!.fragment_more_tts_btn
+        webBtn = rootView!!.fragment_more_web_btn
     }
 
     override fun initListeners() {
@@ -35,6 +39,13 @@ class MoreFragment : BaseFragment() {
             asrCorrect("东冯破", "东风破")
         }
 
+        webBtn.setOnClickListener {
+            val intent = Intent(activity, DemoWebviewActivity::class.java)
+            intent.putExtra(DemoWebviewActivity.KEY_TITLE, "测试Web")
+            intent.putExtra(DemoWebviewActivity.KEY_URL, "file:///android_asset/WebBridge_V1.html")
+//            intent.putExtra(DemoWebviewActivity.KEY_URL, "https://s.rokidcdn.com/mobile-app/h5/media/index.html#/kugou/userInfo")
+            startActivity(intent)
+        }
     }
 
     private fun sendTTS() {

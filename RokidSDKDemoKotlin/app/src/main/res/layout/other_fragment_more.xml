@@ -23,5 +23,14 @@
         android:text="ASR 纠错创建"
         android:textStyle="bold" />
 
+    <Button
+        android:id="@+id/fragment_more_web_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:text="Web测试"
+        android:textStyle="bold" />
+
 
 </LinearLayout>

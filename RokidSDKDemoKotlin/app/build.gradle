@@ -77,6 +77,7 @@ dependencies {
     // sdk
     implementation(name: 'com.rokid.mobile.sdk-1.9.0-190419001', ext: "aar")
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
+    implementation(name: 'KGMusicSDK', ext: "jar")
 
     // 第三方库
     implementation 'org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.0'
