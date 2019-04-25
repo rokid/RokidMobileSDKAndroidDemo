@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>H5 V1 Bridge Test</title>
+    <style>
+        button {
+            width: 50rem;
+            height: 6rem;
+            font-size: 3rem;
+        }
+
+        input {
+            width: 45rem;
+            height: 5rem;
+            font-size: 3rem;
+        }
+
+        label {
+            font-size: 4rem;
+        }
+
+        a {
+            font-size: 3rem;
+        }
+
+    </style>
+</head>
+
+<label>打开连接</label>
+<br/>
+<a href="rokid://settings/index" target="_blank">若琪设置 rokid://settings/index</a>
+<br/>
+<br/>
+<br/>
+<a href="https://www.baidu.com">Baidu https://www.baidu.com</a>
+<br/>
+<br/>
+<br/>
+<a href="https://www.baidu.com" target="_blank">Baidu _blank</a>
+<br/>
+<br/>
+<br/>
+<a href="rokid://webview/broadlink?url=https://www.baidu.com">博联 H5 A</a>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigatorOpenBl()">博联 H5 Open</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigatorOpenNewWebviewBl()">博联 H5 NewWebview</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="homebaseProxyRequest()">Homebase Proxy Request</button>
+<br/>
+<br/>
+<br/>
+<a href="tel:18601111110">Tel:18601111110</a>
+<br/>
+<br/>
+<br/>
+<label>Phone</label>
+<br/>
+<input id="pasteboardSet" type="text" placeholder="Pasteboard Set" value="">
+<br/>
+<button type="button" onclick="pasteboardSet()">Pasteboard Set</button>
+<br/>
+<input id="pasteboardGet" type="text" placeholder="Pasteboard Get" value="">
+<br/>
+<button type="button" onclick="pasteboardGet()">Pasteboard Get</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="socketSendUdp()">Socket SendUdp</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="touchDown()">touch Down</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="touchUp()">touch Up</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="storageSave()">storage Save</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="storageGet()">storage Get</button>
+<br/>
+<br/>
+<br/>
+<label>Native UI</label>
+<br/>
+<button type="button" onclick="showToast()">showToast</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="showLoading()">Show Loading</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="hideLoading()">hide Loading</button>
+<br/>
+<br/>
+<br/>
+<input id="navigationBarTitle" type="text" placeholder="NavigationBar Title" value="">
+<br/>
+<button type="button" onclick="navigationBarSetup()">NavigationBar Setup</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigationBarRightButton()">NavigationBar RightButton</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigationBarRightButtons()">NavigationBar RightButtons</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigationBarRightButtonEnable()">NavigationBar RightButtonEnable
+</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigationBarRightButtonsEnable()">NavigationBar RightButtonsEnable
+</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigationBarRightDotState()">NavigationBar RightDotState</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigationBarHide()">NavigationBar Hide</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigationBarShow()">NavigationBar Show</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="errorViewShow()">ErrorView Show</button>
+<br/>
+<br/>
+<br/>
+<label>APP</label>
+<br/>
+<button type="button" onclick="accountGetInfo()">Get Account Info</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="wifiGetInfo()">Get Wifi Info</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigatorClose()">Navigator Close</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigatorOpen()">Navigator Open</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigatorOpenNewWebview()">Navigator Open NewWebview</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="navigatorOpenExternal()">Navigator OpenExternal</button>
+<br/>
+<br/>
+<br/>
+<label>OAuth</label>
+<br/>
+<button type="button" onclick="OAuthBindWX()">OAuth Bind WX</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="OAuthBindQQ()">OAuth Bind QQ</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="OAuthBindXMLY()">OAuth Bind XMLY</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="OAuthBindMiHome()">OAuth Bind MIHOME</button>
+<br/>
+<br/>
+<br/>
+<input id="phoneNumInput" type="text" placeholder="Phone Num" value="">
+<br/>
+<input id="scodeInput" type="text" placeholder="SCode" value="">
+<br/>
+<button type="button" onclick="OAuthSCodeKugou()">OAuth KuGou SCode</button>
+<br/><br/><br/>
+<button type="button" onclick="OAuthBindKuGou()">OAuth Bind KuGOu</button>
+<br/><br/><br/>
+<button type="button" onclick="OAuthCommonUnbind()">OAuth Common Unbind</button>
+<br/><br/><br/>
+<button type="button" onclick="OAuthCommonToken()">OAuth Common Token</button>
+<br/><br/><br/>
+
+<label>Media</label>
+<br/>
+<button type="button" onclick="MediaV2BuildBody()">MediaV2 BuildBody</button>
+<br/>
+<br/>
+<br/>
+<label>Custom</label>
+<br/>
+<button type="button" onclick="customQQMusicSkip()">Save QQMusic Skip</button>
+<br/>
+<button type="button" onclick="getQQMusicSkip()">Get QQMusic Skip</button>
+<br/>
+<br/>
+<br/>
+<label>LifeSmart</label>
+<button type="button" onclick="LSNgetSSID()">LSN getSSID</button>
+<br/>
+<br/>
+<br/>
+<label>BroadLink</label>
+<br/>
+<button type="button" onclick="setNavBar()">setNavBar</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="getSSID()">getSSID</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="getLocation()">getLocation</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="finishCurrentPage()">finishCurrentPage</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="sdkInit()">init BL SDK</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="sdkDestroy()">destroy BL SDK</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="accountManagement()">accountManagement</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="familyManagement()">familyManagement</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="productManagement()">productManagement</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="iRService()">iRService</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="deviceControl()">deviceControl</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="deviceConfig()">deviceConfig</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="subDeviceManage()">subDeviceManage</button>
+<br/>
+<br/>
+<br/>
+<button type="button" onclick="clearCookies()">clearCookies</button>
+
+<script type="text/javascript">
+(function(window) {
+    const alert = (title, content) => {
+        if (!content) {
+            window.alert(title);
+        } else {
+            if (typeof content === "object") {
+                content = JSON.stringify(content);
+            }
+            window.alert(title + "\n" + content);
+        }
+    };
+
+    window.pasteboardSet = () => {
+        console.log("pasteboardSet")
+        const text = document.getElementById("pasteboardSet").value;
+        taro.Phone.Pasteboard.set(text);
+    };
+
+    window.pasteboardGet = () => {
+        console.log("pasteboardGet")
+        taro.Phone.Pasteboard.get(function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+            if (result) {
+                document.getElementById("pasteboardGet").value = result.text
+                console.log(result)
+            }
+       });
+    };
+
+    window.touchDown = () => {
+        console.log("touchDown")
+        taro.Phone.Touch.down();
+    };
+
+    window.touchUp = () => {
+        console.log("touchDown")
+        taro.Phone.Touch.up();
+    };
+
+    window.storageSave = () => {
+        console.log("storageSave")
+        taro.Phone.Storage.save("QQ", "Test");
+    };
+
+    window.storageGet = () => {
+        console.log("storageGet")
+        taro.Phone.Storage.get("QQ", function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.socketSendUdp = () => {
+        console.log("socketSendUdp")
+        taro.Phone.Socket.sendUdp("127.0.0.1", 8080, "abcdedfg", function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    window.showToast = () => {
+        console.log("showToast")
+        taro.NativeUI.Toast.show("你瞎点啥!", function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    window.showLoading = () => {
+        console.log("showLoading")
+        taro.NativeUI.Loading.show("玩命加载中...", function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    window.hideLoading = () => {
+        console.log("hideLoading")
+        taro.NativeUI.Loading.hide(function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    window.navigationBarSetup = () => {
+        console.log("navigationBar setup")
+        const title = document.getElementById("navigationBarTitle").value;
+        taro.NativeUI.NavigationBar.setup(title, "", function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    window.navigationBarRightButton = () => {
+        console.log("navigationBar rightButton")
+        const button = {
+            "text": "关闭",
+            "targetUrl": "close",
+            "loadSelf": false,
+            "dotState": true,
+            "type":"click",
+            "click": function() {
+                console.log("AAAAAAAA")
+            },
+            "enable": true
+        };
+        taro.NativeUI.NavigationBar.rightButton(button, function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    window.navigationBarRightButtons = () => {
+        console.log("navigationBar rightButton")
+        const button = [
+            {
+                "text": "关闭",
+                "targetUrl": "close",
+                "loadSelf": false,
+                "dotState": true,
+                "type":"click",
+                "click": function() {
+                    console.log("AAAAAAAA")
+                },
+                "enable": true
+            },
+            {
+                "text": "按钮2",
+                "targetUrl": "https://www.rokid.com/",
+                "loadSelf": false,
+                "dotState": true,
+                "type":"link",
+                "enable": false
+            }
+        ];
+        taro.NativeUI.NavigationBar.rightButtons(button, function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    var  buttonEnable =  true
+    window.navigationBarRightButtonEnable = () => {
+        console.log("navigationBar rightButtonEnable")
+        buttonEnable = !buttonEnable
+        taro.NativeUI.NavigationBar.rightButtonEnable(buttonEnable, function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    window.navigationBarRightButtonsEnable = () => {
+        console.log("navigationBar rightButtonsEnable")
+
+        const enables = [
+            {
+                "index": 0,
+                "value": false
+            },
+            {
+                "index": 1,
+                "value": true
+            }
+        ]
+
+        taro.NativeUI.NavigationBar.rightButtonsEnable(enables, function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    window.navigationBarRightDotState = () => {
+        console.log("navigationBar rightButton")
+        taro.NativeUI.NavigationBar.rightDotState(false);
+    };
+
+    window.navigationBarHide = () => {
+        console.log("navigationBar hide")
+        taro.NativeUI.NavigationBar.hide();
+    };
+
+    window.navigationBarShow = () => {
+        console.log("navigationBar show")
+        taro.NativeUI.NavigationBar.show();
+    };
+
+    window.errorViewShow = () => {
+        console.log("navigationBar rightButton")
+        taro.NativeUI.ErrorView.show("");
+    };
+
+    window.accountGetInfo = () => {
+        console.log("accountGetInfo")
+        taro.App.Account.getInfo(function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.wifiGetInfo = () => {
+        console.log("navigationBar rightButton")
+        taro.App.Wifi.getInfo(function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.navigatorClose = () => {
+        console.log("navigationBar close")
+        taro.App.Navigator.close();
+    };
+
+    window.navigatorOpenBl = () => {
+        console.log("navigationBar open")
+        taro.App.Navigator.open("百度", "rokid://webview/broadlink?url=https://www.baidu.com");
+    };
+
+    window.navigatorOpenNewWebviewBl = () => {
+        console.log("navigationBar open NewWebview")
+        taro.App.Navigator.openNewWebview("百度", "rokid://webview/broadlink?url=https://www.baidu.com");
+    };
+
+    window.homebaseProxyRequest = () => {
+        taro.HomeBase.proxy.request("test",{"func":"testFunc","args":"xxxxx"}, function(err, result) {
+                        if (err) {
+                             alert(JSON.stringify(err));
+                        }else {
+                             alert(JSON.stringify(result));
+                        }
+                    });
+    };
+
+    window.navigatorOpen = () => {
+        console.log("navigationBar open")
+        taro.App.Navigator.open("百度", "https://www.baidu.com");
+    };
+
+    window.navigatorOpenNewWebview = () => {
+        console.log("navigationBar open NewWebview")
+        taro.App.Navigator.openNewWebview("百度", "https://www.baidu.com");
+    };
+
+    window.navigatorOpenExternal = () => {
+        console.log("navigationBar open External")
+        taro.App.Navigator.openExternal("https://www.baidu.com");
+    };
+
+    window.OAuthBindWX = () => {
+        console.log("OAuth Bind WX")
+        taro.OAuth.WX.bind(function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.OAuthBindQQ = () => {
+        console.log("OAuth Bind QQ")
+        taro.OAuth.QQ.bind(function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.OAuthBindXMLY = () => {
+        console.log("OAuth Bind Xmly")
+        taro.OAuth.XMLY.bind(function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.OAuthBindMiHome = () => {
+        console.log("OAuth Bind MiHome")
+        taro.OAuth.MiHome.bind(function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.OAuthSCodeKugou = () => {
+        console.log("OAuth SCode KuGou")
+        const phoneNum = document.getElementById("phoneNumInput").value;
+        taro.OAuth.Kugou.scode(phoneNum, function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.OAuthBindKuGou = () => {
+        console.log("OAuth Bind KuGou")
+        const phoneNum = document.getElementById("phoneNumInput").value;
+        const scode = document.getElementById("scodeInput").value;
+        taro.OAuth.Kugou.bind(phoneNum, scode, function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.OAuthCommonUnbind = () => {
+        console.log("OAuth Common Unbind")
+        taro.OAuth.Common.unbind("KUGOU", function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.OAuthCommonToken = () => {
+        console.log("OAuth Common Token")
+        taro.OAuth.Common.token("KUGOU", function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.MediaV2BuildBody = () => {
+        console.log("MediaV2 buildBody")
+        taro.Media.V2.buildBody("config", {page: 1}, function(err, result) {
+            if (err) {
+                console.log(err)
+                alert("Error" , err)
+            }
+
+            if (result) {
+                console.log(result)
+                alert("Success" , result)
+            }
+        });
+    };
+
+    window.customQQMusicSkip = () => {
+        console.log("custom QQMusic Skip")
+        taro.Custom.QQMusic.skip("QQ_Music", 1, function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                console.log(result)
+            }
+        });
+    };
+
+    window.getQQMusicSkip = () => {
+        console.log("get QQMusic Skip")
+         taro.Phone.Storage.get("QQ_Music", function(err, result) {
+            if (err) {
+                console.log(err)
+            }
+
+            if (result) {
+                alert("Success" , result)
+            }
+        });
+    };
+
+
+    window.LSNgetSSID = () => {
+        console.log("LSN getSSID")
+        taro.LSN.LSNStub.getSSID(null, function(err, result) {
+            alert(result);
+        });
+    };
+
+    function broadLinkFuncHandler(name, params={}) {
+        window.WebViewJavascriptBridge.callHandler(name, params, function (result) {
+              console.log('result:', result)
+              alert("Success" , result)
+        }, function (e) {
+            console.log('error', name, params)
+            alert(new Error(JSON.stringify(e)))
+        })
+    }
+
+    window.setNavBar = () => {
+     console.log("BroadLink setNavBar")
+       var params = {
+                left:[{
+                type:'IMAGE', //['IMAGE','TEXT']
+                fromNative:true, //是否从native图片库获取
+                content:'va_icon_nav_back', // 如果是从native获取，则是natvie图片名称，如果不是，则为图片url
+                eventName:'goBack' // event listener名称
+            }],
+                center:{text:'标题'},
+                right:[{
+                type:'TEXT',
+                fromNative:false,
+                content:'退出',
+                eventName:'exitCurrent'
+            }]
+        };
+
+        broadLinkFuncHandler('setNavBar',params)
+    };
+
+    window.getSSID = () => {
+        console.log("BroadLink getSSID")
+        broadLinkFuncHandler('getSSID')
+    };
+
+    window.getLocation = () => {
+        console.log("BroadLink getLocation")
+        broadLinkFuncHandler('getLocation')
+    };
+
+    window.finishCurrentPage = () => {
+        console.log("BroadLink finishCurrentPage")
+        broadLinkFuncHandler('finishCurrentPage')
+    };
+
+    window.sdkInit = () => {
+        console.log("BroadLink sdkInit")
+        broadLinkFuncHandler('sdkInit')
+    };
+
+    window.sdkDestroy = () => {
+        console.log("BroadLink sdkDestroy")
+        broadLinkFuncHandler('sdkDestroy')
+    };
+
+    window.accountManagement = () => {
+        console.log("BroadLink accountManagement")
+
+    };
+
+    window.familyManagement = () => {
+        console.log("BroadLink accountManagement")
+    };
+
+    window.productManagement = () => {
+        console.log("BroadLink productManagement")
+        var params = {
+            action: GetBrandList,
+            params:JSON.stringify({
+                "category":"sp" //sp, rm
+            })
+        }
+        broadLinkFuncHandler('productManagement',params)
+
+    };
+
+    window.iRService = () => {
+        console.log("BroadLink iRService")
+    };
+
+    window.deviceConfig = () => {
+        console.log("BroadLink deviceConfig")
+        var configParam = {
+           "action": "EasyConfig",
+           "params": JSON.stringify({
+                    "ssid":"ROKID.TC",          // wifi ssid
+                    "password":"rokidguys",        // wifi密码
+                    "timeout": 60,                  // 配置超时时间，单位秒
+                    "pid": "",              // 配置设备的产品信息，可以为空
+                    "version": 2            // 配网版本
+            })
+        }
+        broadLinkFuncHandler('deviceConfig',configParam)
+    };
+
+    window.deviceControl = () => {
+        console.log("BroadLink deviceControl")
+        var param = {
+            "action": "DevControl",
+            "params":JSON.stringify({
+                "did":"0000000000000000000034ea34b8765d",
+                "srv":"",
+                "act":"set",                      // 设备控制操作 "set" "get"
+                "params":["pwr"],                 // 设备控制参数
+                "vals":[{"val":1,"index":0}]       // 设备控制参数对应值
+            })
+        }
+
+        broadLinkFuncHandler('deviceControl',param)
+    };
+
+    window.subDeviceManage = () => {
+        console.log("BroadLink subDeviceManage")
+         var subParam = {
+            "action": "QuerySubDevice",
+            "params":""
+        }
+        broadLinkFuncHandler('subDeviceManage',subParam)
+    };
+
+    window.clearCookies = () => {
+        console.log("clearCookies")
+        broadLinkFuncHandler('clearCookies')
+    };
+
+})(window);
+
+
+
+</script>
+
+</html>
