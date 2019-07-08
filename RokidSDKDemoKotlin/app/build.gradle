@@ -75,7 +75,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
     // sdk
-    implementation(name: 'com.rokid.mobile.sdk-1.9.0-190419001', ext: "aar")
+    implementation(name: 'com.rokid.mobile.sdk-1.10.0-190708001', ext: "aar")
     implementation(name: 'rokid-recyclerview-0.0.1', ext: "aar")
     implementation(name: 'KGMusicSDK', ext: "jar")
 

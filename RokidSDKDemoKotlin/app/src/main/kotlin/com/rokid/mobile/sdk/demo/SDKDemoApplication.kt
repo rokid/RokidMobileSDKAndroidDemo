@@ -22,7 +22,7 @@ class SDKDemoApplication : Application() {
         super.onCreate()
         instance = this
 
-        RokidMobileSDK.env(SDKEnvType.DEV)
+        RokidMobileSDK.env(SDKEnvType.RELEASE)
 
         RokidMobileSDK.init(this,
                 "rokid-demo",
