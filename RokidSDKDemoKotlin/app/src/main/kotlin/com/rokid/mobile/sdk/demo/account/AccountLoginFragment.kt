@@ -3,14 +3,10 @@ package com.rokid.mobile.sdk.demo.account
 import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
-import com.rokid.mobile.lib.base.VoidCallback
-import com.rokid.mobile.lib.base.util.Logger
 import com.rokid.mobile.lib.entity.event.EventUserLoginInvalid
 import com.rokid.mobile.lib.xbase.account.callback.ILoginResultCallback
 import com.rokid.mobile.lib.xbase.account.callback.ILogoutResultCallback
 import com.rokid.mobile.sdk.RokidMobileSDK
-import com.rokid.mobile.sdk.bean.SDKUserInfo
-import com.rokid.mobile.sdk.callback.SDKFetchUserInfoCallback
 import com.rokid.mobile.sdk.demo.R
 import com.rokid.mobile.sdk.demo.base.BaseFragment
 import kotlinx.android.synthetic.main.account_fragment_login.view.*
