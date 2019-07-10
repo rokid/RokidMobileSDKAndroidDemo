@@ -24,6 +24,7 @@ allprojects {
         mavenCentral()
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/releases/' }
         maven { url "https://repo.eclipse.org/content/repositories/paho-releases/" }
+        maven { url "https://dl.bintray.com/rokid/maven/" }
 
         flatDir { dirs '../app/libs' }
     }
